@@ -10,10 +10,12 @@ console.log("temporal")
 
 console.log("antes")
 const sequelize = new Sequelize(
-    process.env.DATABASE_URL,
-    {
-        host: process.env.HOST,
-        dialect: 'postgres'
+    process.env.DATABASE_URL,{
+        dialectOptions: {
+            ssl: {
+                rejectUnauthorized: false,
+            }
+        }
     })
 console.log("despues")
 
