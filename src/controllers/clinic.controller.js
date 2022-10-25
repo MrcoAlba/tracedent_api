@@ -17,7 +17,6 @@ const getClinics = async (req, res) => {
         res.send(err)
     }
 }
-
 const getClinicById = async (req, res) => {
     try{
         const { id } = req.params
@@ -31,7 +30,6 @@ const getClinicById = async (req, res) => {
         res.send(err)
     }
 }
-
 const createClinic = async (req, res) => {
     try{
         const { company_name, ruc, id_user } = req.body
@@ -50,7 +48,6 @@ const createClinic = async (req, res) => {
         res.send(err)
     }
 }
-
 const deleteClinic = async (req, res) => {
     try{
         const { id } = req.params
@@ -64,7 +61,6 @@ const deleteClinic = async (req, res) => {
         res.send(res)
     }
 }
-
 const updateClinicById = async (req, res) => {
     try{
         const { company_name, ruc, id_user } = req.body
