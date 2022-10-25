@@ -1,13 +1,16 @@
-const express = require('express')
-const app = express()
+require('dotenv').config()
+const app = require('./app')
+const sequelize = require('./database/database')
 const port = process.env.PORT || 4000
 
-// middlewares
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
+async function main() {
+    try{
+        await sequelize.sync()
+        app.listen(port)
+        console.log('Server on port', port)
+    }catch (err){
+        console.log("Database connection error!", err)
+    }
+}
 
-// routes
-app.use(require('./routes/index'))
-
-app.listen(port);
-console.log('Server on port', port)
+main()
