@@ -1,75 +1,53 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../database/database')
 
+//const recruitmentSchema = require('./recruitment')
+//const dentistSpecialitiesSchema = require('./dentistSpecialities')
+
 const dentistSchema = sequelize.define('dentist',{
-    id_user:{
+    id_dentist:{
         type:               DataTypes.UUID,
         primaryKey:         true,
         allowNull:          false
     },
-    user_type:{
-        type:               DataTypes.ENUM({
-            values:             ['patient', 'dentist', 'clinic']
-        }),
-        defaultValue:       'patient',
-        allowNull:          false
-    },
-    mail:{
-        type:               DataTypes.STRING,
+    ruc:{
+        type:               DataTypes.BIGINT,
         unique:             true,
         allowNull:          false,
         validate:{
-            isEmail: true
-        }
-    },
-    pswd:{
-        type:               DataTypes.STRING,
-        allowNull:          false
-    },
-    phone_number:{
-        type:               DataTypes.INTEGER,
-        unique:             true,
-        allowNull:          false,
-        validate:{
-            len: [9,9],
+            len: [11,11],
             isNumeric: true
         }
     },
-    subscription:{
-        type:               DataTypes.BOOLEAN,
-        defaultValue:       false,
-        allowNull:          false
-    },
-    district:{
-        type:               DataTypes.STRING,
-        unique:             false,
-        allowNull:          false
-    },
-    direction:{
-        type:               DataTypes.STRING,
-        unique:             false,
-        allowNull:          false
-    },
-    latitude:{
+    rating:{
         type:               DataTypes.REAL,
         unique:             false,
         allowNull:          false,
+        defaultValue:       0,
         validate:{
-            max: -90,
-            min: 90,
+            min:            0,
+            max:            5
         }
     },
-    longitude:{
-        type:               DataTypes.REAL,
-        unique:             false,
-        allowNull:          false,
-        validate:{
-            max: -180,
-            min: 180,
-        }
-    }
 },{
     freezeTableName: true
 })
-
+/*
+recruitmentSchema.belongsTo(dentistSchema,{
+    foreignKey: {
+        type:           DataTypes.UUID,
+        name:           'id_dentist',
+        allowNull:      false
+    },
+    targetId: 'id_dentist'
+})
+dentistSpecialitiesSchema.belongsTo(dentistSchema,{
+    foreignKey: {
+        type:           DataTypes.UUID,
+        name:           'id_dentist',
+        allowNull:      false
+    },
+    targetId: 'id_dentist'
+})
+*/
 module.exports = dentistSchema

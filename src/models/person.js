@@ -1,11 +1,13 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../database/database')
+const dentistSchema = require('./dentist')
+//const patientSchema = require('./patient')
 
 const personSchema = sequelize.define('person',{
     id_person:{
         type:               DataTypes.UUID,
         primaryKey:         true,
-        allowNull:          false
+        defaultValue:       DataTypes.UUIDV1
     },
     first_name:{
         type:               DataTypes.STRING,
@@ -42,5 +44,22 @@ const personSchema = sequelize.define('person',{
 },{
     freezeTableName: true
 })
+
+dentistSchema.belongsTo(personSchema,{
+    foreignKey: {
+        type:           DataTypes.UUID,
+        name:           'id_person',
+        allowNull:      false
+    },
+    targetId: 'id_person'
+})
+/*patientSchema.belongsTo(personSchema,{
+    foreignKey: {
+        type:           DataTypes.UUID,
+        name:           'id_person',
+        allowNull:      false
+    },
+    targetId: 'id_person'
+})*/
 
 module.exports = personSchema

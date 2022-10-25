@@ -13,8 +13,7 @@ const usersSchema = sequelize.define('users',{
         type:               DataTypes.ENUM({
             values:             ['patient', 'dentist', 'clinic']
         }),
-        defaultValue:       'patient',
-        allowNull:          false
+        defaultValue:       'patient'
     },
     mail:{
         type:               DataTypes.STRING,
@@ -40,7 +39,6 @@ const usersSchema = sequelize.define('users',{
     subscription:{
         type:               DataTypes.BOOLEAN,
         defaultValue:       false,
-        allowNull:          false
     },
     district:{
         type:               DataTypes.STRING,

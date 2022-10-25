@@ -6,17 +6,17 @@ const postClinic = async (req, res) => {
     try {
         console.log(req.body)
         const {
-            user_type, mail, pswd, phone_number, subscription, district, direction, latitude, longitude, company_name, ruc
+            mail, pswd, phone_number, district, direction, latitude, longitude, company_name, ruc
         } = req.body
         const user = await userSchema.create({
-            user_type: user_type, mail: mail, pswd: pswd, phone_number: phone_number, subscription: subscription, district: district, direction: direction, latitude: latitude, longitude: longitude
+            user_type: "clinic", mail: mail, pswd: pswd, phone_number: phone_number, district: district, direction: direction, latitude: latitude, longitude: longitude
         })
         const clinic = await clinicSchema.create({
             company_name: company_name, ruc: ruc, id_user: user.id_user
         })
         res.status(200).json(clinic)
     } catch (error) {
-        res.send(error)
+        res.status(400).send(error)
     }
 }
 // READ     -> GET ALL CLINICS
@@ -31,7 +31,7 @@ const getAllClinics = async (req, res) => {
         })
         res.status(200).json(clinic)
     } catch (error) {
-
+        res.status(400).json(error)
     }
 }
 // READ     -> GET CLINICS BY ID
