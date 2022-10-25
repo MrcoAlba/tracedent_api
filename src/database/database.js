@@ -9,21 +9,12 @@ console.log(process.env.PORT)
 console.log("temporal")
 
 console.log("antes")
-/*const sequelize = new Sequelize(
-    process.env.DATABASE, 
-    process.env.USER, 
-    process.env.PASSWORD,
+const sequelize = new Sequelize(
+    process.env.DATABASE_URL,
     {
         host: process.env.HOST,
         dialect: 'postgres'
-})*/
-var sequelize
-try{
-    sequelize = new Sequelize(process.env.URI)
-}catch(error){
-    console.log("ERROROROROR->",error)
-}
-
+    })
 console.log("despues")
 
 module.exports = sequelize
