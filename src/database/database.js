@@ -17,7 +17,12 @@ console.log("antes")
         host: process.env.HOST,
         dialect: 'postgres'
 })*/
-const sequelize = new Sequelize(process.env.URI)
+try{
+    const sequelize = new Sequelize(process.env.URI)
+}catch(error){
+    console.log("ERROROROROR->",error)
+}
+
 console.log("despues")
 
 module.exports = sequelize
