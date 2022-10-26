@@ -27,7 +27,7 @@ const postClinic = async (req, res) => {
             res.status(500).send([userDestroy, error])
         }
     } catch (error) {
-        res.status(500).send(error)
+        res.status(500).send(error.errors[0].message)
     }
 }
 // READ     -> GET ALL CLINICS
