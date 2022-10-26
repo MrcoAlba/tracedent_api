@@ -42,5 +42,34 @@ const patchUserById = async (req, res) => {
         res.status(500).send([0])
     }
 }
+// LOGIN   -> RETURN 1 IF LOGIN TRUE
+const loginMailPass = async (req, res) => {
+    try {
+        // GET BODY
+        const {
+            mail, password
+        } = req.body
+        const user = await usersSchema.findOne({
+            attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+        }, {
+            where: {
+                [Op.and]: [{
+                    mail: {
+                        [Op.eq]: mail
+                    },
+                    pswd: {
+                        [Op.eq]: password
+                    }
+                }]
+            }
+        }
+        )
+        res.status(200).send(user)
+    } catch (error) {
+        // Due to a simple change in a values, if the return is 0, 
+        //it means that the value wasn't modified
+        res.status(500).send([0])
+    }
+}
 
-module.exports = { getAllUsers, patchUserById }
+module.exports = { getAllUsers, patchUserById, loginMailPass }
