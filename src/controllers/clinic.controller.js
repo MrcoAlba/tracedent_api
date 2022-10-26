@@ -55,7 +55,7 @@ const loginIdUser = async (req, res) => {
         } = req.body
 
         const clinic = await clinicSchema.findOne({
-            attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
+            attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
             where: {
                 id_user: id_user
             }
