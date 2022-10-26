@@ -24,7 +24,7 @@ const postClinic = async (req, res) => {
             const userDestroy = await userSchema.destroy({
                 where: { id_user: user.id_user }
             })
-            res.status(500).send([userDestroy, error])
+            res.status(500).send([userDestroy, error.errors[0].message])
         }
     } catch (error) {
         res.status(500).send(error.errors[0].message)
