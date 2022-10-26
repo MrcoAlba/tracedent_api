@@ -187,3 +187,5 @@ VALUES
 {"mail":"clinic07@mail.com","pswd":"clinic07","phone_number":900000007,"district":"distritoc07","direction":"direccionc07","latitude":-12.07,"longitude":-77.07,"company_name":"companyName07","ruc":80000000007}
 {"mail":"clinic08@mail.com","pswd":"clinic08","phone_number":900000008,"district":"distritoc08","direction":"direccionc08","latitude":-12.08,"longitude":-77.08,"company_name":"companyName08","ruc":80000000008}
 {"mail":"clinic09@mail.com","pswd":"clinic09","phone_number":900000009,"district":"distritoc09","direction":"direccionc09","latitude":-12.09,"longitude":-77.09,"company_name":"companyName09","ruc":80000000009}
+
+

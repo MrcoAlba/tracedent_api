@@ -2,14 +2,25 @@ const personSchema = require('../models/person')
 const userSchema = require('../models/user')
 
 
-// CREATE   -> POST A NEW PERSON
-const postPerson = (req, res) => {
-    //console.log(req.body)
-    res.send('postPerson')
-}
 // READ     -> GET ALL PERSONS
-const getAllPersons = (req, res) => {
-    res.send('getAllPersons')
+const getAllPersons = async (req, res) => {
+    try {
+        const person = await personSchema.findAll({
+            attributes: ['id_person', 'first_name', 'last_name', 'gender', 'dni'],
+            order: [['dni', 'ASC']],
+            include: [{
+                model: userSchema,
+                attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+            },]
+        })
+        res.status(200).send(person)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+}
+// UPDATE   -> UPDATE A PERSON BY ID
+const patchPersonById = (req, res) => {
+    
 }
 
-module.exports = { postPerson, getAllPersons }
+module.exports = { getAllPersons, patchPersonById }

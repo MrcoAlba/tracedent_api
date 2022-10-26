@@ -1,12 +1,12 @@
 const { Router } = require('express')
 const router = Router()
 const { 
-    postPerson, getAllPersons
+    getAllPersons, patchPersonById
 } = require('../controllers/person.controller')
 
-// CREATE   -> POST A NEW PERSON
-router.post     ('/person'          ,   postPerson          )
 // READ     -> GET ALL PERSONS
 router.get      ('/person'          ,   getAllPersons       )
+// UPDATE   -> UPDATE A PERSON BY ID
+router.patch    ('/person/:id'      ,   patchPersonById     )
 
 module.exports = router
