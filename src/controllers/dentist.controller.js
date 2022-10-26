@@ -1,6 +1,6 @@
-const userSchema = require('../models/user')
-const personSchema = require('../models/person')
 const dentistSchema = require('../models/dentist')
+const personSchema = require('../models/person')
+const userSchema = require('../models/user')
 
 // CREATE   -> POST A NEW DENTIST/
 const postDentist = async (req, res) => {
@@ -46,17 +46,5 @@ const getAllDentists = async (req, res) => {
         res.status(400).json(error)
     }
 }
-// READ     -> GET DENTISTS BY ID
-const getDentistById = (req, res) => {
-    res.send('getDentistById')
-}
-// UPDATE   -> UPDATE A DENTIST BY ID
-const patchDentistById = (req, res) => {
-    res.send('patchDentistById')
-}
-// DELETE   -> DELETE A DENTIST BY ID
-const deleteDentistById = (req, res) => {
-    res.send('deleteDentistById')
-}
 
-module.exports = { postDentist, getAllDentists, getDentistById, patchDentistById, deleteDentistById }
+module.exports = { postDentist, getAllDentists }

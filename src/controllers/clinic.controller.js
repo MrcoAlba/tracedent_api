@@ -1,6 +1,7 @@
 const clinicSchema = require('../models/clinic')
 const userSchema = require('../models/user')
 
+
 // CREATE   -> POST A NEW CLINIC
 const postClinic = async (req, res) => {
     try {
@@ -37,20 +38,5 @@ const getAllClinics = async (req, res) => {
         res.status(400).json(error)
     }
 }
-// READ     -> GET CLINICS BY ID
-const getClinicById = (req, res) => {
-    res.send('getClinicById')
-}
-// UPDATE   -> UPDATE A CLINIC SUBSCRIPTION BY ID
-const patchClinicById = (req, res) => {
 
-}
-// DELETE   -> DELETE A CLINIC BY ID
-const deleteClinicById = (req, res) => {
-    res.send('deleteClinicById')
-}
-
-module.exports = { postClinic, getAllClinics, getClinicById, patchClinicById, deleteClinicById }
-
-
-
+module.exports = { postClinic, getAllClinics }

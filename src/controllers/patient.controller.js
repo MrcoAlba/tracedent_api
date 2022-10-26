@@ -1,3 +1,7 @@
+const patientSchema = require('../models/patient')
+const personSchema = require('../models/person')
+const userSchema = require('../models/user')
+
 // CREATE   -> POST A NEW PATIENT
 const postPatient = (req, res) => {
     //console.log(req.body)
@@ -7,17 +11,5 @@ const postPatient = (req, res) => {
 const getAllPatients = (req, res) => {
     res.send('getAllPatients')
 }
-// READ     -> GET PATIENTS BY ID
-const getPatientById = (req, res) => {
-    res.send('getPatientById')
-}
-// UPDATE   -> UPDATE A PATIENT BY ID
-const patchPatientById = (req, res) => {
-    res.send('patchPatientById')
-}
-// DELETE   -> DELETE A PATIENT BY ID
-const deletePatientById = (req, res) => {
-    res.send('deletePatientById')
-}
 
-module.exports = { postPatient, getAllPatients, getPatientById, patchPatientById, deletePatientById }
+module.exports = { postPatient, getAllPatients }

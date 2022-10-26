@@ -1,18 +1,17 @@
 const usersSchema = require("../models/user")
 const { DataTypes } = require('sequelize')
 
-// CREATE   -> POST A NEW USER
-const postUser = (req, res) => {
-    //console.log(req.body)
-    res.send('postUser')
-}
+
 // READ     -> GET ALL USERS
-const getAllUsers = (req, res) => {
-    res.send('getAllUsers')
-}
-// READ     -> GET USERS BY ID
-const getUserById = (req, res) => {
-    res.send('getUserById')
+const getAllUsers = async (req, res) => {
+    try {
+        const user = await dentistSchema.findAll({
+            attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+        })
+        res.status(200).json(user)
+    } catch (error) {
+        res.status(400).json(error)
+    }
 }
 // UPDATE   -> UPDATE A USER BY ID
 const patchUserById = async (req, res) => {
@@ -34,10 +33,6 @@ const patchUserById = async (req, res) => {
         res.status(69).send(error)
     }
     res.send('patchUserById')
-}
-// DELETE   -> DELETE A USER BY ID
-const deleteUserById = (req, res) => {
-    res.send('deleteUserById')
 }
 
 module.exports = { postUser, getAllUsers, getUserById, patchUserById, deleteUserById }
