@@ -10,6 +10,7 @@ async function main() {
         /*
         await sequelize.sync()
         */
+        console.log("before")
         app.listen(port)
         console.log('Server on port', port)
     }catch (err){
