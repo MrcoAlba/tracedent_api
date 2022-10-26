@@ -33,7 +33,8 @@ const dentistSchema = sequelize.define('dentist',{
         }
     },
 },{
-    freezeTableName: true
+    freezeTableName: true,
+    timestamps: false
 })
 /*
 recruitmentSchema.belongsTo(dentistSchema,{

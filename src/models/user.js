@@ -73,7 +73,8 @@ const usersSchema = sequelize.define('users',{
         }
     }
 },{
-    freezeTableName: true
+    freezeTableName: true,
+    timestamps: false
 })
 
 personSchema.belongsTo(usersSchema,{

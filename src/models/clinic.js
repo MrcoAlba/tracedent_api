@@ -38,7 +38,8 @@ const clinicSchema = sequelize.define('clinic',{
         }
     },
 },{
-    freezeTableName: true
+    freezeTableName: true,
+    timestamps: false
 })
 
 module.exports = clinicSchema

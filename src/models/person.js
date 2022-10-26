@@ -46,7 +46,8 @@ const personSchema = sequelize.define('person',{
         }
     }
 },{
-    freezeTableName: true
+    freezeTableName: true,
+    timestamps: false
 })
 
 dentistSchema.belongsTo(personSchema,{
