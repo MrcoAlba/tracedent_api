@@ -1,8 +1,6 @@
 require('dotenv').config()
-/*
 const app = require('./app')
 const sequelize = require('./database/database')
-*/
 const port = process.env.PORT || 4000
 
 async function main() {
