@@ -1,12 +1,12 @@
 const usersSchema = require("../models/user")
-const { DataTypes } = require('sequelize')
+const { DataTypes, Op } = require('sequelize')
 
 
 // READ     -> GET ALL USERS
 const getAllUsers = async (req, res) => {
     try {
         const user = await usersSchema.findAll({
-            attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'] 
+            attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
         })
         res.status(200).send(user)
     } catch (error) {
@@ -17,15 +17,23 @@ const getAllUsers = async (req, res) => {
 const patchUserById = async (req, res) => {
     try {
         const id = req.params.id
-        
-        const user = await usersSchema.update(
-            { 
+
+        const user = await usersSchema.update({
                 subscription: true,
             }, {
-                where: {
-                    id_user: id
+            where: {
+                [Op.and]: [{
+                    id_user: {
+                        [Op.eq]: id
+                    }
+                }, {
+                    subscription: {
+                        [Op.not]: "patient"
+                    }
                 }
+                ]
             }
+        }
         )
         res.status(200).send(user)
     } catch (error) {
