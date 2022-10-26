@@ -18,7 +18,6 @@ const getAllUsers = async (req, res) => {
 const patchUserById = async (req, res) => {
     try {
         const id = req.params.id
-
         const user = await usersSchema.update({
                 subscription: true,
             }, {
@@ -28,7 +27,7 @@ const patchUserById = async (req, res) => {
                         [Op.eq]: id
                     }
                 }, {
-                    subscription: {
+                    user_type: {
                         [Op.not]: "patient"
                     }
                 }
