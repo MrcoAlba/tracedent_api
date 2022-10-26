@@ -71,9 +71,6 @@ const loginIdUser = async (req, res) => {
             id_user
         } = req.body
 
-        res.status(200).send(id_user)
-
-        /*
         const person = await personSchema.findOne({
             attributes: ['id_person', 'first_name', 'last_name', 'gender', 'dni'],
             where: {
@@ -81,6 +78,9 @@ const loginIdUser = async (req, res) => {
             }
         })
 
+        res.status(200).send(person.id_person)
+        
+        /*
         const dentist = await dentistSchema.findOne({
             attributes: ['id_dentist', 'ruc', 'rating'],
             where: {
