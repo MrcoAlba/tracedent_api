@@ -46,5 +46,27 @@ const getAllClinics = async (req, res) => {
         res.status(400).send(error)
     }
 }
+// LOGIN   -> RETURN 1 IF LOGIN TRUE
+const loginIdUser = async (req, res) => {
+    try {
+        // GET BODY
+        const {
+            id_user
+        } = req.body
 
-module.exports = { postClinic, getAllClinics }
+        const clinic = await clinicSchema.findOne({
+            attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
+            where: {
+                id_user: id_user
+            }
+        })
+
+        res.status(200).send([1,clinic])
+    } catch (error) {
+        // Due to a simple change in a values, if the return is 0, 
+        //it means that the value wasn't modified
+        res.status(500).send([0,null])
+    }
+}
+
+module.exports = { postClinic, getAllClinics, loginIdUser }
