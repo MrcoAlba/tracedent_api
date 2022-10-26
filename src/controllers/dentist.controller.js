@@ -2,7 +2,7 @@ const userSchema = require('../models/user')
 const personSchema = require('../models/person')
 const dentistSchema = require('../models/dentist')
 
-// CREATE   -> POST A NEW DENTIST
+// CREATE   -> POST A NEW DENTIST/
 const postDentist = async (req, res) => {
     try {
         // GET BODY`
