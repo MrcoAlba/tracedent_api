@@ -71,6 +71,9 @@ const loginIdUser = async (req, res) => {
             id_user
         } = req.body
 
+        res.status(200).send(id_user)
+
+        /*
         const person = await personSchema.findOne({
             attributes: ['id_person', 'first_name', 'last_name', 'gender', 'dni'],
             where: {
@@ -86,6 +89,7 @@ const loginIdUser = async (req, res) => {
         })
 
         res.status(200).send([1,dentist])
+        */
     } catch (error) {
         // Due to a simple change in a values, if the return is 0, 
         //it means that the value wasn't modified
