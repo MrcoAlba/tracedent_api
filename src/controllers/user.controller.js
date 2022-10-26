@@ -6,7 +6,8 @@ const { DataTypes, Op } = require('sequelize')
 const getAllUsers = async (req, res) => {
     try {
         const user = await usersSchema.findAll({
-            attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+            attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
+            order:[['id_user','ASC']]
         })
         res.status(200).send(user)
     } catch (error) {
