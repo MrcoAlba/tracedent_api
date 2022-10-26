@@ -9,6 +9,6 @@ router.get      ('/user'            ,   getAllUsers         )
 // UPDATE   -> MODIFY THE SUBSCRIPTION TO TRUE BY ID
 router.patch    ('/user/:id'        ,   patchUserById       )
 // LOGIN   -> RETURN 1 IF LOGIN TRUE
-router.get      ('/user/login/'     ,   loginMailPass       )
+router.post     ('/user/login/'     ,   loginMailPass       )
 
 module.exports = router
