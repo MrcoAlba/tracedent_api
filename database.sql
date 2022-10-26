@@ -199,3 +199,15 @@ VALUES
 {"mail":"d07@ma.co","pswd":"d07","phone_number":900000017,"district":"dd07","direction":"dd07","latitude":-12.17,"longitude":-77.17,"first_name":"fn07","last_name":"ln07","gender":"male","dni":80000007,"ruc":80000000017}
 {"mail":"d08@ma.co","pswd":"d08","phone_number":900000018,"district":"dd08","direction":"dd08","latitude":-12.18,"longitude":-77.18,"first_name":"fn08","last_name":"ln08","gender":"male","dni":80000008,"ruc":80000000018}
 {"mail":"d09@ma.co","pswd":"d09","phone_number":900000019,"district":"dd09","direction":"dd09","latitude":-12.19,"longitude":-77.19,"first_name":"fn09","last_name":"ln09","gender":"male","dni":80000009,"ruc":80000000019}
+
+
+{"mail":"p00@ma.co","pswd":"p00","phone_number":900000020,"district":"dp00","direction":"dp00","latitude":-12.20,"longitude":-77.20,"first_name":"fn10","last_name":"ln10","gender":"female","dni":80000010}
+{"mail":"p01@ma.co","pswd":"p01","phone_number":900000021,"district":"dp01","direction":"dp01","latitude":-12.21,"longitude":-77.21,"first_name":"fn11","last_name":"ln11","gender":"female","dni":80000011}
+{"mail":"p02@ma.co","pswd":"p02","phone_number":900000022,"district":"dp02","direction":"dp02","latitude":-12.22,"longitude":-77.22,"first_name":"fn12","last_name":"ln12","gender":"female","dni":80000012}
+{"mail":"p03@ma.co","pswd":"p03","phone_number":900000023,"district":"dp03","direction":"dp03","latitude":-12.23,"longitude":-77.23,"first_name":"fn13","last_name":"ln13","gender":"female","dni":80000013}
+{"mail":"p04@ma.co","pswd":"p04","phone_number":900000024,"district":"dp04","direction":"dp04","latitude":-12.24,"longitude":-77.24,"first_name":"fn14","last_name":"ln14","gender":"female","dni":80000014}
+{"mail":"p05@ma.co","pswd":"p05","phone_number":900000025,"district":"dp05","direction":"dp05","latitude":-12.25,"longitude":-77.25,"first_name":"fn15","last_name":"ln15","gender":"female","dni":80000015}
+{"mail":"p06@ma.co","pswd":"p06","phone_number":900000026,"district":"dp06","direction":"dp06","latitude":-12.26,"longitude":-77.26,"first_name":"fn16","last_name":"ln16","gender":"female","dni":80000016}
+{"mail":"p07@ma.co","pswd":"p07","phone_number":900000027,"district":"dp07","direction":"dp07","latitude":-12.27,"longitude":-77.27,"first_name":"fn17","last_name":"ln17","gender":"female","dni":80000017}
+{"mail":"p08@ma.co","pswd":"p08","phone_number":900000028,"district":"dp08","direction":"dp08","latitude":-12.28,"longitude":-77.28,"first_name":"fn18","last_name":"ln18","gender":"female","dni":80000018}
+{"mail":"p09@ma.co","pswd":"p09","phone_number":900000029,"district":"dp09","direction":"dp09","latitude":-12.29,"longitude":-77.29,"first_name":"fn19","last_name":"ln19","gender":"female","dni":80000019}
