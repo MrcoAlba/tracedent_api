@@ -5,7 +5,7 @@ const clinicSchema = sequelize.define('clinic',{
     id_clinic:{
         type:               DataTypes.UUID,
         primaryKey:         true,
-        defaultValue:       DataTypes.UUIDV4
+        defaultValue:       DataTypes.UUIDV1
     },
     company_name:{
         type:               DataTypes.STRING,
