@@ -16,7 +16,7 @@ const getUserById = (req, res) => {
 // UPDATE   -> UPDATE A USER BY ID
 const patchUserById = async (req, res) => {
     try {
-        const id = req.params.id
+        const {id} = req.params.id
         
         const user = await usersSchema.update(
             { 
