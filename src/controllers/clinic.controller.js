@@ -35,7 +35,7 @@ const getAllClinics = async (req, res) => {
     try {
         const clinic = await clinicSchema.findAll({
             attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
-            order:[['subscription','ASC'],['company_name','ASC']],
+            order:[['company_name','ASC']],
             include: [{
                 model: userSchema,
                 attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
