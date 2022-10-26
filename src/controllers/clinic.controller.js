@@ -61,11 +61,11 @@ const loginIdUser = async (req, res) => {
             }
         })
 
-        res.status(200).send([1,clinic])
+        res.status(200).send({cod:1,response:clinic})
     } catch (error) {
         // Due to a simple change in a values, if the return is 0, 
         //it means that the value wasn't modified
-        res.status(500).send([0,null])
+        res.status(500).send({cod:1,response:null})
     }
 }
 
