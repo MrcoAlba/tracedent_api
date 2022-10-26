@@ -37,7 +37,9 @@ const patchUserById = async (req, res) => {
         )
         res.status(200).send(user)
     } catch (error) {
-        res.status(500).send(error)
+        // Due to a simple change in a value, if the return is 0, 
+        //it means that the value wasn't modified
+        res.status(500).send(0)
     }
 }
 
