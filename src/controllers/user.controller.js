@@ -5,10 +5,9 @@ const { DataTypes } = require('sequelize')
 // READ     -> GET ALL USERS
 const getAllUsers = async (req, res) => {
     try {
-        const user = await dentistSchema.findAll({
-            attributes: ['user_type']
-            /*
+        const user = await usersSchema.findAll({
             attributes: ['id_user', 'user_type', 'mail', 'pswd', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+            /*
             attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'] 
             */
         })
