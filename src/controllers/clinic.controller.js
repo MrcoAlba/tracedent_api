@@ -43,7 +43,7 @@ const getClinicById = (req, res) => {
 }
 // UPDATE   -> UPDATE A CLINIC SUBSCRIPTION BY ID
 const patchClinicById = (req, res) => {
-    
+
 }
 // DELETE   -> DELETE A CLINIC BY ID
 const deleteClinicById = (req, res) => {
@@ -51,3 +51,6 @@ const deleteClinicById = (req, res) => {
 }
 
 module.exports = { postClinic, getAllClinics, getClinicById, patchClinicById, deleteClinicById }
+
+
+
