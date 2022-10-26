@@ -1,4 +1,5 @@
 const usersSchema = require("../models/user")
+const { DataTypes } = require('sequelize')
 
 // CREATE   -> POST A NEW USER
 const postUser = (req, res) => {
@@ -20,7 +21,8 @@ const patchUserById = async (req, res) => {
         
         const user = await usersSchema.update(
             { 
-                subscription: true
+                subscription: true,
+                updatedAt: DataTypes.NOW()
             }, {
                 where: {
                     id_user: id
