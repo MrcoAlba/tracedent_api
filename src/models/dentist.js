@@ -8,7 +8,7 @@ const dentistSchema = sequelize.define('dentist',{
     id_dentist:{
         type:               DataTypes.UUID,
         primaryKey:         true,
-        allowNull:          false
+        defaultValue:       DataTypes.UUIDV4
     },
     ruc:{
         type:               DataTypes.BIGINT,

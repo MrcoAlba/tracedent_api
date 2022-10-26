@@ -4,16 +4,19 @@ const userSchema = require('../models/user')
 // CREATE   -> POST A NEW CLINIC
 const postClinic = async (req, res) => {
     try {
-        console.log(req.body)
+        // GET BODY
         const {
             mail, pswd, phone_number, district, direction, latitude, longitude, company_name, ruc
         } = req.body
+        // CREATE USER
         const user = await userSchema.create({
             user_type: "clinic", mail: mail, pswd: pswd, phone_number: phone_number, district: district, direction: direction, latitude: latitude, longitude: longitude
         })
+        // CREATE CLINIC
         const clinic = await clinicSchema.create({
             company_name: company_name, ruc: ruc, id_user: user.id_user
         })
+        // RETURN RESPONSE
         res.status(200).json(clinic)
     } catch (error) {
         res.status(400).send(error)
