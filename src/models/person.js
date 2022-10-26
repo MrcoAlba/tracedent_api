@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize')
 const sequelize = require('../database/database')
 
 const dentistSchema = require('./dentist')
-//const patientSchema = require('./patient')
+const patientSchema = require('./patient')
 
 
 
@@ -58,13 +58,13 @@ dentistSchema.belongsTo(personSchema,{
     },
     targetId: 'id_person'
 })
-/*patientSchema.belongsTo(personSchema,{
+patientSchema.belongsTo(personSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
         name:           'id_person',
         allowNull:      false
     },
     targetId: 'id_person'
-})*/
+})
 
 module.exports = personSchema
