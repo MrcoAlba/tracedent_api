@@ -1,5 +1,5 @@
 const usersSchema = require("../models/user")
-const { DataTypes, Op } = require('sequelize')
+const { Op } = require('sequelize')
 
 
 // READ     -> GET ALL USERS
@@ -14,7 +14,7 @@ const getAllUsers = async (req, res) => {
         res.status(400).send(error)
     }
 }
-// UPDATE   -> UPDATE A USER BY ID
+// UPDATE   -> MODIFY THE SUBSCRIPTION TO TRUE BY ID
 const patchUserById = async (req, res) => {
     try {
         const id = req.params.id
