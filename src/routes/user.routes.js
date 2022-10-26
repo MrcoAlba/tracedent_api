@@ -11,7 +11,7 @@ router.get      ('/user'            ,   getAllUsers         )
 // READ     -> GET USERS BY ID
 router.get      ('/user/:id'        ,   getUserById         )
 // UPDATE   -> UPDATE A USER BY ID
-router.get      ('/user/:id'        ,   patchUserById       )
+router.get      ('/user/subs/:id'   ,   patchUserById       )
 // DELETE   -> DELETE A USER BY ID
 router.delete   ('/user/:id'        ,   deleteUserById      )
 
