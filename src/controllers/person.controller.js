@@ -1,5 +1,5 @@
 const personSchema = require('../models/person')
-const userSchema = require('../models/user')
+const usersSchema = require('../models/user')
 
 
 // READ     -> GET ALL PERSONS
@@ -9,7 +9,7 @@ const getAllPersons = async (req, res) => {
             attributes: ['id_person', 'first_name', 'last_name', 'gender', 'dni'],
             order: [['dni', 'ASC']],
             include: [{
-                model: userSchema,
+                model: usersSchema,
                 attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
             },]
         })

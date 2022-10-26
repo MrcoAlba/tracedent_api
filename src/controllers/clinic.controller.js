@@ -1,5 +1,5 @@
 const clinicSchema = require('../models/clinic')
-const userSchema = require('../models/user')
+const usersSchema = require('../models/user')
 
 
 // CREATE   -> POST A NEW CLINIC
@@ -10,7 +10,7 @@ const postClinic = async (req, res) => {
             mail, pswd, phone_number, district, direction, latitude, longitude, company_name, ruc
         } = req.body
         // CREATE USER
-        const user = await userSchema.create({
+        const user = await usersSchema.create({
             user_type: "clinic", mail: mail, pswd: pswd, phone_number: phone_number, district: district, direction: direction, latitude: latitude, longitude: longitude
         })
         // CREATE CLINIC
@@ -21,7 +21,7 @@ const postClinic = async (req, res) => {
             // RETURN RESPONSE
             res.status(200).send(clinic)
         } catch (error) {
-            const userDestroy = await userSchema.destroy({
+            const userDestroy = await usersSchema.destroy({
                 where: { id_user: user.id_user }
             })
             res.status(500).send([userDestroy, error.errors[0].message])
@@ -37,7 +37,7 @@ const getAllClinics = async (req, res) => {
             attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
             order: [['company_name', 'ASC']],
             include: [{
-                model: userSchema,
+                model: usersSchema,
                 attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
             },]
         })

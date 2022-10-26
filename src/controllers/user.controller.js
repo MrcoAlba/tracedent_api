@@ -1,4 +1,8 @@
 const usersSchema = require("../models/user")
+const personSchema = require("../models/person")
+const patientSchema = require("../models/patient")
+const dentistSchema = require("../models/dentist")
+const clinicSchema = require("../models/clinic")
 const { Op } = require('sequelize')
 
 
@@ -56,7 +60,27 @@ const loginMailPass = async (req, res) => {
                 pswd: password
             }
         })
-        res.status(200).send(user)
+
+        switch(user.user_type){
+            case 'dentist':
+
+            case 'patient':
+            case 'clinic':
+                const clinic = await clinicSchema.findOne({
+                    attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
+                    where: {
+                        id_user: user.id_user
+                    },
+                    include: [{
+                        model: usersSchema,
+                        attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+                    },],
+                })
+                res.status(200).send(clinic)
+            default:
+                res.status(501).send([0])
+        }
+        
     } catch (error) {
         // Due to a simple change in a values, if the return is 0, 
         //it means that the value wasn't modified

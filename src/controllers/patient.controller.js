@@ -1,6 +1,6 @@
 const patientSchema = require('../models/patient')
 const personSchema = require('../models/person')
-const userSchema = require('../models/user')
+const usersSchema = require('../models/user')
 
 // CREATE   -> POST A NEW PATIENT
 const postPatient = async (req, res) => {
@@ -10,7 +10,7 @@ const postPatient = async (req, res) => {
             mail, pswd, phone_number, district, direction, latitude, longitude, first_name, last_name, gender, dni
         } = req.body
         // CREATE USER
-        const user = await userSchema.create({
+        const user = await usersSchema.create({
             user_type: "dentist", mail: mail, pswd: pswd, phone_number: phone_number, district: district, direction: direction, latitude: latitude, longitude: longitude
         })
         try {
@@ -25,7 +25,7 @@ const postPatient = async (req, res) => {
                 })
                 res.status(200).send(patient)
             } catch (error) {
-                const userDestroy = await userSchema.destroy({
+                const userDestroy = await usersSchema.destroy({
                     where: { id_user: user.id_user }
                 })
                 const personDestroy = await personSchema.destroy({
@@ -34,7 +34,7 @@ const postPatient = async (req, res) => {
                 res.status(500).send([userDestroy, personDestroy, error.errors[0].message])
             }
         } catch (error) {
-            const userDestroy = await userSchema.destroy({
+            const userDestroy = await usersSchema.destroy({
                 where: { id_user: user.id_user }
             })
             res.status(500).send([userDestroy, error.errors[0].message])
@@ -53,7 +53,7 @@ const getAllPatients = async (req, res) => {
                 model: personSchema,
                 attributes: ['id_person', 'first_name', 'last_name', 'gender', 'dni'],
                 include: [{
-                    model: userSchema,
+                    model: usersSchema,
                     attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
                 }]
             },]
