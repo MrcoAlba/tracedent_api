@@ -5,7 +5,7 @@ const dentistSchema = require('../models/dentist')
 // CREATE   -> POST A NEW DENTIST
 const postDentist = async (req, res) => {
     try {
-        // GET BODY
+        // GET BODY`
         const {
             mail, pswd, phone_number, district, direction, latitude, longitude, first_name, last_name, gender, dni, ruc
         } = req.body

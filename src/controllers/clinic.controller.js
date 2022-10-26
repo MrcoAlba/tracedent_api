@@ -41,9 +41,9 @@ const getAllClinics = async (req, res) => {
 const getClinicById = (req, res) => {
     res.send('getClinicById')
 }
-// UPDATE   -> UPDATE A CLINIC BY ID
+// UPDATE   -> UPDATE A CLINIC SUBSCRIPTION BY ID
 const patchClinicById = (req, res) => {
-    res.send('patchClinicById')
+    
 }
 // DELETE   -> DELETE A CLINIC BY ID
 const deleteClinicById = (req, res) => {
