@@ -4,11 +4,14 @@ const sequelize = require('../database/database')
 //const recruitmentSchema = require('./recruitment')
 //const dentistSpecialitiesSchema = require('./dentistSpecialities')
 
+
+
+
 const dentistSchema = sequelize.define('dentist',{
     id_dentist:{
         type:               DataTypes.UUID,
         primaryKey:         true,
-        defaultValue:       DataTypes.UUIDV4
+        defaultValue:       DataTypes.UUIDV1
     },
     ruc:{
         type:               DataTypes.BIGINT,

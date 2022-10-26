@@ -1,6 +1,12 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../database/database')
 
+
+
+
+
+
+
 const clinicSchema = sequelize.define('clinic',{
     id_clinic:{
         type:               DataTypes.UUID,
