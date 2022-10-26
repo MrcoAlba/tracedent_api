@@ -50,17 +50,10 @@ const loginMailPass = async (req, res) => {
             mail, password
         } = req.body
         const user = await usersSchema.findOne({
-            attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
-        }, {
+            attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
             where: {
-                [Op.and]: [{
-                    mail: {
-                        [Op.eq]: mail
-                    },
-                    pswd: {
-                        [Op.eq]: password
-                    }
-                }]
+                mail: mail,
+                pswd: password
             }
         }
         )
