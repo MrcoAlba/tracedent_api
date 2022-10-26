@@ -13,18 +13,34 @@ const postDentist = async (req, res) => {
         const user = await userSchema.create({
             user_type: "dentist", mail: mail, pswd: pswd, phone_number: phone_number, district: district, direction: direction, latitude: latitude, longitude: longitude
         })
-        // CREATE PERSON
-        const person = await personSchema.create({
-            first_name: first_name, last_name: last_name, gender: gender, dni:dni, id_user: user.id_user
-        })
-        // CREATE DENTIST
-        const dentist = await dentistSchema.create({
-            ruc:ruc, id_person: person.id_person
-        })
-        // RETURN RESPONSE
-        res.status(200).json(dentist)
+        try {
+            // CREATE PERSON
+            const person = await personSchema.create({
+                first_name: first_name, last_name: last_name, gender: gender, dni: dni, id_user: user.id_user
+            })
+            try {
+                // CREATE DENTIST
+                const dentist = await dentistSchema.create({
+                    ruc: ruc, id_person: person.id_person
+                })
+                res.status(200).send(dentist)
+            } catch (error) {
+                const userDestroy = await userSchema.destroy({
+                    where: { id_user: user.id_user }
+                })
+                const personDestroy = await personSchema.destroy({
+                    where: { id_person: person.id_person }
+                })
+                res.status(500).send([userDestroy, personDestroy, error.errors[0].message])
+            }
+        } catch (error) {
+            const userDestroy = await userSchema.destroy({
+                where: { id_user: user.id_user }
+            })
+            res.status(500).send([userDestroy, error.errors[0].message])
+        }
     } catch (error) {
-        res.send(error)
+        res.status(500).send(error.errors[0].message)
     }
 }
 // READ     -> GET ALL DENTISTS
@@ -32,6 +48,7 @@ const getAllDentists = async (req, res) => {
     try {
         const dentist = await dentistSchema.findAll({
             attributes: ['id_dentist', 'ruc', 'rating'],
+            order: [['ruc', 'ASC']],
             include: [{
                 model: personSchema,
                 attributes: ['id_person', 'first_name', 'last_name', 'gender', 'dni'],
@@ -41,9 +58,9 @@ const getAllDentists = async (req, res) => {
                 }]
             },]
         })
-        res.status(200).json(dentist)
+        res.status(200).send(dentist)
     } catch (error) {
-        res.status(400).json(error)
+        res.status(400).send(error)
     }
 }
 

@@ -189,3 +189,4 @@ VALUES
 {"mail":"clinic09@mail.com","pswd":"clinic09","phone_number":900000009,"district":"distritoc09","direction":"direccionc09","latitude":-12.09,"longitude":-77.09,"company_name":"companyName09","ruc":80000000009}
 
 
+{"mail":"clinic00@mail.com","pswd":"clinic00","phone_number":900000000,"district":"distritoc00","direction":"direccionc00","latitude":-12.00,"longitude":-77.00,"company_name":"companyName00","ruc":80000000000}
