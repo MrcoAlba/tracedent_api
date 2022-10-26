@@ -50,6 +50,7 @@ const loginMailPass = async (req, res) => {
             mail, password
         } = req.body
         const user = await usersSchema.findOne({
+            attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
             where: {
                 mail: mail,
                 pswd: password
@@ -59,7 +60,7 @@ const loginMailPass = async (req, res) => {
     } catch (error) {
         // Due to a simple change in a values, if the return is 0, 
         //it means that the value wasn't modified
-        res.status(500).send(error)
+        res.status(500).send([0])
     }
 }
 
