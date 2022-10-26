@@ -174,10 +174,3 @@ VALUES
     ('00000000-0000-0000-0000-0000000000a7','patient','patient07@mail.com','patient07',900000027,'distritop07','direccionp07',-12.27,-77.27),
     ('00000000-0000-0000-0000-0000000000a8','patient','patient08@mail.com','patient08',900000028,'distritop08','direccionp08',-12.28,-77.28),
     ('00000000-0000-0000-0000-0000000000a9','patient','patient09@mail.com','patient09',900000029,'distritop09','direccionp09',-12.29,-77.29);
-
-
-
-
-
-
-
