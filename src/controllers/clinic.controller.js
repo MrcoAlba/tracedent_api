@@ -22,9 +22,9 @@ const postClinic = async (req, res) => {
             res.status(200).send(clinic)
         } catch (error) {
             const userDestroy = await userSchema.destroy({
-                where:{ id_user: user.id_user }
+                where: { id_user: user.id_user }
             })
-            res.status(500).send([userDestroy,error])
+            res.status(500).send([userDestroy, error])
         }
     } catch (error) {
         res.status(500).send(error)
@@ -35,7 +35,7 @@ const getAllClinics = async (req, res) => {
     try {
         const clinic = await clinicSchema.findAll({
             attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
-            order:[['company_name','ASC']],
+            order: [['company_name', 'ASC']],
             include: [{
                 model: userSchema,
                 attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']

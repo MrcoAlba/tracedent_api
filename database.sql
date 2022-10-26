@@ -174,3 +174,16 @@ VALUES
     ('00000000-0000-0000-0000-0000000000a7','patient','patient07@mail.com','patient07',900000027,'distritop07','direccionp07',-12.27,-77.27),
     ('00000000-0000-0000-0000-0000000000a8','patient','patient08@mail.com','patient08',900000028,'distritop08','direccionp08',-12.28,-77.28),
     ('00000000-0000-0000-0000-0000000000a9','patient','patient09@mail.com','patient09',900000029,'distritop09','direccionp09',-12.29,-77.29);
+
+
+
+{"mail":"clinic00@mail.com","pswd":"clinic00","phone_number":900000000,"district":"distritoc00","direction":"direccionc00","latitude":-12.00,"longitude":-77.00,"company_name":"companyName00","ruc":80000000000}
+{"mail":"clinic01@mail.com","pswd":"clinic01","phone_number":900000001,"district":"distritoc01","direction":"direccionc01","latitude":-12.01,"longitude":-77.01,"company_name":"companyName01","ruc":80000000001}
+{"mail":"clinic02@mail.com","pswd":"clinic02","phone_number":900000002,"district":"distritoc02","direction":"direccionc02","latitude":-12.02,"longitude":-77.02,"company_name":"companyName02","ruc":80000000002}
+{"mail":"clinic03@mail.com","pswd":"clinic03","phone_number":900000003,"district":"distritoc03","direction":"direccionc03","latitude":-12.03,"longitude":-77.03,"company_name":"companyName03","ruc":80000000003}
+{"mail":"clinic04@mail.com","pswd":"clinic04","phone_number":900000004,"district":"distritoc04","direction":"direccionc04","latitude":-12.04,"longitude":-77.04,"company_name":"companyName04","ruc":80000000004}
+{"mail":"clinic05@mail.com","pswd":"clinic05","phone_number":900000005,"district":"distritoc05","direction":"direccionc05","latitude":-12.05,"longitude":-77.05,"company_name":"companyName05","ruc":80000000005}
+{"mail":"clinic06@mail.com","pswd":"clinic06","phone_number":900000006,"district":"distritoc06","direction":"direccionc06","latitude":-12.06,"longitude":-77.06,"company_name":"companyName06","ruc":80000000006}
+{"mail":"clinic07@mail.com","pswd":"clinic07","phone_number":900000007,"district":"distritoc07","direction":"direccionc07","latitude":-12.07,"longitude":-77.07,"company_name":"companyName07","ruc":80000000007}
+{"mail":"clinic08@mail.com","pswd":"clinic08","phone_number":900000008,"district":"distritoc08","direction":"direccionc08","latitude":-12.08,"longitude":-77.08,"company_name":"companyName08","ruc":80000000008}
+{"mail":"clinic09@mail.com","pswd":"clinic09","phone_number":900000009,"district":"distritoc09","direction":"direccionc09","latitude":-12.09,"longitude":-77.09,"company_name":"companyName09","ruc":80000000009}
