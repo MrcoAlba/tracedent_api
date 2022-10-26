@@ -78,9 +78,9 @@ const loginIdUser = async (req, res) => {
             }
         })
 
-        res.status(200).send(person.id_person)
         
-        /*
+
+        
         const dentist = await dentistSchema.findOne({
             attributes: ['id_dentist', 'ruc', 'rating'],
             where: {
@@ -88,8 +88,8 @@ const loginIdUser = async (req, res) => {
             }
         })
 
-        res.status(200).send([1,dentist])
-        */
+        res.status(200).send(dentist.id_dentist)
+        
     } catch (error) {
         // Due to a simple change in a values, if the return is 0, 
         //it means that the value wasn't modified
