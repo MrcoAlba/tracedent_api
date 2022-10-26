@@ -63,5 +63,34 @@ const getAllDentists = async (req, res) => {
         res.status(400).send(error)
     }
 }
+// LOGIN   -> RETURN 1 IF LOGIN TRUE
+const loginIdUser = async (req, res) => {
+    try {
+        // GET BODY
+        const {
+            id_user
+        } = req.body
 
-module.exports = { postDentist, getAllDentists }
+        const person = await personSchema.findOne({
+            attributes: ['id_person', 'first_name', 'last_name', 'gender', 'dni'],
+            where: {
+                id_user: id_user
+            }
+        })
+
+        const dentist = await dentistSchema.findOne({
+            attributes: ['id_dentist', 'ruc', 'rating'],
+            where: {
+                id_person: person.id_person
+            }
+        })
+
+        res.status(200).send([1,dentist])
+    } catch (error) {
+        // Due to a simple change in a values, if the return is 0, 
+        //it means that the value wasn't modified
+        res.status(500).send([0,null])
+    }
+}
+
+module.exports = { postDentist, getAllDentists, loginIdUser }
