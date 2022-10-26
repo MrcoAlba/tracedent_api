@@ -19,8 +19,38 @@ const getAllPersons = async (req, res) => {
     }
 }
 // UPDATE   -> UPDATE A PERSON BY ID
-const patchPersonById = (req, res) => {
-    
+const patchPersonById = async (req, res) => {
+    try {
+        const id = req.params.id
+        const {
+            first_name, last_name, gender, dni, phone_number, district, direction, latitude, longitude
+        } = req.body
+        const person = await personSchema.update({
+                first_name: first_name,
+                last_name: last_name,
+                gender: gender,
+                dni: dni,
+                phone_number: phone_number,
+                district: district,
+                direction: direction,
+                latitude: latitude,
+                longitude: longitude
+            }, {
+            where: {
+                [Op.and]: [{
+                    id_person: {
+                        [Op.eq]: id
+                    }
+                }]
+            }
+        }
+        )
+        res.status(200).send(person)
+    } catch (error) {
+        // Due to a simple change in a value, if the return is 0, 
+        //it means that the value wasn't modified
+        res.status(500).send([0])
+    }
 }
 
 module.exports = { getAllPersons, patchPersonById }
