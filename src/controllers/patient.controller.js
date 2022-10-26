@@ -11,7 +11,7 @@ const postPatient = async (req, res) => {
         } = req.body
         // CREATE USER
         const user = await usersSchema.create({
-            user_type: "dentist", mail: mail, pswd: pswd, phone_number: phone_number, district: district, direction: direction, latitude: latitude, longitude: longitude
+            user_type: "patient", mail: mail, pswd: pswd, phone_number: phone_number, district: district, direction: direction, latitude: latitude, longitude: longitude
         })
         try {
             // CREATE PERSON
