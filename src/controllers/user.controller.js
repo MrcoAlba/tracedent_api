@@ -49,13 +49,13 @@ const loginMailPass = async (req, res) => {
         const {
             mail, password
         } = req.body
-        /*const user = await usersSchema.findOne({
+        const user = await usersSchema.findOne({
             where: {
                 mail: mail,
                 pswd: password
             }
-        })*/
-        res.status(200).send([mail, password])
+        })
+        res.status(200).send(user)
     } catch (error) {
         // Due to a simple change in a values, if the return is 0, 
         //it means that the value wasn't modified
