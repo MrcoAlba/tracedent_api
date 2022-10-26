@@ -6,7 +6,8 @@ const { DataTypes } = require('sequelize')
 const getAllUsers = async (req, res) => {
     try {
         const user = await dentistSchema.findAll({
-            attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+            attributes: ['id_user', 'user_type', 'mail', 'pswd', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude', 'createdAt', 'updatedAt']
+            /*attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'] */
         })
         res.status(200).json(user)
     } catch (error) {
@@ -17,7 +18,7 @@ const getAllUsers = async (req, res) => {
 const patchUserById = async (req, res) => {
     try {
         const id = req.params.id
-        
+        /*
         const user = await usersSchema.update(
             { 
                 subscription: true,
@@ -29,10 +30,12 @@ const patchUserById = async (req, res) => {
             }
         )
         res.status(200).json(user)
+        */
+        res.status(200).json(id)
     } catch (error) {
-        res.status(69).send(error)
+        res.status(500).send(error)
     }
     res.send('patchUserById')
 }
 
-module.exports = { postUser, getAllUsers, getUserById, patchUserById, deleteUserById }
+module.exports = { getAllUsers, patchUserById }

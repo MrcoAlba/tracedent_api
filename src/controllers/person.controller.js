@@ -12,4 +12,4 @@ const getAllPersons = (req, res) => {
     res.send('getAllPersons')
 }
 
-module.exports = { postPerson, getAllPersons, getPersonById, patchPersonById, deletePersonById }
+module.exports = { postPerson, getAllPersons }
