@@ -155,7 +155,6 @@ const searchClinicByName = async (req, res) => {
                 company_name: {
                     [Op.like]: '%'+name+'%'
                 }
-
             }
         })
 

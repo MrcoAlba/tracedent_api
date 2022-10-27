@@ -100,24 +100,22 @@ const searchDentistByName = async (req, res) => {
     try {
         var name = req.query.name;
 
-
         const dentist = await dentistSchema.findAll({
             attributes: ['id_dentist', 'ruc', 'rating'],
             order: [['ruc', 'ASC']],
             include: [{
                 model: personSchema,
                 attributes: ['id_person', 'first_name', 'last_name', 'gender', 'dni'],
-                where: {
-                    first_name: {
-                        [Op.like]: '%'+name+'%'
-                    }
-
-                },
                 include: [{
                     model: usersSchema,
                     attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
                 }]
-            },]
+            },],
+            where: {
+                first_name: {
+                    [Op.like]: '%'+name+'%'
+                }
+            },
         })
 
         res.status(200).send({ clinic })
