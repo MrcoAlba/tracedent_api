@@ -17,7 +17,7 @@ scheduleSchema.belongsTo(patientSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
         name:           'id_patient',
-        allowNull:      false
+        allowNull:      true
     },
     targetId: 'id_patient'
 })

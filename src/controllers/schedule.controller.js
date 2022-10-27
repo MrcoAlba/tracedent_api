@@ -50,7 +50,7 @@ const createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
         } = req.body
 
         const schedules = await scheduleSchema.create({
-            id_dentist:id_dentist , id_clinic:id_clinic, id_recruitment:id_recruitment, date:date, time:time
+            id_dentist:id_dentist, id_clinic:id_clinic, id_recruitment:id_recruitment, date:date, time:time
         })
 
         res.status(200).send(schedules)
