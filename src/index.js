@@ -1,14 +1,11 @@
 require('dotenv').config()
 const app = require('./app')
-const Database = require('./database/database')
-const database = new Database()
+const sequelize = require('./database/database')
 const port = process.env.PORT || 4000
-
-
 
 async function main() {
     try{
-        await database.connect()
+        await sequelize.sync()
         app.listen(port)
         console.log('Server on port', port)
     }catch (err){
