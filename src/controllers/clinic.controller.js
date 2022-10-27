@@ -33,7 +33,7 @@ const postClinic = async (req, res) => {
         res.status(500).send(error.errors[0].message)
     }
 }
-// READ     -> GET ALL CLINICS
+// READ     -> GET ALL CLINICS FROM THE DATABASE ORDERED BY COMPANY NAME
 const getAllClinics = async (req, res) => {
     try {
         const clinic = await clinicSchema.findAll({
@@ -49,7 +49,7 @@ const getAllClinics = async (req, res) => {
         res.status(400).send(error)
     }
 }
-// LOGIN   -> RETURN 1 IF LOGIN TRUE
+// LOGIN   -> RETURN 1 AND THE CLINIC OBJECT... REMEMBER THAT THE USERS ROUTE IS GONNA MAKE THE LOGIN LOGIC
 const loginIdUser = async (req, res) => {
     try {
         // GET BODY
@@ -68,10 +68,10 @@ const loginIdUser = async (req, res) => {
     } catch (error) {
         // Due to a simple change in a values, if the return is 0, 
         //it means that the value wasn't modified
-        res.status(500).send({ cod: 1, response: null })
+        res.status(500).send({ cod: 0, response: null })
     }
 }
-// READ     -> GET ALL AVAILABLE DENTIST BY ID_CLINIC
+// READ     -> GET ALL AVAILABLE DENTIST BY ID_CLINIC WITH THE STATUS "1"
 const getAllDentitsByIdClinic = async (req, res) => {
     try {
         const id = req.params.id
@@ -113,7 +113,7 @@ const recruitDentist = async (req, res) => {
         res.status(500).send({ cod: 0, response: error })
     }
 }
-// READ     -> GET ALL RECRUITS BY ID
+// READ     -> GET ALL RECRUITS BY ID_CLINIC WITH ALL THE STATUS
 const getAllRecruitDentists = async (req, res) => {
     try {
         const id = req.params.id
