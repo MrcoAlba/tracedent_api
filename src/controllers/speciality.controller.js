@@ -1,5 +1,6 @@
+console.log("LA ARANA 01")
 const specialitySchema = require('../models/speciality')
-
+console.log("LA ARANA 02")
 // CREATE   -> POST A NEW DENTIST/
 const postSpeciality = async (req, res) => {
     try {
@@ -15,5 +16,5 @@ const postSpeciality = async (req, res) => {
         res.status(500).send({"message":error.errors[0].message})
     }
 }
-
+console.log("LA ARANA 03")
 module.exports = { postSpeciality }
