@@ -116,9 +116,6 @@ const searchDentistByName = async (req, res) => {
                     [Op.or]:{
                         first_name: {
                             [Op.like]: '%'+name+'%'
-                        },
-                        last_name: {
-                            [Op.like]: '%'+name+'%'
                         }
                     }
                 },
