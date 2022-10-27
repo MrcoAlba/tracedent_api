@@ -132,7 +132,7 @@ const searchDentistByName = async (req, res) => {
 // SEARCH   -> DENTIST PER NAME
 const searchDentistById = async (req, res) => {
     try {
-        var id = req.query.id;
+        var id = req.params.id;
 
         const dentist = await dentistSchema.findAll({
             attributes: ['id_dentist', 'ruc', 'rating'],
