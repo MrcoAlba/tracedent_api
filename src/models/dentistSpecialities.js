@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize')
+const { DataTypes, DATE } = require('sequelize')
 const sequelize = require('../database/database')
 
 const dentistSpecialitiesSchema = sequelize.define('dentistSpecialities',{

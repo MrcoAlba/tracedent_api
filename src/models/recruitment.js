@@ -1,4 +1,4 @@
-const { DataTypes, DATE, TEXT, SMALLINT } = require('sequelize')
+const { DataTypes, DATE, SMALLINT } = require('sequelize')
 const sequelize = require('../database/database')
 
 const recruitmentSchema = sequelize.define('recruitment',{
