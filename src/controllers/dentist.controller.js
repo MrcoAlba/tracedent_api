@@ -165,12 +165,10 @@ const addSpecialityToDentistById = async (req, res) => {
         const {
             id_speciality,id_dentist
         } = req.body
-        console.log("id_specialityid_specialityid_specialityid_specialityid_speciality",id_speciality)
-        console.log("id_dentistid_dentistid_dentistid_dentistid_dentistid_dentistid_dentist",id_dentist)
         const dentistSpeciality = await dentistSpecialitiesSchema.create({
             id_speciality:id_speciality, id_dentist:id_dentist
         })
-        res.status(200).send(dentistSpeciality)
+        res.status(200).send([id_speciality,id_dentist])
     } catch (error) {
         res.status(500).send(error)
     }
