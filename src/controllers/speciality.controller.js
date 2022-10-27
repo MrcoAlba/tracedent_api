@@ -14,7 +14,7 @@ const getDentList = async (req, res) => {
 }
 // CREATE   -> POST A NEW DENTIST/
 const postSpeciality = async (req, res) => {
-    /*try {
+    try {
         // GET BODY`
         const {
             name
@@ -25,7 +25,7 @@ const postSpeciality = async (req, res) => {
         res.status(200).send({"message":speciality})
     } catch (error) {
         res.status(500).send({"message":error.errors[0].message})
-    }*/
+    }
     res.status(500).send({"message":error.errors[0].message})
 }
 
