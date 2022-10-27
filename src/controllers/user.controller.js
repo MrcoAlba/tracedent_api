@@ -1,5 +1,5 @@
 const usersSchema = require("../models/user")
-const { Op } = require('sequelize')
+const { Op, where } = require('sequelize')
 
 
 // READ     -> GET ALL USERS
@@ -35,11 +35,11 @@ const patchUserById = async (req, res) => {
             }
         }
         )
-        res.status(200).send(user)
+        res.status(200).send({"cod":1,"response":user})
     } catch (error) {
         // Due to a simple change in a value, if the return is 0, 
         //it means that the value wasn't modified
-        res.status(500).send([0])
+        res.status(500).send({"cod":0,"response":error})
     }
 }
 // LOGIN   -> RETURN 1 IF LOGIN TRUE
@@ -60,8 +60,27 @@ const loginMailPass = async (req, res) => {
     } catch (error) {
         // Due to a simple change in a values, if the return is 0, 
         //it means that the value wasn't modified
-        res.status(500).send({cod:0,response:null})
+        res.status(500).send({cod:0,response:error})
+    }
+}
+// EMAIL CHECK -> RETURN 1 IF MAIL DOESN'T EXISTS
+const emailCheckForExistance = async (req, res) => {
+    try {
+        const mail = req.params.mail
+
+        const user = await usersSchema.findOne({
+            attributes:['id_user'],
+            where:{
+                mail: mail
+            }
+        })
+        res.status(500).send({cod:0,response:user})
+    } catch (error) {
+        // Due to a simple change in a values, if the return is 0, 
+        //it means that the value wasn't modified
+        res.status(500).send({cod:0,response:error})
     }
 }
 
-module.exports = { getAllUsers, patchUserById, loginMailPass }
+module.exports = { getAllUsers, patchUserById, loginMailPass,
+    emailCheckForExistance}

@@ -1,6 +1,5 @@
 const usersSchema = require('../models/user')
 const clinicSchema = require('../models/clinic')
-const personSchema = require('../models/person')
 const recruitmentSchema = require('../models/recruitment')
 const dentistSchema = require('../models/dentist')
 
@@ -64,11 +63,11 @@ const loginIdUser = async (req, res) => {
             }
         })
 
-        res.status(200).send({cod:1,response:clinic})
+        res.status(200).send({ cod: 1, response: clinic })
     } catch (error) {
         // Due to a simple change in a values, if the return is 0, 
         //it means that the value wasn't modified
-        res.status(500).send({cod:1,response:null})
+        res.status(500).send({ cod: 1, response: null })
     }
 }
 // ADD      -> RECRUIT A DENTIST
@@ -83,9 +82,9 @@ const recruitDentist = async (req, res) => {
             id_clinic: id_clinic, id_dentist: id_dentist
         })
 
-        res.status(200).send({cod:1,response:recruitment})
-    }catch(error){
-        res.status(500).send({cod:0,response:error})
+        res.status(200).send({ cod: 1, response: recruitment })
+    } catch (error) {
+        res.status(500).send({ cod: 0, response: error })
     }
 }
 // READ     -> GET ALL DENTIST BY ID_CLINIC
@@ -97,9 +96,9 @@ const getAllDentitsByIdClinic = async (req, res) => {
             attributes: ['id_dentist'],
             include: [{
                 model: dentistSchema,
-                attributes: ['id_dentist','rating'],
+                attributes: ['id_dentist', 'rating'],
                 include: [{
-                    model: personSchema,
+                    model: pergsonSchema,
                     attributes: ['first_name', 'last_name']
                 },]
             }],
@@ -108,9 +107,9 @@ const getAllDentitsByIdClinic = async (req, res) => {
                 id_clinic = id
             ]*/
         })
-        res.status(200).send({cod:1,response:dentist})
+        res.status(200).send({ cod: 1, response: dentist })
     } catch (error) {
-        res.status(400).send({cod:0,response:null})
+        res.status(400).send({ cod: 0, response: null })
     }
 }
 
