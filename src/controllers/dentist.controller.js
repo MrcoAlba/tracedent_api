@@ -100,7 +100,7 @@ const loginIdUser = async (req, res) => {
 // SEARCH   -> DENTIST PER NAME
 const searchDentistByName = async (req, res) => {
     try {
-        var name = String(req.query.name).toUpperCase;
+        var name = String(req.query.name).toUpperCase();
 
         const dentist = await dentistSchema.findAll({
             attributes: ['id_dentist', 'ruc', 'rating'],
