@@ -28,5 +28,4 @@ const postSpeciality = async (req, res) => {
     }
 }
 
-console.log("LA ARANA 03")
 module.exports = { getDentList, postSpeciality }
