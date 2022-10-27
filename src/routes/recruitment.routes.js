@@ -4,7 +4,7 @@ const {
     getAllRecruitments
 } = require('../controllers/recruitment.controller')
 
-//READ      -> GET AL RECRUITMENTS
+//READ      -> GET AL RECRUITMENTSS
 router.get      ('/recruitment'     ,   getAllRecruitments      )
 
 module.exports = router

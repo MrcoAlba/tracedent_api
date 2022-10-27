@@ -43,7 +43,7 @@ recruitmentSchema.belongsTo(clinicSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
         name:           'id_clinic',
-        allowNull:      false
+        allowNull:      true
     },
     targetId: 'id_clinic'
 })

@@ -46,15 +46,13 @@ const getAllSchedulesByDentistIdAndClinicId = async (req, res) => {
 const createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
     try {
         const {
-            id_dentist, date, time
+            id_dentist, id_clinic, id_recruitment, date, time
         } = req.body
 
-        const schedules = await scheduleSchema.findAll({
-
-            where:{
-                id_dentist:id
-            }
+        const schedules = await scheduleSchema.create({
+            id_dentist:id_dentist , id_clinic:id_clinic, id_recruitment:id_recruitment, date:date, time:time
         })
+
         res.status(200).send(schedules)
     } catch (error) {
         res.status(400).send(error)
