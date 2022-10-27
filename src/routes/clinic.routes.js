@@ -17,6 +17,8 @@ router.get      ('/clinic/recruit/:id',     getAllRecruitDentists )
 // CREATE   -> RECRUIT A DENTIST
 router.post     ('/clinic/recruit'  ,    recruitDentist     )
 
+
+
 // SEARCH   -> CLINICS PER NAME
 router.get      ('/clinics/search'  ,   searchClinicByName  )
 
