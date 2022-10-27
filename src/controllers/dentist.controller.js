@@ -113,8 +113,13 @@ const searchDentistByName = async (req, res) => {
                     attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
                 }],
                 where: {
-                    first_name: {
-                        [Op.like]: '%'+name+'%'
+                    [Op.or]:{
+                        first_name: {
+                            [Op.like]: '%'+name+'%'
+                        },
+                        last_name: {
+                            [Op.like]: '%'+name+'%'
+                        }
                     }
                 },
             },]
