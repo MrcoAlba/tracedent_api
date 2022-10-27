@@ -6,7 +6,7 @@ const recruitmentSchema = require('../models/recruitment')
 const getAllRecruitments = async (req, res) => {
     try {
         const recruitment = await recruitmentSchema.findAll({
-            attributes: ['id_recruitment', 'beg_date', 'end_date', 'id_clinic', 'id_dentist'],
+            attributes: ['id_recruitment', 'beg_date', 'end_date','sttus', 'id_clinic', 'id_dentist'],
             order: [['id_recruitment', 'ASC']],
         })
         res.status(200).send(recruitment)
