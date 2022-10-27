@@ -134,9 +134,9 @@ const getAllRecruitDentists = async (req, res) => {
                 id_clinic: id
             }
         })
-        res.status(200).send({ cod: 1, response: dentist })
+        res.status(200).send(dentist)
     } catch (error) {
-        res.status(400).send({ cod: 0, response: null })
+        res.status(400).send(null)
     }
 }
 // SEARCH   -> CLINICS PER NAME
