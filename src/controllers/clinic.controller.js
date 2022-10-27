@@ -1,5 +1,6 @@
 const clinicSchema = require('../models/clinic')
 const usersSchema = require('../models/user')
+const recruitmentSchema = require('../models/recruitment')
 
 
 // CREATE   -> POST A NEW CLINIC
@@ -66,6 +67,23 @@ const loginIdUser = async (req, res) => {
         // Due to a simple change in a values, if the return is 0, 
         //it means that the value wasn't modified
         res.status(500).send({cod:1,response:null})
+    }
+}
+// ADD      -> RECRUIT A DENTIST
+const recruitDentist = async (req, res) => {
+    try {
+        // GET BODY
+        const {
+            id_clinic, id_dentist
+        } = req.body
+
+        const recruitment = await recruitmentSchema.create({
+            id_clinic: id_clinic, id_dentist: id_dentist
+        })
+
+        res.status(200).send({cod:1,response:recruitment})
+    }catch(error){
+        res.status(500).send({cod:0,response:null})
     }
 }
 
