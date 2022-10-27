@@ -1,7 +1,7 @@
 const { DataTypes, DATE } = require('sequelize')
 const sequelize = require('../database/database')
 
-const dentistSpecialitiesSchema = sequelize.define('dentistSpecialities',{
+const dentistSpecialitiesSchema = sequelize.define('dentist_specialities',{
     id_dentist_speciality:{
         type:               DataTypes.UUID,
         primaryKey:         true,
