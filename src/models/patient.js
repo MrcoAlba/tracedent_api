@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../database/database')
 
-const scheduleSchema = require('../schedule')
+const scheduleSchema = require('./schedule')
 
 const patientSchema = sequelize.define('patient',{
     id_patient:{

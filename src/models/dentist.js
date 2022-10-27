@@ -3,7 +3,7 @@ const sequelize = require('../database/database')
 
 const recruitmentSchema = require('./recruitment')
 const dentistSpecialitiesSchema = require('./dentistSpecialities')
-const scheduleSchema = require('../schedule')
+const scheduleSchema = require('./schedule')
 
 const dentistSchema = sequelize.define('dentist',{
     id_dentist:{
