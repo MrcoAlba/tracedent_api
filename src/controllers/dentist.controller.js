@@ -1,6 +1,7 @@
 const { Op } = require('sequelize')
 
 const dentistSchema = require('../models/dentist')
+const dentistSpecialitiesSchema = require('../models/dentistSpecialities')
 const personSchema = require('../models/person')
 const usersSchema = require('../models/user')
 
@@ -124,5 +125,19 @@ const searchDentistByName = async (req, res) => {
         res.status(400).send({ cod: 0, response: error })
     }
 }
+// CREATE   -> ADD SPECIALITY TO DENTIST BY ID
+const addSpecialityToDentistById = async (req, res) => {
+    try {
+        const {
+            id_speciality,id_dentist
+        } = req.body
 
-module.exports = { postDentist, getAllDentists, loginIdUser, searchDentistByName }
+        const dentistSpeciality = await dentistSpecialitiesSchema.create({
+            id_speciality:id_speciality, id_dentist:id_dentist
+        })
+    } catch (error) {
+        res.status(500).send({"message":error.errors[0].message})
+    }
+}
+
+module.exports = { postDentist, getAllDentists, loginIdUser, searchDentistByName, addSpecialityToDentistById }
