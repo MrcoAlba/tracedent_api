@@ -156,7 +156,7 @@ const searchSpecialities = async (req, res) => {
         res.status(200).send(specialities)
     } catch (error) {
         res.status(400).send(error)
-    }
+    }//
 }
 
 module.exports = { postDentist, getAllDentists, loginIdUser, searchDentistByName, addSpecialityToDentistById, searchSpecialities }
