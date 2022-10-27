@@ -103,10 +103,10 @@ const getAllDentitsByIdClinic = async (req, res) => {
                     attributes: ['first_name', 'last_name']
                 },]
             }],
-            */
+            
             where:[
                 id_clinic = id
-            ]
+            ]*/
         })
         res.status(200).send({cod:1,response:dentist})
     } catch (error) {
