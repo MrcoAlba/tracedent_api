@@ -1,5 +1,5 @@
 const clinicSchema = require('../models/clinic')
-const usersSchema = require('../models/user')
+const personSchema = require('../models/person')
 const recruitmentSchema = require('../models/recruitment')
 const dentistSchema = require('../models/dentist')
 
@@ -98,7 +98,7 @@ const getAllDentitsByIdClinic = async (req, res) => {
                 model: dentistSchema,
                 attributes: ['id_dentist','rating'],
                 include: [{
-                    model: usersSchema,
+                    model: personSchema,
                     attributes: ['first_name', 'last_name']
                 },]
             }],
