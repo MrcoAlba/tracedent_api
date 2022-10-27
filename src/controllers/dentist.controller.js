@@ -4,6 +4,8 @@ const dentistSchema = require('../models/dentist')
 const dentistSpecialitiesSchema = require('../models/dentistSpecialities')
 const personSchema = require('../models/person')
 const usersSchema = require('../models/user')
+const specialitySchema = require('../models/speciality')
+const dentistSpecialitiesSchema = require('../models/dentistSpecialities')
 
 // CREATE   -> POST A NEW DENTIST/
 const postDentist = async (req, res) => {
@@ -139,5 +141,22 @@ const addSpecialityToDentistById = async (req, res) => {
         res.status(500).send({"message":error.errors[0].message})
     }
 }
+// READ     -> GET ALL DENTIST SPECIALITIES
+const searchSpecialities = async (req, res) => {
+    try {
+        const id = req.params.id
+        const specialities = await dentistSpecialitiesSchema.findAll({
+            attributes: ['id_speciality','id_dentist'],
+            include: [{
+                model: specialitySchema,
+                attributes: ['name'],
+            },],
+            where: { id_dentist: id }
+        })
+        res.status(200).send(specialities)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+}
 
-module.exports = { postDentist, getAllDentists, loginIdUser, searchDentistByName, addSpecialityToDentistById }
+module.exports = { postDentist, getAllDentists, loginIdUser, searchDentistByName, addSpecialityToDentistById, searchSpecialities }
