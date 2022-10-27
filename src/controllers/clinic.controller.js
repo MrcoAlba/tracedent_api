@@ -142,6 +142,7 @@ const searchClinicByName = async (req, res) => {
     try {
         var name = req.query.company_name;
 
+        /*
         const clinic = await clinicSchema.findAll({
             attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
             order: [['company_name', 'ASC']],
@@ -155,7 +156,8 @@ const searchClinicByName = async (req, res) => {
                 }
             }
         })
-        res.status(200).send(clinic)
+        */
+        res.status(200).send(name)
 
     } catch (error) {
         res.status(400).send({ cod: 0, response: error })
