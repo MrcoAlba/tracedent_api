@@ -1,6 +1,7 @@
 const clinicSchema = require('../models/clinic')
 const usersSchema = require('../models/user')
 const recruitmentSchema = require('../models/recruitment')
+const dentistSchema = require('../models/dentist')
 
 
 // CREATE   -> POST A NEW CLINIC
@@ -86,5 +87,24 @@ const recruitDentist = async (req, res) => {
         res.status(500).send({cod:0,response:null})
     }
 }
+// READ     -> GET ALL DENTIST BY ID_CLINIC
+const getAllDentitsByIdClinic = async (req, res) => {
+    try {
+        const dentist = await recruitmentSchema.findAll({
+            attributes: [],
+            include: [{
+                model: dentistSchema,
+                attributes: ['id_dentist'],
+                include: [{
+                    model: usersSchema,
+                    attributes: ['first_name', 'last_name']
+                },]
+            },]
+        })
+        res.status(200).send({cod:1,response:dentist})
+    } catch (error) {
+        res.status(400).send({cod:0,response:null})
+    }
+}
 
-module.exports = { postClinic, getAllClinics, loginIdUser, recruitDentist }
+module.exports = { postClinic, getAllClinics, loginIdUser, recruitDentist, getAllDentitsByIdClinic }
