@@ -142,9 +142,8 @@ const getAllRecruitDentists = async (req, res) => {
 // SEARCH   -> CLINICS PER NAME
 const searchClinicByName = async (req, res) => {
     try {
-        var name = req.query.company_name;
-        nameString = String(name)
-        
+        var name = String(req.query.company_name).toUpperCase;
+
         const clinic = await clinicSchema.findAll({
             attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
             order: [['company_name', 'ASC']],
@@ -154,11 +153,11 @@ const searchClinicByName = async (req, res) => {
             },],
             where: {
                 company_name: {
-                    [Op.like]: '%'+nameString.toUpperCase+'%'
+                    [Op.like]: '%'+name+'%'
                 }
             }
         })
-        res.status(200).send(clinic)
+        res.status(200).send(name)
     } catch (error) {
         res.status(400).send(error)
     }
