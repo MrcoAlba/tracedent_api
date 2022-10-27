@@ -13,8 +13,6 @@ app.use(require('./routes/clinic.routes'))
 app.use(require('./routes/person.routes'))
 app.use(require('./routes/dentist.routes'))
 app.use(require('./routes/patient.routes'))
-
-console.log("005")
 app.use(require('./routes/recruitment.routes'))
 //
 console.log("006")
