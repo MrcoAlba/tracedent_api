@@ -74,7 +74,7 @@ const emailCheckForExistance = async (req, res) => {
                 mail: mail
             }
         })
-        res.status(500).send({cod:0,response:user})
+        res.status(200).send({cod:1,response:user})
     } catch (error) {
         // Due to a simple change in a values, if the return is 0, 
         //it means that the value wasn't modified
