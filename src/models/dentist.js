@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../database/database')
 
-//const recruitmentSchema = require('./recruitment')
+const recruitmentSchema = require('./recruitment')
 //const dentistSpecialitiesSchema = require('./dentistSpecialities')
 
 
@@ -36,7 +36,7 @@ const dentistSchema = sequelize.define('dentist',{
     freezeTableName: true,
     timestamps: false
 })
-/*
+
 recruitmentSchema.belongsTo(dentistSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
@@ -45,6 +45,7 @@ recruitmentSchema.belongsTo(dentistSchema,{
     },
     targetId: 'id_dentist'
 })
+/*
 dentistSpecialitiesSchema.belongsTo(dentistSchema,{
     foreignKey: {
         type:           DataTypes.UUID,

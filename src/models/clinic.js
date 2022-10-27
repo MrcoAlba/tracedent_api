@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../database/database')
 
-
+const recruitmentSchema = require('./recruitment')
 
 
 
@@ -40,6 +40,15 @@ const clinicSchema = sequelize.define('clinic',{
 },{
     freezeTableName: true,
     timestamps: false
+})
+
+recruitmentSchema.belongsTo(clinicSchema,{
+    foreignKey: {
+        type:           DataTypes.UUID,
+        name:           'id_clinic',
+        allowNull:      false
+    },
+    targetId: 'id_clinic'
 })
 
 module.exports = clinicSchema
