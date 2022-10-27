@@ -70,23 +70,6 @@ const loginIdUser = async (req, res) => {
         res.status(500).send({ cod: 1, response: null })
     }
 }
-// ADD      -> RECRUIT A DENTIST
-const recruitDentist = async (req, res) => {
-    try {
-        // GET BODY
-        const {
-            id_clinic, id_dentist
-        } = req.body
-
-        const recruitment = await recruitmentSchema.create({
-            id_clinic: id_clinic, id_dentist: id_dentist
-        })
-
-        res.status(200).send({ cod: 1, response: recruitment })
-    } catch (error) {
-        res.status(500).send({ cod: 0, response: error })
-    }
-}
 // READ     -> GET ALL DENTIST BY ID_CLINIC
 const getAllDentitsByIdClinic = async (req, res) => {
     try {
@@ -112,5 +95,47 @@ const getAllDentitsByIdClinic = async (req, res) => {
         res.status(400).send({ cod: 0, response: null })
     }
 }
+// ADD      -> RECRUIT A DENTIST
+const recruitDentist = async (req, res) => {
+    try {
+        // GET BODY
+        const {
+            id_clinic, id_dentist
+        } = req.body
 
-module.exports = { postClinic, getAllClinics, loginIdUser, recruitDentist, getAllDentitsByIdClinic }
+        const recruitment = await recruitmentSchema.create({
+            id_clinic: id_clinic, id_dentist: id_dentist
+        })
+
+        res.status(200).send({ cod: 1, response: recruitment })
+    } catch (error) {
+        res.status(500).send({ cod: 0, response: error })
+    }
+}
+// READ     -> GET ALL RECRUITS BY ID
+const getAllRecruitDentists = async (req, res) => {
+    try {
+        const id = req.params.id
+
+        const dentist = await recruitmentSchema.findAll({
+            attributes: ['id_dentist'],
+            include: [{
+                model: dentistSchema,
+                attributes: ['id_dentist', 'rating'],
+                include: [{
+                    model: pergsonSchema,
+                    attributes: ['first_name', 'last_name']
+                },]
+            }],
+            /*
+            where:[
+                id_clinic = id
+            ]*/
+        })
+        res.status(200).send({ cod: 1, response: dentist })
+    } catch (error) {
+        res.status(400).send({ cod: 0, response: null })
+    }
+}
+
+module.exports = { postClinic, getAllClinics, loginIdUser, recruitDentist, getAllDentitsByIdClinic, getAllRecruitDentists }
