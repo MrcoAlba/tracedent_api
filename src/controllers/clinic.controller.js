@@ -129,7 +129,8 @@ const getAllRecruitDentists = async (req, res) => {
                 }]
             }],
             where:{
-                id_clinic: id
+                id_clinic: id,
+                sttus: 1
             }
         })
         res.status(200).send({ cod: 1, response: dentist })

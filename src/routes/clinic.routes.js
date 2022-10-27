@@ -14,7 +14,7 @@ router.post     ('/clinic/login'    ,   loginIdUser         )
 // READ     -> GET ALL AVAILABLE DENTIST BY ID_CLINIC
 router.get      ('/clinic/dentists/:id',    getAllDentitsByIdClinic)
 // READ     -> GET ALL RECRUITS BY ID
-router.post     ('/clinic/recruit/:id',     getAllRecruitDentists )
+router.get      ('/clinic/recruit/:id',     getAllRecruitDentists )
 
 // CREATE   -> RECRUIT A DENTIST
 router.post     ('/clinic/recruit'  ,    recruitDentist     )
