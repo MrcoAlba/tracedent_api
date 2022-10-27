@@ -16,7 +16,11 @@ const recruitmentSchema = sequelize.define('recruitment',{
     sttus:{
         type:               SMALLINT,
         allowNull:          false,
-        defaultValue:       "0"
+        defaultValue:       "0",
+        validate:{
+            min:            0,
+            max:            2
+        }
     },
     beg_date:{
         type:               DATE,
