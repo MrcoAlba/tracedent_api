@@ -94,6 +94,7 @@ const getAllDentitsByIdClinic = async (req, res) => {
 
         const dentist = await recruitmentSchema.findAll({
             attributes: [],
+            /*
             include: [{
                 model: dentistSchema,
                 attributes: ['id_dentist','rating'],
@@ -105,6 +106,7 @@ const getAllDentitsByIdClinic = async (req, res) => {
             where:[
                 id_clinic = id
             ]
+            */
         })
         res.status(200).send({cod:1,response:dentist})
     } catch (error) {
