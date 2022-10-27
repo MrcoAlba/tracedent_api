@@ -19,7 +19,7 @@ const recruitmentSchema = sequelize.define('recruitment',{
         defaultValue:       "0",
         validate:{
             min:            0,
-            max:            2
+            max:            3
         }
     },
     beg_date:{
