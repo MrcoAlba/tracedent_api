@@ -77,14 +77,14 @@ const getAllDentitsByIdClinic = async (req, res) => {
 
         const dentist = await recruitmentSchema.findAll({
             attributes: ['id_dentist'],
-            include: [{
+            /*include: [{
                 model: dentistSchema,
                 attributes: ['id_dentist', 'rating'],
                 include: [{
                     model: pergsonSchema,
                     attributes: ['first_name', 'last_name']
                 },]
-            }],
+            }]*/
             where:[
                 id_clinic = id
             ]
