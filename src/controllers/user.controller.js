@@ -1,5 +1,5 @@
 const usersSchema = require("../models/user")
-const { Op, where } = require('sequelize')
+const { Op } = require('sequelize')
 
 
 // READ     -> GET ALL USERS

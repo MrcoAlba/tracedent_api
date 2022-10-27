@@ -1,3 +1,5 @@
+const { Op } = require('sequelize')
+
 const usersSchema = require('../models/user')
 const clinicSchema = require('../models/clinic')
 const recruitmentSchema = require('../models/recruitment')
