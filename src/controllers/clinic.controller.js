@@ -24,15 +24,15 @@ const postClinic = async (req, res) => {
                 company_name: company_name, ruc: ruc, id_user: user.id_user
             })
             // RETURN RESPONSE
-            res.status(200).send(clinic)
+            res.status(200).send({ cod: 1, response: clinic, error: null})
         } catch (error) {
             const userDestroy = await usersSchema.destroy({
                 where: { id_user: user.id_user }
             })
-            res.status(500).send([userDestroy, error.errors[0].message])
+            res.status(500).send({ cod: 0, response: userDestroy, error: error})
         }
     } catch (error) {
-        res.status(500).send(error.errors[0].message)
+        res.status(500).send({ cod: 0, response: null, error: error})
     }
 }
 // READ     -> GET ALL CLINICS FROM THE DATABASE ORDERED BY COMPANY NAME
