@@ -14,11 +14,9 @@ app.use(require('./routes/person.routes'))
 app.use(require('./routes/dentist.routes'))
 app.use(require('./routes/patient.routes'))
 app.use(require('./routes/recruitment.routes'))
-//
-console.log("006")
-//app.use(require('./routes/speciality.routes'))
-console.log("007")
-//app.use(require('./routes/dentistSpecialities.routes'))
+
+app.use(require('./routes/speciality.routes'))
+app.use(require('./routes/dentistSpecialities.routes'))
 
 //app.use(require('./routes/comment.routes'))
 //app.use(require('./routes/message.routes'))

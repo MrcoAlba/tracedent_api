@@ -12,7 +12,6 @@ const getDentList = async (req, res) => {
         res.status(500).send({"message":error.errors[0].message})
     }
 }
-
 // CREATE   -> POST A NEW DENTIST/
 const postSpeciality = async (req, res) => {
     /*try {
@@ -29,5 +28,6 @@ const postSpeciality = async (req, res) => {
     }*/
     res.status(500).send({"message":error.errors[0].message})
 }
+
 console.log("LA ARANA 03")
 module.exports = { getDentList, postSpeciality }
