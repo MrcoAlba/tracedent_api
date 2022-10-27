@@ -11,13 +11,14 @@ router.get      ('/clinic'          ,   getAllClinics       )
 // LOGIN   -> RETURN 1 IF LOGIN TRUE
 router.post     ('/clinic/login'    ,   loginIdUser         )
 
-// READ     -> GET ALL DENTIST BY ID_CLINIC
+// READ     -> GET ALL AVAILABLE DENTIST BY ID_CLINIC
 router.get      ('/clinic/dentists/:id',    getAllDentitsByIdClinic)
+// READ     -> GET ALL RECRUITS BY ID
+router.post     ('/clinic/recruit/:id',     getAllRecruitDentists )
 
 // CREATE   -> RECRUIT A DENTIST
 router.post     ('/clinic/recruit'  ,    recruitDentist     )
-// READ     -> GET ALL RECRUITS BY ID
-router.post     ('/clinic/recruit/:id',     getAllRecruitDentists )
+
 
 
 module.exports = router

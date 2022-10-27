@@ -71,7 +71,7 @@ const loginIdUser = async (req, res) => {
         res.status(500).send({ cod: 1, response: null })
     }
 }
-// READ     -> GET ALL DENTIST BY ID_CLINIC
+// READ     -> GET ALL AVAILABLE DENTIST BY ID_CLINIC
 const getAllDentitsByIdClinic = async (req, res) => {
     try {
         const id = req.params.id
@@ -87,7 +87,8 @@ const getAllDentitsByIdClinic = async (req, res) => {
                 }]
             }],
             where:{
-                id_clinic: id
+                id_clinic: id,
+                sttus: 1
             }
         })
         res.status(200).send({ cod: 1, response: dentist })
@@ -121,16 +122,15 @@ const getAllRecruitDentists = async (req, res) => {
             attributes: ['id_dentist'],
             include: [{
                 model: dentistSchema,
-                attributes: ['id_dentist', 'rating'],
+                attributes: ['rating'],
                 include: [{
-                    model: pergsonSchema,
+                    model: personSchema,
                     attributes: ['first_name', 'last_name']
-                },]
+                }]
             }],
-            /*
-            where:[
-                id_clinic = id
-            ]*/
+            where:{
+                id_clinic: id
+            }
         })
         res.status(200).send({ cod: 1, response: dentist })
     } catch (error) {
