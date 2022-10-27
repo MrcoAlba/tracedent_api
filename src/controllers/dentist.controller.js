@@ -144,12 +144,12 @@ const searchDentistById = async (req, res) => {
                     model: usersSchema,
                     attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
                 }],
-                where: {
-                    [Op.or]:{
-                        id_dentist: id
-                    }
-                },
-            },]
+            },],
+            where: {
+                [Op.or]:{
+                    id_dentist: id
+                }
+            },
         })
 
         res.status(200).send(dentist)
