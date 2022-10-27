@@ -11,7 +11,7 @@ router.get      ('/dentist/specialities/:id', searchSpecialities    )
 // SEARCH   -> DENTIST PER NAME
 router.get      ('/dentist/search'  ,   searchDentistByName  )
 // SEARCH   -> DENTIST PER ID
-router.get      ('/dentist'  ,   searchDentistById  )
+router.get      ('/dentist/:id'  ,   searchDentistById  )
 
 // CREATE   -> POST A NEW DENTIST
 router.post     ('/dentist'         ,   postDentist         )

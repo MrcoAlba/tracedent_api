@@ -124,10 +124,14 @@ const getAllRecruitDentists = async (req, res) => {
             attributes: ['id_dentist'],
             include: [{
                 model: dentistSchema,
-                attributes: ['rating'],
+                attributes: ['id_dentist', 'ruc', 'rating'],
                 include: [{
                     model: personSchema,
-                    attributes: ['first_name', 'last_name']
+                    attributes: ['id_person', 'first_name', 'last_name', 'gender', 'dni'],
+                    include: [{
+                        model: usersSchema,
+                        attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+                    }],
                 }]
             }],
             where: {
