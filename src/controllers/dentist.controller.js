@@ -95,7 +95,7 @@ const loginIdUser = async (req, res) => {
         res.status(500).send({cod:0,response:null})
     }
 }
-
+// SEARCH   -> DENTIST PER NAME
 const searchDentistByName = async (req, res) => {
     try {
         var name = req.query.name;

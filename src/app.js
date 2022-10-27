@@ -16,11 +16,13 @@ app.use(require('./routes/patient.routes'))
 
 app.use(require('./routes/recruitment.routes'))
 
+app.use(require('./routes/speciality.routes'))
+app.use(require('./routes/dentistSpecialities.routes'))
+
 //app.use(require('./routes/comment.routes'))
-//app.use(require('./routes/dentistSpecialities.routes'))
 //app.use(require('./routes/message.routes'))
 //app.use(require('./routes/schedule.routes'))
-//app.use(require('./routes/speciality.routes'))
+
 
 
 module.exports = app
