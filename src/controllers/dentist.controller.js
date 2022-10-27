@@ -27,7 +27,7 @@ const postDentist = async (req, res) => {
                 const dentist = await dentistSchema.create({
                     ruc: ruc, id_person: person.id_person
                 })
-                res.status(200).send({ cod: 1, response: dentist, error: null})
+                res.status(200).send({ cod: 1, response: null, error: null})
             } catch (error) {
                 const userDestroy = await usersSchema.destroy({
                     where: { id_user: user.id_user }
@@ -111,13 +111,13 @@ const searchDentistByName = async (req, res) => {
                 include: [{
                     model: usersSchema,
                     attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
-                }]
-            },],
-            where: {
-                first_name: {
-                    [Op.like]: '%'+name+'%'
-                }
-            },
+                }],
+                where: {
+                    first_name: {
+                        [Op.like]: '%'+name+'%'
+                    }
+                },
+            },]
         })
 
         res.status(200).send({ clinic })

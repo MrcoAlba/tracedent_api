@@ -24,7 +24,7 @@ const postClinic = async (req, res) => {
                 company_name: company_name, ruc: ruc, id_user: user.id_user
             })
             // RETURN RESPONSE
-            res.status(200).send({ cod: 1, response: clinic, error: null})
+            res.status(200).send({ cod: 1, response: null, error: null})
         } catch (error) {
             const userDestroy = await usersSchema.destroy({
                 where: { id_user: user.id_user }

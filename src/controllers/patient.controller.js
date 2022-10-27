@@ -23,7 +23,7 @@ const postPatient = async (req, res) => {
                 const patient = await patientSchema.create({
                     id_person: person.id_person
                 })
-                res.status(200).send({ cod: 1, response: patient, error: null})
+                res.status(200).send({ cod: 1, response: null, error: null})
             } catch (error) {
                 const userDestroy = await usersSchema.destroy({
                     where: { id_user: user.id_user }
