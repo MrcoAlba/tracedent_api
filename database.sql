@@ -211,3 +211,9 @@ VALUES
 {"mail":"p07@ma.co","pswd":"p07","phone_number":900000027,"district":"dp07","direction":"dp07","latitude":-12.27,"longitude":-77.27,"first_name":"fn17","last_name":"ln17","gender":"female","dni":80000017}
 {"mail":"p08@ma.co","pswd":"p08","phone_number":900000028,"district":"dp08","direction":"dp08","latitude":-12.28,"longitude":-77.28,"first_name":"fn18","last_name":"ln18","gender":"female","dni":80000018}
 {"mail":"p09@ma.co","pswd":"p09","phone_number":900000029,"district":"dp09","direction":"dp09","latitude":-12.29,"longitude":-77.29,"first_name":"fn19","last_name":"ln19","gender":"female","dni":80000019}
+
+
+{"id_clinic":"", "id_dentist":""}
+{"id_clinic":"", "id_dentist":""}
+{"id_clinic":"", "id_dentist":""}
+{"id_clinic":"", "id_dentist":""}

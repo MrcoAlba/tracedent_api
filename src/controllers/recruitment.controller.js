@@ -1,13 +1,13 @@
-const recluitmentSchema = require('../models/recruitment')
+const recruitmentSchema = require('../models/recruitment')
 
 
 
 //READ      -> GET AL RECRUITMENTS
 const getAllRecruitments = async (req, res) => {
     try {
-        const recruitment = await recluitmentSchema.findAll({
-            attributes: ['id_recluitment', 'beg_date', 'end_date', 'id_clinic', 'id_dentist'],
-            order: [['id_recluitment', 'ASC']],
+        const recruitment = await recruitmentSchema.findAll({
+            attributes: ['id_recruitment', 'beg_date', 'end_date', 'id_clinic', 'id_dentist'],
+            order: [['id_recruitment', 'ASC']],
         })
         res.status(200).send(recruitment)
     } catch (error) {
