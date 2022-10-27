@@ -93,7 +93,7 @@ const getAllDentitsByIdClinic = async (req, res) => {
         const id = req.params.id
 
         const dentist = await recruitmentSchema.findAll({
-            attributes: [],
+            attributes: ['id_dentist'],
             /*
             include: [{
                 model: dentistSchema,
