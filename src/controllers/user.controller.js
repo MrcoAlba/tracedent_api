@@ -8,9 +8,9 @@ const getAllUsers = async (req, res) => {
             attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
             order:[['id_user','ASC']]
         })
-        res.status(200).send(user)
+        res.status(200).send({cod:1,response:user})
     } catch (error) {
-        res.status(400).send(error)
+        res.status(400).send({cod:0,response:error})
     }
 }
 // UPDATE   -> MODIFY THE SUBSCRIPTION TO TRUE BY ID
@@ -34,11 +34,11 @@ const patchUserById = async (req, res) => {
             }
         }
         )
-        res.status(200).send({"cod":1,"response":user})
+        res.status(200).send({cod:1,response:user})
     } catch (error) {
         // Due to a simple change in a value, if the return is 0, 
         //it means that the value wasn't modified
-        res.status(500).send({"cod":0,"response":error})
+        res.status(500).send({cod:0,response:error})
     }
 }
 // LOGIN   -> RETURN 1 IF LOGIN TRUE
