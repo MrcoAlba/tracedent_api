@@ -159,10 +159,10 @@ const searchClinicByName = async (req, res) => {
             }
         })
 
-        res.status(200).send({ clinic })
+        res.status(200).send(clinic)
 
     } catch (error) {
-        res.status(400).send({ cod: 0, response: error })
+        res.status(400).send(clinic)
     }
 }
 
