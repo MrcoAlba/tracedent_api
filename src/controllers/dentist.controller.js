@@ -120,7 +120,7 @@ const searchDentistByName = async (req, res) => {
             },]
         })
 
-        res.status(200).send({ clinic })
+        res.status(200).send({ dentist })
 
     } catch (error) {
         res.status(400).send({ cod: 0, response: error })
