@@ -2,6 +2,7 @@ const usersSchema = require('../models/user')
 const clinicSchema = require('../models/clinic')
 const recruitmentSchema = require('../models/recruitment')
 const dentistSchema = require('../models/dentist')
+const personSchema = require('../models/person')
 
 
 // CREATE   -> POST A NEW CLINIC
@@ -77,14 +78,14 @@ const getAllDentitsByIdClinic = async (req, res) => {
 
         const dentist = await recruitmentSchema.findAll({
             attributes: ['id_dentist'],
-            /*include: [{
+            include: [{
                 model: dentistSchema,
                 attributes: ['id_dentist', 'rating'],
-                include: [{
-                    model: pergsonSchema,
+                /*include: [{
+                    model: personSchema,
                     attributes: ['first_name', 'last_name']
-                },]
-            }],*/
+                }]*/
+            }],
             where:{
                 id_clinic: id
             }
@@ -138,3 +139,6 @@ const getAllRecruitDentists = async (req, res) => {
 }
 
 module.exports = { postClinic, getAllClinics, loginIdUser, recruitDentist, getAllDentitsByIdClinic, getAllRecruitDentists }
+
+// 40555760-559b-11ed-937d-6d940eb3f112 dentist
+// 15778680-559b-11ed-937d-6d940eb3f112 clinic
