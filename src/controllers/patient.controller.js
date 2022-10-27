@@ -16,7 +16,7 @@ const postPatient = async (req, res) => {
         try {
             // CREATE PERSON
             const person = await personSchema.create({
-                first_name: String(first_name).toUpperCase, last_name: String(last_name).toUpperCase, gender: gender, dni: dni, id_user: user.id_user
+                first_name: String(first_name).toUpperCase(), last_name: String(last_name).toUpperCase(), gender: gender, dni: dni, id_user: user.id_user
             })
             try {
                 // CREATE PATIENT

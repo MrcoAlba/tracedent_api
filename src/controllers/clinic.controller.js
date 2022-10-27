@@ -21,7 +21,7 @@ const postClinic = async (req, res) => {
         // CREATE CLINIC
         try {
             const clinic = await clinicSchema.create({
-                company_name: String(company_name).toUpperCase, ruc: ruc, id_user: user.id_user
+                company_name: String(company_name).toUpperCase(), ruc: ruc, id_user: user.id_user
             })
             // RETURN RESPONSE
             res.status(200).send({ cod: 1, response: null, error: null})
