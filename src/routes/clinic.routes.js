@@ -13,6 +13,6 @@ router.post     ('/clinic/login'    ,   loginIdUser         )
 // ADD      -> RECRUIT A DENTIST
 router.post     ('/clinic/recruit'  ,    recruitDentist     )
 // READ     -> GET ALL DENTIST BY ID_CLINIC
-router.get      ('/clinic/dentists'  ,    getAllDentitsByIdClinic)
+router.get      ('/clinic/dentists/:id',    getAllDentitsByIdClinic)
 
 module.exports = router

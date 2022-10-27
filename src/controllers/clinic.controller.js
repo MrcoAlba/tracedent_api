@@ -90,6 +90,8 @@ const recruitDentist = async (req, res) => {
 // READ     -> GET ALL DENTIST BY ID_CLINIC
 const getAllDentitsByIdClinic = async (req, res) => {
     try {
+        const id = req.params.id
+
         const dentist = await recruitmentSchema.findAll({
             attributes: [],
             include: [{
@@ -99,7 +101,10 @@ const getAllDentitsByIdClinic = async (req, res) => {
                     model: usersSchema,
                     attributes: ['first_name', 'last_name']
                 },]
-            },]
+            }],
+            where:[
+                id_clinic = id
+            ]
         })
         res.status(200).send({cod:1,response:dentist})
     } catch (error) {
