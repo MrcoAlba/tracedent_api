@@ -80,7 +80,7 @@ const getAllDentitsByIdClinic = async (req, res) => {
             attributes: ['id_dentist'],
             include: [{
                 model: dentistSchema,
-                attributes: ['id_dentist', 'rating'],
+                attributes: ['rating'],
                 /*include: [{
                     model: personSchema,
                     attributes: ['first_name', 'last_name']
