@@ -1,7 +1,6 @@
 const usersSchema = require("../models/user")
 const { Op } = require('sequelize')
 
-
 // READ     -> GET ALL USERS
 const getAllUsers = async (req, res) => {
     try {
@@ -82,5 +81,4 @@ const emailCheckForExistance = async (req, res) => {
     }
 }
 
-module.exports = { getAllUsers, patchUserById, loginMailPass,
-    emailCheckForExistance}
+module.exports = { getAllUsers, patchUserById, loginMailPass, emailCheckForExistance }

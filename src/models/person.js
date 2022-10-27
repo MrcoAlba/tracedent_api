@@ -4,9 +4,6 @@ const sequelize = require('../database/database')
 const dentistSchema = require('./dentist')
 const patientSchema = require('./patient')
 
-
-
-
 const personSchema = sequelize.define('person',{
     id_person:{
         type:               DataTypes.UUID,

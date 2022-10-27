@@ -1,12 +1,6 @@
 const { DataTypes, DATE, TEXT, SMALLINT } = require('sequelize')
 const sequelize = require('../database/database')
 
-
-
-
-
-
-
 const recruitmentSchema = sequelize.define('recruitment',{
     id_recruitment:{
         type:               DataTypes.UUID,

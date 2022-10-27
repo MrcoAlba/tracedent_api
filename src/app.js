@@ -8,6 +8,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
 // routes
+console.log("LECTURA PREVIA")
 app.use(require('./routes/user.routes'))
 app.use(require('./routes/clinic.routes'))
 app.use(require('./routes/person.routes'))
@@ -22,7 +23,7 @@ app.use(require('./routes/dentistSpecialities.routes'))
 //app.use(require('./routes/comment.routes'))
 //app.use(require('./routes/message.routes'))
 //app.use(require('./routes/schedule.routes'))
-
+console.log("LECTURA POSTERIOR")
 
 
 module.exports = app

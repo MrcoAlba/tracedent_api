@@ -1,7 +1,5 @@
 const recruitmentSchema = require('../models/recruitment')
 
-
-
 //READ      -> GET AL RECRUITMENTS
 const getAllRecruitments = async (req, res) => {
     try {

@@ -4,10 +4,11 @@ const {
     postPatient, getAllPatients, loginIdUser
 } = require('../controllers/patient.controller')
 
-// CREATE   -> POST A NEW PATIENT
-router.post     ('/patient'         ,   postPatient         )
 // READ     -> GET ALL PATIENTS
 router.get      ('/patient'         ,   getAllPatients      )
+
+// CREATE   -> POST A NEW PATIENT
+router.post     ('/patient'         ,   postPatient         )
 // LOGIN   -> RETURN 1 IF LOGIN TRUE
 router.post     ('/patient/login'   ,   loginIdUser       )
 

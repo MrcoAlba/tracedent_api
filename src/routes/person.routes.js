@@ -6,6 +6,7 @@ const {
 
 // READ     -> GET ALL PERSONS
 router.get      ('/person'          ,   getAllPersons       )
+
 // UPDATE   -> UPDATE A PERSON BY ID
 router.patch    ('/person/:id'      ,   patchPersonById     )
 

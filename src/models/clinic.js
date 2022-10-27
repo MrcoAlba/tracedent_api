@@ -3,10 +3,6 @@ const sequelize = require('../database/database')
 
 const recruitmentSchema = require('./recruitment')
 
-
-
-
-
 const clinicSchema = sequelize.define('clinic',{
     id_clinic:{
         type:               DataTypes.UUID,
