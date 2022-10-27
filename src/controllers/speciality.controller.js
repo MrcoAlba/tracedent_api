@@ -14,6 +14,7 @@ const postSpeciality = async (req, res) => {
     } catch (error) {
         res.status(500).send({"message":error.errors[0].message})
     }*/
+    res.status(500).send({"message":error.errors[0].message})
 }
 console.log("LA ARANA 03")
 module.exports = { postSpeciality }
