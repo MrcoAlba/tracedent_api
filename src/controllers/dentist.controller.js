@@ -101,6 +101,7 @@ const loginIdUser = async (req, res) => {
 const searchDentistByName = async (req, res) => {
     try {
         var name = req.query.name;
+        nameString = String(name)
 
         const dentist = await dentistSchema.findAll({
             attributes: ['id_dentist', 'ruc', 'rating'],
@@ -114,7 +115,7 @@ const searchDentistByName = async (req, res) => {
                 }],
                 where: {
                     first_name: {
-                        [Op.like]: '%'+String(name).toUpperCase+'%'
+                        [Op.like]: '%'+nameString.toUpperCase+'%'
                     }
                 },
             },]
