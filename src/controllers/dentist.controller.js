@@ -134,7 +134,7 @@ const searchDentistById = async (req, res) => {
     try {
         var id = req.params.id;
 
-        const dentist = await dentistSchema.findAll({
+        const dentist = await dentistSchema.findOne({
             attributes: ['id_dentist', 'ruc', 'rating'],
             order: [['ruc', 'ASC']],
             include: [{
@@ -158,7 +158,6 @@ const searchDentistById = async (req, res) => {
         res.status(400).send(error)
     }
 }
-
 // CREATE   -> ADD SPECIALITY TO DENTIST BY ID
 const addSpecialityToDentistById = async (req, res) => {
     try {
