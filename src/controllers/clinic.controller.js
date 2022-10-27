@@ -1,3 +1,4 @@
+const usersSchema = require('../models/user')
 const clinicSchema = require('../models/clinic')
 const personSchema = require('../models/person')
 const recruitmentSchema = require('../models/recruitment')
