@@ -128,13 +128,45 @@ const searchDentistByName = async (req, res) => {
         res.status(400).send(error)
     }
 }
+
+// SEARCH   -> DENTIST PER NAME
+const searchDentistById = async (req, res) => {
+    try {
+        var id = req.query.id;
+
+        const dentist = await dentistSchema.findAll({
+            attributes: ['id_dentist', 'ruc', 'rating'],
+            order: [['ruc', 'ASC']],
+            include: [{
+                model: personSchema,
+                attributes: ['id_person', 'first_name', 'last_name', 'gender', 'dni'],
+                include: [{
+                    model: usersSchema,
+                    attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+                }],
+                where: {
+                    [Op.or]:{
+                        id_dentist: id
+                    }
+                },
+            },]
+        })
+
+        res.status(200).send(dentist)
+
+    } catch (error) {
+        res.status(400).send(error)
+    }
+}
+
 // CREATE   -> ADD SPECIALITY TO DENTIST BY ID
 const addSpecialityToDentistById = async (req, res) => {
     try {
         const {
             id_speciality,id_dentist
         } = req.body
-
+        console.log("id_specialityid_specialityid_specialityid_specialityid_speciality",id_speciality)
+        console.log("id_dentistid_dentistid_dentistid_dentistid_dentistid_dentistid_dentist",id_dentist)
         const dentistSpeciality = await dentistSpecialitiesSchema.create({
             id_speciality:id_speciality, id_dentist:id_dentist
         })
@@ -161,4 +193,4 @@ const searchSpecialities = async (req, res) => {
     }//
 }
 
-module.exports = { postDentist, getAllDentists, loginIdUser, searchDentistByName, addSpecialityToDentistById, searchSpecialities }
+module.exports = { postDentist, getAllDentists, loginIdUser, searchDentistByName, addSpecialityToDentistById, searchSpecialities, searchDentistById }

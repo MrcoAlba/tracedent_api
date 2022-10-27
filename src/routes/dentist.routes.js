@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const router = Router()
 const { 
-    postDentist, getAllDentists, loginIdUser, searchDentistByName, addSpecialityToDentistById, searchSpecialities
+    postDentist, getAllDentists, loginIdUser, searchDentistByName, addSpecialityToDentistById, searchSpecialities, searchDentistById
 } = require('../controllers/dentist.controller')
 
 // READ     -> GET ALL DENTISTS
@@ -10,8 +10,8 @@ router.get      ('/dentist'         ,   getAllDentists      )
 router.get      ('/dentist/specialities/:id', searchSpecialities    )
 // SEARCH   -> DENTIST PER NAME
 router.get      ('/dentist/search'  ,   searchDentistByName  )
-// SEARCH   -> DENTIST PER NAME
-router.get      ('/dentist/search'  ,   searchDentistByName  )
+// SEARCH   -> DENTIST PER ID
+router.get      ('/dentist'  ,   searchDentistById  )
 
 // CREATE   -> POST A NEW DENTIST
 router.post     ('/dentist'         ,   postDentist         )
