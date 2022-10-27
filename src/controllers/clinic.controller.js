@@ -137,8 +137,29 @@ const getAllRecruitDentists = async (req, res) => {
         res.status(400).send({ cod: 0, response: null })
     }
 }
+// SEARCH   -> CLINICS PER NAME
+const searchClinicByName = async (req, res) => {
+    try {
+        var name = req.query.company_name;
 
-module.exports = { postClinic, getAllClinics, loginIdUser, recruitDentist, getAllDentitsByIdClinic, getAllRecruitDentists }
+        const clinic = await clinicSchema.findAll({
+            attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
+            order: [['company_name', 'ASC']],
+            include: [{
+                model: usersSchema,
+                attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+            },],
+            where:{
+                company_name:{
+                    [Op.like]: name
+                }
+            }
+        })
+        res.status(200).send(clinic)
 
-// 40555760-559b-11ed-937d-6d940eb3f112 dentist
-// 15778680-559b-11ed-937d-6d940eb3f112 clinic
+    } catch (error) {
+        res.status(400).send({ cod: 0, response: error })
+    }
+}
+
+module.exports = { postClinic, getAllClinics, loginIdUser, recruitDentist, getAllDentitsByIdClinic, getAllRecruitDentists, searchClinicByName }
