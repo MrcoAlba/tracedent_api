@@ -5,5 +5,5 @@ const {
 } = require('../controllers/speciality.controller')
 
 // CREATE   -> POST A NEW SPECIALITY
-router.post     ('/speciality'         ,   postDentist         )
+router.post     ('/speciality'      ,   postDentist       )
 module.exports = router
