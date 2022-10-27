@@ -157,7 +157,7 @@ const searchClinicByName = async (req, res) => {
                 }
             }
         })
-        res.status(200).send(name)
+        res.status(200).send(clinic)
     } catch (error) {
         res.status(400).send(error)
     }
