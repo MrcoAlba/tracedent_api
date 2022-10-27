@@ -27,7 +27,7 @@ const postDentist = async (req, res) => {
                 const dentist = await dentistSchema.create({
                     ruc: ruc, id_person: person.id_person
                 })
-                res.status(200).send(dentist)
+                res.status(200).send({ cod: 1, response: dentist, error: null})
             } catch (error) {
                 const userDestroy = await usersSchema.destroy({
                     where: { id_user: user.id_user }
@@ -35,16 +35,16 @@ const postDentist = async (req, res) => {
                 const personDestroy = await personSchema.destroy({
                     where: { id_person: person.id_person }
                 })
-                res.status(500).send({"message":error.errors[0].message})
+                res.status(500).send({ cod: 0, response: userDestroy, error: error.errors[0].message})
             }
         } catch (error) {
             const userDestroy = await usersSchema.destroy({
                 where: { id_user: user.id_user }
             })
-            res.status(500).send({"message":error.errors[0].message})
+            res.status(500).send({ cod: 0, response: userDestroy, error: error.errors[0].message})
         }
     } catch (error) {
-        res.status(500).send({"message":error.errors[0].message})
+        res.status(500).send({ cod: 0, response: null, error: error.errors[0].message})
     }
 }
 // READ     -> GET ALL DENTISTS
