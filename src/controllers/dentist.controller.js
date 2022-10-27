@@ -5,7 +5,6 @@ const dentistSpecialitiesSchema = require('../models/dentistSpecialities')
 const personSchema = require('../models/person')
 const usersSchema = require('../models/user')
 const specialitySchema = require('../models/speciality')
-const dentistSpecialitiesSchema = require('../models/dentistSpecialities')
 
 // CREATE   -> POST A NEW DENTIST/
 const postDentist = async (req, res) => {
