@@ -10,14 +10,21 @@ app.use(express.urlencoded({extended: false}))
 // routes
 console.log("LECTURA PREVIA")
 app.use(require('./routes/user.routes'))
+console.log("001")
 app.use(require('./routes/clinic.routes'))
+console.log("002")
 app.use(require('./routes/person.routes'))
+console.log("003")
 app.use(require('./routes/dentist.routes'))
+console.log("004")
 app.use(require('./routes/patient.routes'))
 
+console.log("005")
 app.use(require('./routes/recruitment.routes'))
 //
+console.log("006")
 app.use(require('./routes/speciality.routes'))
+console.log("007")
 app.use(require('./routes/dentistSpecialities.routes'))
 
 //app.use(require('./routes/comment.routes'))
