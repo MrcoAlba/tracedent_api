@@ -10,6 +10,7 @@ const postSpeciality = async (req, res) => {
         const speciality = await specialitySchema.create({
             name:name
         })
+        res.status(200).send({"message":speciality})
     } catch (error) {
         res.status(500).send({"message":error.errors[0].message})
     }
