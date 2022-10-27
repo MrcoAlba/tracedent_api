@@ -136,6 +136,7 @@ const addSpecialityToDentistById = async (req, res) => {
         const dentistSpeciality = await dentistSpecialitiesSchema.create({
             id_speciality:id_speciality, id_dentist:id_dentist
         })
+        res.status(500).send({"message":dentistSpeciality})
     } catch (error) {
         res.status(500).send({"message":error.errors[0].message})
     }
