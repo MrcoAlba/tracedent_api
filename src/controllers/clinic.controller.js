@@ -86,7 +86,7 @@ const getAllDentitsByIdClinic = async (req, res) => {
                     attributes: ['first_name', 'last_name']
                 }]
             }],
-            where:{
+            where: {
                 id_clinic: id,
                 sttus: 1
             }
@@ -128,7 +128,7 @@ const getAllRecruitDentists = async (req, res) => {
                     attributes: ['first_name', 'last_name']
                 }]
             }],
-            where:{
+            where: {
                 id_clinic: id
             }
         })
@@ -148,15 +148,16 @@ const searchClinicByName = async (req, res) => {
             include: [{
                 model: usersSchema,
                 attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
-            },]/*,
-            where:{
-                company_name:{
-                    [Op.like]: name
+            },],
+            where: {
+                company_name: {
+                    [Op.like]: '%'+name+'%'
                 }
-            }*/
+
+            }
         })
 
-        res.status(200).send(clinic)
+        res.status(200).send({ clinic })
 
     } catch (error) {
         res.status(400).send({ cod: 0, response: error })
