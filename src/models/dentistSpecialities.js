@@ -6,11 +6,6 @@ const dentistSpecialitiesSchema = sequelize.define('dentist_specialities',{
         type:               DataTypes.UUID,
         primaryKey:         true,
         defaultValue:       DataTypes.UUIDV1
-    },
-    beg_date:{
-        type:               DATE,
-        allowNull:          false,
-        defaultValue:       sequelize.fn('NOW')
     }
 },{
     freezeTableName: true,
