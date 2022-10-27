@@ -31,16 +31,16 @@ const postDentist = async (req, res) => {
                 const personDestroy = await personSchema.destroy({
                     where: { id_person: person.id_person }
                 })
-                res.status(500).send([userDestroy, personDestroy, error.errors[0].message])
+                res.status(500).send({"message":error.errors[0].message})
             }
         } catch (error) {
             const userDestroy = await usersSchema.destroy({
                 where: { id_user: user.id_user }
             })
-            res.status(500).send([userDestroy, error.errors[0].message])
+            res.status(500).send({"message":error.errors[0].message})
         }
     } catch (error) {
-        res.status(500).send(error.errors[0].message)
+        res.status(500).send({"message":error.errors[0].message})
     }
 }
 // READ     -> GET ALL DENTISTS
