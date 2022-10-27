@@ -138,7 +138,7 @@ const addSpecialityToDentistById = async (req, res) => {
         })
         res.status(200).send({"message":dentistSpeciality})
     } catch (error) {
-        res.status(500).send({"message":error.errors[0].message})
+        res.status(500).send({"message":error})
     }
 }
 // READ     -> GET ALL DENTIST SPECIALITIES
