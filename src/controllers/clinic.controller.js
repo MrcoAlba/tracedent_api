@@ -87,4 +87,4 @@ const recruitDentist = async (req, res) => {
     }
 }
 
-module.exports = { postClinic, getAllClinics, loginIdUser }
+module.exports = { postClinic, getAllClinics, loginIdUser, recruitDentist }
