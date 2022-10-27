@@ -81,16 +81,16 @@ const getAllDentitsByIdClinic = async (req, res) => {
             include: [{
                 model: dentistSchema,
                 attributes: ['rating'],
-                /*include: [{
+                include: [{
                     model: personSchema,
                     attributes: ['first_name', 'last_name']
-                }]*/
+                }]
             }],
             where:{
                 id_clinic: id
             }
         })
-        res.status(200).send({ cod: id, response: dentist })
+        res.status(200).send({ cod: 1, response: dentist })
     } catch (error) {
         res.status(400).send({ cod: 0, response: null })
     }
