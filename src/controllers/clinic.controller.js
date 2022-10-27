@@ -18,7 +18,7 @@ const postClinic = async (req, res) => {
         const user = await usersSchema.create({
             user_type: "clinic", mail: mail, pswd: pswd, phone_number: phone_number, district: district, direction: direction, latitude: latitude, longitude: longitude
         })
-        // CREATE CLINIC
+        // CREATE CLINICc
         try {
             const clinic = await clinicSchema.create({
                 company_name: String(company_name).toUpperCase(), ruc: ruc, id_user: user.id_user
