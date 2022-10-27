@@ -21,7 +21,7 @@ const postClinic = async (req, res) => {
         // CREATE CLINIC
         try {
             const clinic = await clinicSchema.create({
-                company_name: company_name, ruc: ruc, id_user: user.id_user
+                company_name: String(company_name).toUpperCase, ruc: ruc, id_user: user.id_user
             })
             // RETURN RESPONSE
             res.status(200).send({ cod: 1, response: null, error: null})
@@ -143,6 +143,7 @@ const getAllRecruitDentists = async (req, res) => {
 const searchClinicByName = async (req, res) => {
     try {
         var name = req.query.company_name;
+        name = String(name).toUpperCase
 
         const clinic = await clinicSchema.findAll({
             attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],

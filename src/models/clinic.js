@@ -13,6 +13,7 @@ const clinicSchema = sequelize.define('clinic',{
         type:               DataTypes.STRING,
         unique:             true,
         allowNull:          false,
+        
     },
     ruc:{
         type:               DataTypes.BIGINT,

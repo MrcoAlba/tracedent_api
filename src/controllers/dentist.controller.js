@@ -20,7 +20,7 @@ const postDentist = async (req, res) => {
         try {
             // CREATE PERSON
             const person = await personSchema.create({
-                first_name: first_name, last_name: last_name, gender: gender, dni: dni, id_user: user.id_user
+                first_name: String(first_name).toUpperCase, last_name: String(last_name).toUpperCase, gender: gender, dni: dni, id_user: user.id_user
             })
             try {
                 // CREATE DENTIST
@@ -120,10 +120,10 @@ const searchDentistByName = async (req, res) => {
             },]
         })
 
-        res.status(200).send({ dentist })
+        res.status(200).send(dentist)
 
     } catch (error) {
-        res.status(400).send({ cod: 0, response: error })
+        res.status(400).send(error)
     }
 }
 // CREATE   -> ADD SPECIALITY TO DENTIST BY ID
@@ -136,9 +136,9 @@ const addSpecialityToDentistById = async (req, res) => {
         const dentistSpeciality = await dentistSpecialitiesSchema.create({
             id_speciality:id_speciality, id_dentist:id_dentist
         })
-        res.status(200).send({"message":dentistSpeciality})
+        res.status(200).send(dentistSpeciality)
     } catch (error) {
-        res.status(500).send({"message":error})
+        res.status(500).send(error)
     }
 }
 // READ     -> GET ALL DENTIST SPECIALITIES
