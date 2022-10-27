@@ -1,4 +1,4 @@
-const { DataTypes, TIME, DATE } = require('sequelize')
+const { DataTypes, DATE } = require('sequelize')
 const sequelize = require('../database/database')
 
 
@@ -14,12 +14,12 @@ const recruitmentSchema = sequelize.define('recruitment',{
         defaultValue:       DataTypes.UUIDV1
     },
     beg_date:{
-        type:               DataTypes.DATE,
+        type:               DATE,
         allowNull:          false,
         defaultValue:       sequelize.fn('NOW')
     },
     end_date:{
-        type:               DataTypes.DATE,
+        type:               DATE,
         allowNull:          true,
         defaultValue:       null
     },
