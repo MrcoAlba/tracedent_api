@@ -84,7 +84,7 @@ const recruitDentist = async (req, res) => {
 
         res.status(200).send({cod:1,response:recruitment})
     }catch(error){
-        res.status(500).send({cod:0,response:null})
+        res.status(500).send({cod:0,response:error})
     }
 }
 // READ     -> GET ALL DENTIST BY ID_CLINIC
