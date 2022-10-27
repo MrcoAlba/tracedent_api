@@ -29,10 +29,10 @@ const postClinic = async (req, res) => {
             const userDestroy = await usersSchema.destroy({
                 where: { id_user: user.id_user }
             })
-            res.status(500).send({ cod: 0, response: userDestroy, error: error})
+            res.status(500).send({ cod: 0, response: userDestroy, error: error.errors[0].message})
         }
     } catch (error) {
-        res.status(500).send({ cod: 0, response: null, error: error})
+        res.status(500).send({ cod: 0, response: null, error: error.errors[0].message})
     }
 }
 // READ     -> GET ALL CLINICS FROM THE DATABASE ORDERED BY COMPANY NAME
