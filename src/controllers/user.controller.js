@@ -4,8 +4,8 @@ const { Op } = require('sequelize')
 // READ     -> GET ALL USERS
 const getAllUsers = async (req, res) => {
     try {
-        const offset = req.params.offset
-        const limit = req.params.limit
+        const offset = req.query.offset
+        const limit = req.query.limit
         
         const user = await usersSchema.findAll({
             attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
@@ -15,8 +15,8 @@ const getAllUsers = async (req, res) => {
             subQuery:false
         })
         
-        const count = null
-        const total = null
+        const count = user.count
+        const total = await usersSchema.count()
 
         res.status(200).send({
             message:"OK",
