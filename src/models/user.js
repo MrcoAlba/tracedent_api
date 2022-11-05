@@ -1,9 +1,6 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../database/database')
 
-const personSchema = require('./person')
-const clinicSchema = require('./clinic')
-
 const usersSchema = sequelize.define('users',{
     id_user:{
         type:               DataTypes.UUID,
@@ -12,7 +9,7 @@ const usersSchema = sequelize.define('users',{
     },
     user_type:{
         type:               DataTypes.ENUM({
-            values:             ['patient', 'dentist', 'clinic']
+            values:         ['patient', 'dentist', 'clinic']
         }),
         defaultValue:       'patient'
     },
@@ -33,7 +30,7 @@ const usersSchema = sequelize.define('users',{
         unique:             true,
         allowNull:          false,
         validate:{
-            len: [9,9],
+            len: [0,9],
             isNumeric: true
         }
     },
@@ -74,6 +71,7 @@ const usersSchema = sequelize.define('users',{
     timestamps: false
 })
 
+const personSchema = require('./person')
 personSchema.belongsTo(usersSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
@@ -82,10 +80,28 @@ personSchema.belongsTo(usersSchema,{
     },
     targetId: 'id_user'
 })
+const clinicSchema = require('./clinic')
 clinicSchema.belongsTo(usersSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
         name:           'id_user',
+        allowNull:      false
+    },
+    targetId: 'id_user'
+})
+const messageSchema = require('./message')
+messageSchema.belongsTo(usersSchema,{
+    foreignKey: {
+        type:           DataTypes.UUID,
+        name:           'id_from',
+        allowNull:      false
+    },
+    targetId: 'id_user'
+})
+messageSchema.belongsTo(usersSchema,{
+    foreignKey: {
+        type:           DataTypes.UUID,
+        name:           'id_destination',
         allowNull:      false
     },
     targetId: 'id_user'

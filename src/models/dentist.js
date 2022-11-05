@@ -1,10 +1,6 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../database/database')
 
-const recruitmentSchema = require('./recruitment')
-const dentistSpecialitiesSchema = require('./dentistSpecialities')
-const scheduleSchema = require('./schedule')
-
 const dentistSchema = sequelize.define('dentist',{
     id_dentist:{
         type:               DataTypes.UUID,
@@ -16,7 +12,8 @@ const dentistSchema = sequelize.define('dentist',{
         unique:             true,
         allowNull:          false,
         validate:{
-            len: [11,11],
+            min: 0,
+            max: 99999999999,
             isNumeric: true
         }
     },
@@ -35,6 +32,21 @@ const dentistSchema = sequelize.define('dentist',{
     timestamps: false
 })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const recruitmentSchema = require('./recruitment')
 recruitmentSchema.belongsTo(dentistSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
@@ -43,7 +55,7 @@ recruitmentSchema.belongsTo(dentistSchema,{
     },
     targetId: 'id_dentist'
 })
-
+const dentistSpecialitiesSchema = require('./dentistSpecialities')
 dentistSpecialitiesSchema.belongsTo(dentistSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
@@ -52,6 +64,7 @@ dentistSpecialitiesSchema.belongsTo(dentistSchema,{
     },
     targetId: 'id_dentist'
 })
+const scheduleSchema = require('./schedule')
 scheduleSchema.belongsTo(dentistSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
@@ -60,5 +73,7 @@ scheduleSchema.belongsTo(dentistSchema,{
     },
     targetId: 'id_dentist'
 })
+
+
 
 module.exports = dentistSchema

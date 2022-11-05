@@ -1,4 +1,4 @@
-const { DataTypes, DATE, SMALLINT } = require('sequelize')
+const { DataTypes } = require('sequelize')
 const sequelize = require('../database/database')
 
 const scheduleSchema = sequelize.define('schedule',{
@@ -8,12 +8,11 @@ const scheduleSchema = sequelize.define('schedule',{
         defaultValue:       DataTypes.UUIDV1
     },
     date:{
-        type:               DATE,
-        allowNull:          false,
-        defaultValue:       sequelize.fn('NOW')
+        type:               DataTypes.DATE,
+        allowNull:          false
     },
     time:{
-        type:               SMALLINT,
+        type:               DataTypes.SMALLINT,
         allowNull:          false,
         defaultValue:       0,
         validate:{
@@ -22,17 +21,41 @@ const scheduleSchema = sequelize.define('schedule',{
         }
     },
     sttus:{
-        type:               SMALLINT,
+        type:               DataTypes.SMALLINT,
         allowNull:          false,
         defaultValue:       0,
         validate:{
             min:            0,
-            max:            8
+            max:            9
         }
     }
 },{
-        freezeTableName: true,
-        timestamps: false
+    freezeTableName: true,
+    timestamps: false
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = scheduleSchema

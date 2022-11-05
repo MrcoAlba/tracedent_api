@@ -1,4 +1,4 @@
-const { DataTypes, DATE } = require('sequelize')
+const { DataTypes } = require('sequelize')
 const sequelize = require('../database/database')
 
 const dentistSpecialitiesSchema = sequelize.define('dentist_specialities',{
@@ -11,5 +11,35 @@ const dentistSpecialitiesSchema = sequelize.define('dentist_specialities',{
     freezeTableName: true,
     timestamps: false
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = dentistSpecialitiesSchema

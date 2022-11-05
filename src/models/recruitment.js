@@ -1,7 +1,5 @@
-const { DataTypes, DATE, SMALLINT } = require('sequelize')
+const { DataTypes } = require('sequelize')
 const sequelize = require('../database/database')
-
-const scheduleSchema = require('./schedule')
 
 const recruitmentSchema = sequelize.define('recruitment',{
     id_recruitment:{
@@ -10,29 +8,42 @@ const recruitmentSchema = sequelize.define('recruitment',{
         defaultValue:       DataTypes.UUIDV1
     },
     sttus:{
-        type:               SMALLINT,
+        type:               DataTypes.SMALLINT,
         allowNull:          false,
         defaultValue:       0,
         validate:{
             min:            0,
-            max:            3
+            max:            4
         }
     },
     beg_date:{
-        type:               DATE,
+        type:               DataTypes.DATE,
         allowNull:          false,
-        defaultValue:       sequelize.fn('NOW')
+        defaultValue:       DataTypes.NOW
     },
     end_date:{
-        type:               DATE,
+        type:               DataTypes.DATE,
         allowNull:          true,
         defaultValue:       null
     },
-
 },{
-        freezeTableName: true,
-        timestamps: false
+    freezeTableName: true,
+    timestamps: false
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+const scheduleSchema = require('./schedule')
 scheduleSchema.belongsTo(recruitmentSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
@@ -41,5 +52,13 @@ scheduleSchema.belongsTo(recruitmentSchema,{
     },
     targetId: 'id_recruitment'
 })
+
+
+
+
+
+
+
+
 
 module.exports = recruitmentSchema

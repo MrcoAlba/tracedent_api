@@ -1,8 +1,6 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../database/database')
 
-const recruitmentSchema = require('./recruitment')
-
 const clinicSchema = sequelize.define('clinic',{
     id_clinic:{
         type:               DataTypes.UUID,
@@ -13,14 +11,14 @@ const clinicSchema = sequelize.define('clinic',{
         type:               DataTypes.STRING,
         unique:             true,
         allowNull:          false,
-        
     },
     ruc:{
         type:               DataTypes.BIGINT,
         unique:             true,
         allowNull:          false,
         validate:{
-            len: [11,11],
+            min: 0,
+            max: 99999999999,
             isNumeric: true
         }
     },
@@ -39,13 +37,34 @@ const clinicSchema = sequelize.define('clinic',{
     timestamps: false
 })
 
+
+
+
+
+
+
+
+
+
+
+
+
+const recruitmentSchema = require('./recruitment')
 recruitmentSchema.belongsTo(clinicSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
         name:           'id_clinic',
-        allowNull:      true
+        allowNull:      false
     },
     targetId: 'id_clinic'
 })
+
+
+
+
+
+
+
+
 
 module.exports = clinicSchema

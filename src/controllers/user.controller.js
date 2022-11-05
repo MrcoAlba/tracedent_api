@@ -4,17 +4,31 @@ const { Op } = require('sequelize')
 // READ     -> GET ALL USERS
 const getAllUsers = async (req, res) => {
     try {
+        const offset = req.params.offset
+        const limit = req.params.limit
+        
         const user = await usersSchema.findAll({
             attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
-            order:[['id_user','ASC']]
+            order:[['id_user','ASC']],
+            offset:(offset),
+            limit : limit,
+            subQuery:false
         })
-        res.status(200).send({cod:1,response:user})
+        
+        const count = null
+        const total = null
+
+        res.status(200).send({
+            message:"OK",
+            data:user,
+            meta:{count:count, offset: offset, limit: limit, total: total}
+        })
     } catch (error) {
         res.status(400).send({cod:0,response:error})
     }
 }
 // UPDATE   -> MODIFY THE SUBSCRIPTION TO TRUE BY ID
-const patchUserById = async (req, res) => {
+const patchUserSubById = async (req, res) => {
     try {
         const id = req.params.id
         const user = await usersSchema.update({
@@ -81,4 +95,9 @@ const emailCheckForExistance = async (req, res) => {
     }
 }
 
-module.exports = { getAllUsers, patchUserById, loginMailPass, emailCheckForExistance }
+module.exports = { getAllUsers, patchUserSubById, loginMailPass, emailCheckForExistance }
+
+/*
+RESPONSE FORMAT:
+
+*/

@@ -1,9 +1,6 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../database/database')
 
-const dentistSchema = require('./dentist')
-const patientSchema = require('./patient')
-
 const personSchema = sequelize.define('person',{
     id_person:{
         type:               DataTypes.UUID,
@@ -11,7 +8,7 @@ const personSchema = sequelize.define('person',{
         defaultValue:       DataTypes.UUIDV1
     },
     first_name:{
-        type:               DataTypes.STRING,
+        type:               DataTypes.STRING(25),
         unique:             false,
         allowNull:          false,
         validate:{
@@ -19,7 +16,7 @@ const personSchema = sequelize.define('person',{
         }
     },
     last_name:{
-        type:               DataTypes.STRING,
+        type:               DataTypes.STRING(25),
         unique:             false,
         allowNull:          false,
         validate:{
@@ -38,7 +35,8 @@ const personSchema = sequelize.define('person',{
         unique:             true,
         allowNull:          false,
         validate:{
-            len: [8,8],
+            min: 0,
+            max: 99999999,
             isNumeric: true
         }
     }
@@ -47,14 +45,17 @@ const personSchema = sequelize.define('person',{
     timestamps: false
 })
 
-dentistSchema.belongsTo(personSchema,{
-    foreignKey: {
-        type:           DataTypes.UUID,
-        name:           'id_person',
-        allowNull:      false
-    },
-    targetId: 'id_person'
-})
+
+
+
+
+
+
+
+
+
+
+const patientSchema = require('./patient')
 patientSchema.belongsTo(personSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
@@ -63,5 +64,19 @@ patientSchema.belongsTo(personSchema,{
     },
     targetId: 'id_person'
 })
+const dentistSchema = require('./dentist')
+dentistSchema.belongsTo(personSchema,{
+    foreignKey: {
+        type:           DataTypes.UUID,
+        name:           'id_person',
+        allowNull:      false
+    },
+    targetId: 'id_person'
+})
+
+
+
+
+
 
 module.exports = personSchema
