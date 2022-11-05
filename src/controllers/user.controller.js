@@ -15,9 +15,9 @@ const getAllUsers = async (req, res) => {
             subQuery:false
         })
 
-        print("PRUEBAS")
-        print(user.rows.length)
-        print("PRUEBAS")
+        console.log("PRUEBAS")
+        console.log(user.rows.length)
+        console.log("PRUEBAS")
 
         res.status(200).send({
             message:"OK",
