@@ -16,18 +16,7 @@ const getAllUsers = async (req, res) => {
         })
 
         print("PRUEBAS")
-        print("PRUEBAS1")
-        print(user.rows.size)
-        print("PRUEBAS2")
-        print(user.rows.count)
-        print("PRUEBAS3")
         print(user.rows.length)
-        print("PRUEBAS4")
-        print(size(user.rows))
-        print("PRUEBAS5")
-        print(count(user.rows))
-        print("PRUEBAS6")
-        print(length(user.rows))
         print("PRUEBAS")
 
         res.status(200).send({
