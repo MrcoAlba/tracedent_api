@@ -15,7 +15,7 @@ const getAllUsers = async (req, res) => {
             subQuery:false
         })
         
-        const count = await usersSchema.count({
+        const count = await usersSchema.findAndCountAll({
             offset:(offset),
             limit : limit,
             subQuery:false
