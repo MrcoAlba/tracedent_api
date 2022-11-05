@@ -7,24 +7,24 @@ const getAllUsers = async (req, res) => {
         const offset = req.query.offset
         const limit = req.query.limit
         
-        const user = await usersSchema.findAll({
+        const user = await usersSchema.findAndCountAll({
             attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
             order:[['id_user','ASC']],
             offset:(offset),
             limit : limit,
             subQuery:false
         })
-        
-        const count = await usersSchema.findAndCountAll({
-            offset:(offset),
-            limit : limit,
-            subQuery:false
-        })
-        const total = await usersSchema.count()
 
+        print("PRUEBAS")
+        print(user.rows.size)
+        print(user.rows.count)
+        print(size(user.rows))
+        print(count(user.rows))
+        print("PRUEBAS")
+        
         res.status(200).send({
             message:"OK",
-            data:user,
+            data:user.rows,
             meta:{count:count, offset: offset, limit: limit, total: total}
         })
     } catch (error) {
