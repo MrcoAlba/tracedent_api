@@ -15,7 +15,11 @@ const getAllUsers = async (req, res) => {
             subQuery:false
         })
         
-        const count = user.count
+        const count = await usersSchema.count({
+            offset:(offset),
+            limit : limit,
+            subQuery:false
+        })
         const total = await usersSchema.count()
 
         res.status(200).send({
