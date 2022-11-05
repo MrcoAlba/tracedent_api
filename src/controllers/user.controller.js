@@ -15,14 +15,13 @@ const getAllUsers = async (req, res) => {
             subQuery:false
         })
 
-        console.log("PRUEBAS")
-        console.log(user.rows.length)
-        console.log("PRUEBAS")
+        const total = user.count
+        const count = user.rows.length
 
         res.status(200).send({
             message:"OK",
             data:user.rows,
-            meta:{count:count, offset: offset, limit: limit, total: total}
+            meta:{total: total, count:count, offset: offset, limit: limit}
         })
     } catch (error) {
         res.status(400).send({cod:0,response:error})
