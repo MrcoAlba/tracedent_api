@@ -87,9 +87,9 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 //order:      [['date','ASC'],['time','ASC']],
                 where: {
                     id_dentist: id_dentist,
-                    id_clinic: {
-                        [Op.like]: '%'+id_clinic+'%'
-                    },
+                    // id_clinic: {
+                    //     [Op.like]: '%'+id_clinic+'%'
+                    // },
                 },
                 offset:     offset,
                 limit :     limit,
