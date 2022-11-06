@@ -39,7 +39,6 @@ const getAllClinics = async (req, res) => {
             limit :     limit,
             subQuery:   false
         })
-        console.log(clinics)
         // Get the data, total and count information
         const data = clinics.rows
         const total = clinics.count
@@ -156,10 +155,9 @@ const getAllDentitsByIdClinic = async (req, res) => {
             where: {
                 id_clinic: id,
                 sttus: 2,
-                // TODO: Implement this
-                /*first_name: {
+                first_name: {
                     [Op.like]: '%'+name+'%'
-                }*/
+                }
             },
             offset:     offset,
             limit :     limit,
