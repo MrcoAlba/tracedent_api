@@ -10,6 +10,9 @@ const { Op }                    = require('sequelize')
 // READ         -> GET ALL CLINICS
 const getAllClinics = async (req, res) => {
     try {
+        console.log("INICIO")
+        console.log("INICIO")
+        console.log("INICIO")
         // Get query parameters
         var offset  = req.query.offset
         var limit   = req.query.limit
