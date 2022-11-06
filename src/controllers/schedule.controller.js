@@ -67,7 +67,13 @@ const getAllSchedulesByDentistId = async (req, res) => {
         status = parseInt(status)
         // Request all the schedule information
         var schedules = null
+        console.log("ANTESSSSS")
+        console.log("ANTESSSSS")
+        console.log("ANTESSSSS")
         if (status==10){
+            console.log("1")
+            console.log("1")
+            console.log("1")
             schedules = await scheduleSchema.findAndCountAll({
                 attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
                 //order:      [['date','ASC'],['time','ASC']],
@@ -90,6 +96,9 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 subQuery:   false
             })
         }else{
+            console.log("2")
+            console.log("2")
+            console.log("2")
             schedules = await scheduleSchema.findAndCountAll({
                 attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
                 order:      [['date','ASC'],['time','ASC']],
