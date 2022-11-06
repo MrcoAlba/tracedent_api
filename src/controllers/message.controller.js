@@ -1,5 +1,6 @@
 const messageSchema             = require("../models/message")
 const { Op }                    = require('sequelize')
+const { containsOnlyNumbers }   = require('./utils')
 
 
 
