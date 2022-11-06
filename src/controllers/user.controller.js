@@ -4,8 +4,13 @@ const { Op } = require('sequelize')
 // READ     -> GET ALL USERS
 const getAllUsers = async (req, res) => {
     try {
-        const offset = req.query.offset
-        const limit = req.query.limit
+        var offset = req.query.offset
+        var limit = req.query.limit
+
+        if (typeof offset !== "number" || typeof limit !== "number"){
+            offset = null
+            limit = null
+        }
         
         const user = await usersSchema.findAndCountAll({
             attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
@@ -15,16 +20,20 @@ const getAllUsers = async (req, res) => {
             subQuery:false
         })
 
+        const data = user.rows
         const total = user.count
-        const count = user.rows.length
+        const count = data.length
 
         res.status(200).send({
             message:"OK",
-            data:user.rows,
+            data:data,
             meta:{total: total, count:count, offset: offset, limit: limit}
         })
     } catch (error) {
-        res.status(400).send({cod:0,response:error})
+        res.status(400).send({
+            message:"There was an error",
+            response:error
+        })
     }
 }
 // UPDATE   -> MODIFY THE SUBSCRIPTION TO TRUE BY ID
