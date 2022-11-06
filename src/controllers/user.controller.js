@@ -132,13 +132,14 @@ const loginMailPass = async (req, res) => {
                     pswd: password
         }})
         if (userInformation!=null){
-            // Send the response
+            // Send the response if the credentials are correct
             res.status(200).send({
                 message:"OK",
                 data:userInformation,
                 meta:{total: null, count:null, offset: null, limit: null}
             })
         }else{
+            // Send the response if the credentials are incorrect
             res.status(401).send({
                 message:"BAD CREDENTIALS",
                 data:userInformation,
@@ -184,19 +185,36 @@ const loginMailPass = async (req, res) => {
 // EMAIL CHECK -> RETURN 1 IF MAIL DOESN'T EXISTS
 const emailCheckForExistance = async (req, res) => {
     try {
+        // Get path parameters
         const mail = req.params.mail
-
-        const user = await usersSchema.findOne({
+        // Search if exists the email in our database
+        const mailExistance = await usersSchema.findOne({
             attributes:['id_user'],
             where:{
                 mail: mail
             }
         })
+        if (mailExistance!=null){
+            res.status(200).send({
+                message:"Does not exists",
+                data:mailExistance,
+                meta:{total: null, count:null, offset: null, limit: null}
+            })
+        }else{
+            res.status(200).send({
+                message:"Does exists",
+                data:mailExistance,
+                meta:{total: null, count:null, offset: null, limit: null}
+            })
+        }
         res.status(200).send({cod:1,response:user})
     } catch (error) {
-        // Due to a simple change in a values, if the return is 0, 
-        //it means that the value wasn't modified
-        res.status(500).send({cod:0,response:error})
+        // If there was an error, send a message and the error object
+        res.status(400).send({
+            message:"ERROR!",
+            data:error,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
     }
 }
 
