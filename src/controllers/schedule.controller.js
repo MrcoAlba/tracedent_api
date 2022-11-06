@@ -68,9 +68,6 @@ const getAllSchedulesByDentistId = async (req, res) => {
         // Request all the schedule information
         var schedules = null
         if (status==10){
-            console.log(5)
-            console.log(5)
-            console.log(5)
             schedules = await scheduleSchema.findAndCountAll({
                 attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
                 //order:      [['date','ASC'],['time','ASC']],
@@ -80,19 +77,19 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 include: [{
                     model: recruitmentSchema,
                     where: {
-                        id_clinic: {
-                            [Op.like]: '%'+id_clinic+'%'
-                        }
-                    },
+                        [Op.and]:(
+                            Op.where(
+                                Op.cast('schedule.id_clinic', 'text'),
+                                { like: '%'+id_clinic+'%' }
+                            )
+                        )
+                    }
                 },],
                 offset:     offset,
                 limit :     limit,
                 subQuery:   false
             })
         }else{
-            console.log(6)
-            console.log(6)
-            console.log(6)
             schedules = await scheduleSchema.findAndCountAll({
                 attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
                 order:      [['date','ASC'],['time','ASC']],
@@ -113,17 +110,11 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 subQuery:   false
             })
         }
-        console.log(7)
-        console.log(7)
-        console.log(7)
         // Get the data, total and count information
         const data = schedules.rows
         const total = schedules.count
         const count = data.length
         // Send the response
-        console.log(8)
-        console.log(8)
-        console.log(8)
         res.status(200).send({
             message:"OK",
             data:data,
