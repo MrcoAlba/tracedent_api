@@ -1,4 +1,11 @@
 const dentistSpecialitiesSchema = require('../models/dentistSpecialities')
+const { Op }                    = require('sequelize')
+const { containsOnlyNumbers }   = require('./utils')
+
+
+
+
+
 
 // READ     -> GET ALL DENTISTSPECIALITIES RELATIONS
 const getAllDentistSpecialitiesList = async (req, res) => {
