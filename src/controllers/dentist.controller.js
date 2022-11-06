@@ -66,21 +66,12 @@ const getAllDentists = async (req, res) => {
 const getDestistByIdAllSpecialities = async (req, res) => {
     try {
         // Get query parameters
-        console.log(1)
-        console.log(1)
-        console.log(1)
         var offset          = req.query.offset
         var limit           = req.query.limit
         var name            = String(req.query.name).toUpperCase()
         // Get path parameters
-        console.log(2)
-        console.log(2)
-        console.log(2)
         const id_dentist    = req.params.id
         // Validate if query parameters are valid
-        console.log(3)
-        console.log(3)
-        console.log(3)
         if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
             offset = null
             limit = null
@@ -89,11 +80,8 @@ const getDestistByIdAllSpecialities = async (req, res) => {
             name = ""
         }
         // Request all the specialities
-        console.log(4)
-        console.log(4)
-        console.log(4)
         const specialities = await dentistSpecialitiesSchema.findAndCountAll({
-            attributes: ['id_speciality','id_dentist'],
+            attributes: ['id_dentist_speciality','id_speciality','id_dentist'],
             include: [{
                 model: specialitySchema,
                 attributes: ['name'],
@@ -111,17 +99,11 @@ const getDestistByIdAllSpecialities = async (req, res) => {
             limit :     limit,
             subQuery:   false
         })
-        console.log(5)
-        console.log(5)
-        console.log(5)
         // Get the data, total and count information
         const data = specialities.rows
         const total = specialities.count
         const count = data.length
         // Send the response
-        console.log(6)
-        console.log(6)
-        console.log(6)
         res.status(200).send({
             message:"OK",
             data:data,
