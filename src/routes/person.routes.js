@@ -4,10 +4,9 @@ const {
     getAllPersons, patchPersonById
 }                   = require('../controllers/person.controller')
 
-// READ     -> GET ALL PERSONS
+// READ         -> GET ALL PERSONS
 router.get      ('/person'          ,   getAllPersons       )
-
-// UPDATE   -> UPDATE A PERSON BY ID
+// UPDATE       -> UPDATE A PERSON BY ID
 router.patch    ('/person/:id'      ,   patchPersonById     )
 
 

@@ -5,19 +5,19 @@ const {
 }                   = require('../controllers/clinic.controller')
 
 // READ         -> GET ALL CLINICS
-router.get      ('/clinic'          ,   getAllClinics       )
+router.get      ('/clinic'              ,   getAllClinics           )
 // READ         -> GET ALL RECRUITS BY CLINIC_ID
-router.get      ('/clinic/recruits/:id',     getAllRecruitsByIdClinic )
+router.get      ('/clinic/recruits/:id' ,   getAllRecruitsByIdClinic)
 // READ         -> GET ALL DENTISTS BY CLINIC_ID
-router.get      ('/clinic/dentists/:id',    getAllDentitsByIdClinic)
+router.get      ('/clinic/dentists/:id' ,   getAllDentitsByIdClinic )
 
 
 // CREATE       -> POST A NEW CLINIC
-router.post     ('/clinic'          ,   postClinic          )
+router.post     ('/clinic'              ,   postClinic              )
 // LOGIN        -> RETURN 1 IF LOGIN TRUE
-router.post     ('/clinic/login'    ,   loginIdUser         )
+router.post     ('/clinic/login'        ,   loginIdUser             )
 // CREATE       -> RECRUIT A DENTIST
-router.post     ('/clinic/recruit/:id'  ,    clinitRecruitDentist     )
+router.post     ('/clinic/recruit/:id'  ,   clinitRecruitDentist    )
 
 
 
