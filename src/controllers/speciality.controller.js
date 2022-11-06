@@ -1,4 +1,4 @@
-const specialitySchema = require('../models/speciality')
+const specialitySchema          = require('../models/speciality')
 const { Op }                    = require('sequelize')
 const { containsOnlyNumbers }   = require('./utils')
 
@@ -15,7 +15,7 @@ const getSpecialityList = async (req, res) => {
             limit = null
         }
         if (name=='UNDEFINED'){
-            name = null
+            name = ""
         }
         // Request all the specialities names
         const specialities = await specialitySchema.findAndCountAll({
