@@ -61,7 +61,35 @@ const getAllMessages = async (req, res) => {
         })
     }
 }
+// POST         -> CREATE A MESSAGE
+const createMessage = async (req, res) => {
+    try {
+        // Get body parameters
+        const from          = req.body.from
+        const destination   = req.body.destination
+        const message_text  = req.body.message_text
+        // Create the message
+        const message = await messageSchema.create({
+            message_text:   message_text,
+            id_from:        from,
+            id_destination: destination
+        })
+        // Send the response
+        res.status(200).send({
+            message:"OK",
+            data:message,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
+    } catch (error) {
+        // If there was an error, send a message and the error object
+        res.status(400).send({
+            message:"ERROR",
+            response:error,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
+    }
+}
 
 module.exports = {
-    getAllMessages
+    getAllMessages, createMessage
 }

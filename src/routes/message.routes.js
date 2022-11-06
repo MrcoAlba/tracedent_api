@@ -5,10 +5,9 @@ const {
 }                   = require('../controllers/message.controller')
 
 // READ         -> GET ALL MESSAGES
-router.patch      ('/message'              ,   getAllMessages           )
-
-
-
+router.patch    ('/message'              ,   getAllMessages           )
+// POST         -> CREATE A MESSAGE
+router.put      ('/message'              ,   getAllMessages           )
 
 
 
