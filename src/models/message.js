@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../database/database')
 
-const messageSchema = sequelize.define('message',{
+const messageSchema = sequelize.define('text_message',{
     id_message:{
         type:               DataTypes.UUID,
         primaryKey:         true,

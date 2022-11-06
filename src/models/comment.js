@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../database/database')
 
-const commentSchema = sequelize.define('comment',{
+const commentSchema = sequelize.define('commentary',{
     id_comment:{
         type:               DataTypes.UUID,
         primaryKey:         true,
