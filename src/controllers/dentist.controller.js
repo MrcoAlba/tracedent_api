@@ -92,7 +92,7 @@ const getDestistByIdAllSpecialities = async (req, res) => {
         console.log(4)
         console.log(4)
         console.log(4)
-        const specialities = await dentistSpecialitiesSchema.findAll({
+        const specialities = await dentistSpecialitiesSchema.findAndCountAll({
             attributes: ['id_speciality','id_dentist'],
             include: [{
                 model: specialitySchema,
