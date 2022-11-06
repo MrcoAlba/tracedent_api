@@ -26,16 +26,16 @@ const getAllMessages = async (req, res) => {
             attributes: ['id_message','message_text','sent_datetime','id_from','id_destination'],
             order: [['sent_datetime', 'ASC']],
             where: {
-                [Op.or]:{
-                    [Op.and]:{
+                $or:[
+                    {
                         id_from: from,
                         id_destination: destination
                     },
-                    [Op.and]:{
+                    {
                         id_from: destination,
                         id_destination: from
                     }
-                }
+                ]
             },
             offset:     offset,
             limit :     limit,
