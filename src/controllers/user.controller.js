@@ -131,22 +131,22 @@ const loginMailPass = async (req, res) => {
                     mail: mail,
                     pswd: password
         }})
+        // Send the response
         if (userInformation!=null){
-            // Send the response if the credentials are correct
+            // Send this if credentials are correct
             res.status(200).send({
                 message:"OK",
                 data:userInformation,
                 meta:{total: null, count:null, offset: null, limit: null}
             })
         }else{
-            // Send the response if the credentials are incorrect
+            // Send this if credentials are incorrect
             res.status(401).send({
                 message:"BAD CREDENTIALS",
                 data:userInformation,
                 meta:{total: null, count:null, offset: null, limit: null}
             })
         }
-        
     } catch (error) {
         // If there was an error, send a message and the error object
         res.status(400).send({
@@ -194,20 +194,22 @@ const emailCheckForExistance = async (req, res) => {
                 mail: mail
             }
         })
+        // Send the response
         if (mailExistance!=null){
-            res.status(200).send({
-                message:"Does not exists",
-                data:mailExistance,
-                meta:{total: null, count:null, offset: null, limit: null}
-            })
-        }else{
+            // Send this if email does exists
             res.status(200).send({
                 message:"Does exists",
                 data:mailExistance,
                 meta:{total: null, count:null, offset: null, limit: null}
             })
+        }else{
+            // Send this if email does not exists
+            res.status(200).send({
+                message:"Does not exists",
+                data:mailExistance,
+                meta:{total: null, count:null, offset: null, limit: null}
+            })
         }
-        res.status(200).send({cod:1,response:user})
     } catch (error) {
         // If there was an error, send a message and the error object
         res.status(400).send({
@@ -217,6 +219,23 @@ const emailCheckForExistance = async (req, res) => {
         })
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = { getAllUsers, patchUserSubById, loginMailPass, emailCheckForExistance }
 
