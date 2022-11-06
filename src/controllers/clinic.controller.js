@@ -88,14 +88,15 @@ const getAllRecruitsByIdClinic = async (req, res) => {
                         model: usersSchema,
                         attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
                     }],
+                    where: {
+                        first_name: {
+                            [Op.like]: '%'+name+'%'
+                        }
+                    },
                 }],
             }],
             where: {
                 id_clinic: id,
-                // TODO: Implement this
-                /*first_name: {
-                    [Op.like]: '%'+name+'%'
-                }*/
             },
             offset:     offset,
             limit :     limit,
@@ -238,49 +239,63 @@ const postClinic = async (req, res) => {
         })
     }
 }
-
-
-// TODO: FINISH THIS 2
-
 // LOGIN   -> RETURN 1 AND THE CLINIC OBJECT... REMEMBER THAT THE USERS ROUTE IS GONNA MAKE THE LOGIN LOGIC
 const loginIdUser = async (req, res) => {
     try {
-        // GET BODY
-        const {
-            id_user
-        } = req.body
-
+        // Get body parameters
+        const id_user       = req.body.id_user
+        // Find the required clinic and return the data
         const clinic = await clinicSchema.findOne({
             attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
+            include: [{
+                model: usersSchema,
+                attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+            },],
             where: {
                 id_user: id_user
             }
         })
-
-        res.status(200).send({ cod: 1, response: clinic })
+        // Send the response
+        res.status(200).send({
+            message:"OK",
+            data:clinic,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
     } catch (error) {
-        // Due to a simple change in a values, if the return is 0, 
-        //it means that the value wasn't modified
-        res.status(500).send({ cod: 0, response: null })
+        // If there was an error, send a message and the error object
+        res.status(400).send({
+            message:"ERROR",
+            response:error,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
     }
 }
 // ADD      -> RECRUIT A DENTIST
-const recruitDentist = async (req, res) => {
+const clinitRecruitDentist = async (req, res) => {
     try {
-        // GET BODY
-        const {
-            id_clinic, id_dentist
-        } = req.body
-
+        // Get body parameters
+        const id_dentist    = req.body.id_dentist
+        // Get path parameters
+        const id_clinic     = req.params.id
+        // Create a recruitment
         const recruitment = await recruitmentSchema.create({
             id_clinic: id_clinic, id_dentist: id_dentist
         })
-
-        res.status(200).send({ cod: 1, response: recruitment })
+        // Send the response
+        res.status(200).send({
+            message:"OK",
+            data:recruitment,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
     } catch (error) {
-        res.status(500).send({ cod: 0, response: error })
+        // If there was an error, send a message and the error object
+        res.status(400).send({
+            message:"ERROR",
+            response:error,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
     }
 }
 
 
-module.exports = { getAllClinics, getAllRecruitsByIdClinic, getAllDentitsByIdClinic, postClinic, loginIdUser, recruitDentist }
+module.exports = { getAllClinics, getAllRecruitsByIdClinic, getAllDentitsByIdClinic, postClinic, loginIdUser, clinitRecruitDentist }

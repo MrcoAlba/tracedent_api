@@ -1,7 +1,7 @@
 const { Router }    = require('express')
 const router        = Router()
 const { 
-    getAllClinics, getAllRecruitsByIdClinic, getAllDentitsByIdClinic, postClinic, loginIdUser, recruitDentist
+    getAllClinics, getAllRecruitsByIdClinic, getAllDentitsByIdClinic, postClinic, loginIdUser, clinitRecruitDentist
 }                   = require('../controllers/clinic.controller')
 
 // READ         -> GET ALL CLINICS
@@ -17,7 +17,7 @@ router.post     ('/clinic'          ,   postClinic          )
 // LOGIN        -> RETURN 1 IF LOGIN TRUE
 router.post     ('/clinic/login'    ,   loginIdUser         )
 // CREATE       -> RECRUIT A DENTIST
-router.post     ('/clinic/recruit'  ,    recruitDentist     )
+router.post     ('/clinic/recruit/:id'  ,    clinitRecruitDentist     )
 
 
 
