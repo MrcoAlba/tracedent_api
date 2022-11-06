@@ -7,7 +7,7 @@ const getAllUsers = async (req, res) => {
         var offset = req.query.offset
         var limit = req.query.limit
 
-        if (typeof offset !== "number" || typeof limit !== "number"){
+        if (containsOnlyNumbers(offset) || containsOnlyNumbers("number")){
             offset = null
             limit = null
         }
@@ -110,3 +110,7 @@ module.exports = { getAllUsers, patchUserSubById, loginMailPass, emailCheckForEx
 RESPONSE FORMAT:
 
 */
+function containsOnlyNumbers(str) {
+    return /^\d+$/.test(str);
+  }
+  
