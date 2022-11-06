@@ -41,6 +41,62 @@ const getAllSchedules = async (req, res) => {
         })
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //READ      -> GET ALL SCHEDULES BY DENTIST ID (ALSO STATUS AND CLINIC ID)
 const getAllSchedulesByDentistId = async (req, res) => {
     try {
@@ -82,14 +138,14 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 },
                 include: [{
                     model: recruitmentSchema,
-                    // where: {
-                    //     [Op.and]:(
-                    //         Op.where(
-                    //             Op.cast('schedule.id_clinic', 'text'),
-                    //             { like: '%'+id_clinic+'%' }
-                    //         )
-                    //     )
-                    // }
+                    where: {
+                        [Op.and]:(
+                            Op.where(
+                                Op.cast('schedule.id_clinic', 'varchar'),
+                                { like: '%'+id_clinic+'%' }
+                            )
+                        )
+                    }
                 },],
                 offset:     offset,
                 limit :     limit,
@@ -138,6 +194,58 @@ const getAllSchedulesByDentistId = async (req, res) => {
         })
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // CREATE   -> CREATE AN SCHEDULE BY DENTIST ID
 const createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
     try {
