@@ -132,7 +132,7 @@ const getAllSchedulesByDentistId = async (req, res) => {
             console.log("1")
             schedules = await scheduleSchema.findAndCountAll({
                 attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
-                //order:      [['date','ASC'],['time','ASC']],
+                order:      [['date','ASC'],['time','ASC']],
                 where: {
                     id_dentist: id_dentist,
                 },
