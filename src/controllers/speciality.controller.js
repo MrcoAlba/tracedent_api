@@ -14,6 +14,9 @@ const getSpecialityList = async (req, res) => {
             offset = null
             limit = null
         }
+        if (name=='UNDEFINED'){
+            name = null
+        }
         // Request all the specialities names
         const specialities = await specialitySchema.findAndCountAll({
             attributes: ['id_speciality','name'],
