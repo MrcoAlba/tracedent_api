@@ -63,6 +63,7 @@ const getAllSchedulesByDentistId = async (req, res) => {
         }else if (status < 0 && status > 9){
             status = 10
         }
+        status = Int(status)
         // Request all the schedule information
         var schedules
         if (status==10){
