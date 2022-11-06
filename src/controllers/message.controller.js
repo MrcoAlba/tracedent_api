@@ -1,6 +1,5 @@
 const messageSchema             = require("../models/message")
 const { Op }                    = require('sequelize')
-const { containsOnlyNumbers }   = require('./utils')
 
 
 
@@ -26,14 +25,20 @@ const getAllMessages = async (req, res) => {
             attributes: ['id_message','message_text','sent_datetime','id_from','id_destination'],
             order: [['sent_datetime', 'ASC']],
             where: {
-                $or:[
+                [Op.or]:[
                     {
-                        id_from: from,
-                        id_destination: destination
+                        [Op.and]:[{
+                            id_from: from,
+                        },{
+                            id_destination: destination
+                        }]
                     },
                     {
-                        id_from: destination,
-                        id_destination: from
+                        [Op.and]:[{
+                            id_from: destination,
+                        },{
+                            id_destination: from
+                        }]
                     }
                 ]
             },
