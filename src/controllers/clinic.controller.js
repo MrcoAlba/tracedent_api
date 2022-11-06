@@ -26,6 +26,8 @@ const getAllClinics = async (req, res) => {
         const clinics = await clinicSchema.findAndCountAll({
             attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
             order: [['company_name', 'ASC']],
+            // TODO: DON'T FORGET THIS
+            /*
             include: [{
                 model: usersSchema,
                 attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
@@ -35,10 +37,18 @@ const getAllClinics = async (req, res) => {
                     [Op.like]: '%'+name+'%'
                 }
             },
+            */
             offset:     offset,
             limit :     limit,
             subQuery:   false
         })
+        console.log("testing")
+        console.log("testing")
+        console.log("testing")
+        console.log(clinics)
+        console.log("testing")
+        console.log("testing")
+        console.log("testing")
         // Get the data, total and count information
         const data = clinics.rows
         const total = clinics.count
