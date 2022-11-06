@@ -1,6 +1,11 @@
 const patientSchema = require('../models/patient')
 const personSchema = require('../models/person')
 const usersSchema = require('../models/user')
+const { containsOnlyNumbers }   = require('./utils')
+
+
+
+
 
 // READ     -> GET ALL PATIENTS
 const getAllPatients = async (req, res) => {

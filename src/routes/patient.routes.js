@@ -7,9 +7,9 @@ const {
 // READ         -> GET ALL PATIENTS
 router.get      ('/patient'             ,   getAllPatients          )
 // CREATE       -> POST A NEW PATIENT
-router.post     ('/patient'         ,   postPatient         )
+router.post     ('/patient'             ,   postPatient             )
 // LOGIN        -> RETURN THE PATIENT DATA
-router.post     ('/patient/login'   ,   loginIdUser       )
+router.post     ('/patient/login'       ,   loginIdUser             )
 
 
 
