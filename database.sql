@@ -177,40 +177,38 @@ VALUES
 
 
 
-{"mail":"c10000@ma.co","pswd":"123456","phone_number":900000000,"district":"distrito00","direction":"direccion00","latitude":-12.00,"longitude":-77.00,"company_name":"COMPANYNAME00","ruc":80000000000}
-{"mail":"c10001@ma.co","pswd":"123456","phone_number":900000001,"district":"distrito01","direction":"direccion01","latitude":-12.01,"longitude":-77.01,"company_name":"COMPANYNAME01","ruc":80000000001}
-{"mail":"c10002@ma.co","pswd":"123456","phone_number":900000002,"district":"distrito02","direction":"direccion02","latitude":-12.02,"longitude":-77.02,"company_name":"COMPANYNAME02","ruc":80000000002}
-{"mail":"c10003@ma.co","pswd":"123456","phone_number":900000003,"district":"distrito03","direction":"direccion03","latitude":-12.03,"longitude":-77.03,"company_name":"COMPANYNAME03","ruc":80000000003}
-{"mail":"c10004@ma.co","pswd":"123456","phone_number":900000004,"district":"distrito04","direction":"direccion04","latitude":-12.04,"longitude":-77.04,"company_name":"COMPANYNAME04","ruc":80000000004}
-{"mail":"c10005@ma.co","pswd":"123456","phone_number":900000005,"district":"distrito05","direction":"direccion05","latitude":-12.05,"longitude":-77.05,"company_name":"COMPANYNAME05","ruc":80000000005}
-{"mail":"c10006@ma.co","pswd":"123456","phone_number":900000006,"district":"distrito06","direction":"direccion06","latitude":-12.06,"longitude":-77.06,"company_name":"COMPANYNAME06","ruc":80000000006}
-{"mail":"c10007@ma.co","pswd":"123456","phone_number":900000007,"district":"distrito07","direction":"direccion07","latitude":-12.07,"longitude":-77.07,"company_name":"COMPANYNAME07","ruc":80000000007}
-{"mail":"c10008@ma.co","pswd":"123456","phone_number":900000008,"district":"distrito08","direction":"direccion08","latitude":-12.08,"longitude":-77.08,"company_name":"COMPANYNAME08","ruc":80000000008}
-{"mail":"c10009@ma.co","pswd":"123456","phone_number":900000009,"district":"distrito09","direction":"direccion09","latitude":-12.09,"longitude":-77.09,"company_name":"COMPANYNAME09","ruc":80000000009}
+{"mail":"c0@ma.co","pswd":"123456","phone_number":900000010,"district":"dstrto0","direction":"direcc0","latitude":-12.00,"longitude":-77.00,"company_name":"nombre clinica 0","ruc":20000000010}
+{"mail":"c1@ma.co","pswd":"123456","phone_number":900000011,"district":"dstrto1","direction":"direcc1","latitude":-12.01,"longitude":-77.01,"company_name":"nombre clinica 1","ruc":20000000011}
+{"mail":"c2@ma.co","pswd":"123456","phone_number":900000012,"district":"dstrto2","direction":"direcc2","latitude":-12.02,"longitude":-77.02,"company_name":"nombre clinica 2","ruc":20000000012}
+{"mail":"c3@ma.co","pswd":"123456","phone_number":900000013,"district":"dstrto3","direction":"direcc3","latitude":-12.03,"longitude":-77.03,"company_name":"nombre clinica 3","ruc":20000000013}
+{"mail":"c4@ma.co","pswd":"123456","phone_number":900000014,"district":"dstrto4","direction":"direcc4","latitude":-12.04,"longitude":-77.04,"company_name":"nombre clinica 4","ruc":20000000014}
+{"mail":"c5@ma.co","pswd":"123456","phone_number":900000015,"district":"dstrto5","direction":"direcc5","latitude":-12.05,"longitude":-77.05,"company_name":"nombre clinica 5","ruc":20000000015}
+{"mail":"c6@ma.co","pswd":"123456","phone_number":900000016,"district":"dstrto6","direction":"direcc6","latitude":-12.06,"longitude":-77.06,"company_name":"nombre clinica 6","ruc":20000000016}
+{"mail":"c7@ma.co","pswd":"123456","phone_number":900000017,"district":"dstrto7","direction":"direcc7","latitude":-12.07,"longitude":-77.07,"company_name":"nombre clinica 7","ruc":20000000017}
+{"mail":"c8@ma.co","pswd":"123456","phone_number":900000018,"district":"dstrto8","direction":"direcc8","latitude":-12.08,"longitude":-77.08,"company_name":"nombre clinica 8","ruc":20000000018}
+{"mail":"c9@ma.co","pswd":"123456","phone_number":900000019,"district":"dstrto9","direction":"direcc9","latitude":-12.09,"longitude":-77.09,"company_name":"nombre clinica 9","ruc":20000000019}
 
+{"mail":"d0@ma.co","pswd":"123456","phone_number":900000020,"district":"dstrto0","direction":"direcc0","latitude":-12.10,"longitude":-77.10,"first_name":"nombre 00","last_name":"apellido 09","gender":"male","dni":80000020,"ruc":10000000020}
+{"mail":"d1@ma.co","pswd":"123456","phone_number":900000021,"district":"dstrto1","direction":"direcc1","latitude":-12.11,"longitude":-77.11,"first_name":"nombre 01","last_name":"apellido 08","gender":"male","dni":80000021,"ruc":10000000021}
+{"mail":"d2@ma.co","pswd":"123456","phone_number":900000022,"district":"dstrto2","direction":"direcc2","latitude":-12.12,"longitude":-77.12,"first_name":"nombre 02","last_name":"apellido 07","gender":"male","dni":80000022,"ruc":10000000022}
+{"mail":"d3@ma.co","pswd":"123456","phone_number":900000023,"district":"dstrto3","direction":"direcc3","latitude":-12.13,"longitude":-77.13,"first_name":"nombre 03","last_name":"apellido 06","gender":"male","dni":80000023,"ruc":10000000023}
+{"mail":"d4@ma.co","pswd":"123456","phone_number":900000024,"district":"dstrto4","direction":"direcc4","latitude":-12.14,"longitude":-77.14,"first_name":"nombre 04","last_name":"apellido 05","gender":"male","dni":80000024,"ruc":10000000024}
+{"mail":"d5@ma.co","pswd":"123456","phone_number":900000025,"district":"dstrto5","direction":"direcc5","latitude":-12.15,"longitude":-77.15,"first_name":"nombre 05","last_name":"apellido 04","gender":"male","dni":80000025,"ruc":10000000025}
+{"mail":"d6@ma.co","pswd":"123456","phone_number":900000026,"district":"dstrto6","direction":"direcc6","latitude":-12.16,"longitude":-77.16,"first_name":"nombre 06","last_name":"apellido 03","gender":"male","dni":80000026,"ruc":10000000026}
+{"mail":"d7@ma.co","pswd":"123456","phone_number":900000027,"district":"dstrto7","direction":"direcc7","latitude":-12.17,"longitude":-77.17,"first_name":"nombre 07","last_name":"apellido 02","gender":"male","dni":80000027,"ruc":10000000027}
+{"mail":"d8@ma.co","pswd":"123456","phone_number":900000028,"district":"dstrto8","direction":"direcc8","latitude":-12.18,"longitude":-77.18,"first_name":"nombre 08","last_name":"apellido 01","gender":"male","dni":80000028,"ruc":10000000028}
+{"mail":"d9@ma.co","pswd":"123456","phone_number":900000029,"district":"dstrto9","direction":"direcc9","latitude":-12.19,"longitude":-77.19,"first_name":"nombre 09","last_name":"apellido 00","gender":"male","dni":80000029,"ruc":10000000029}
 
-{"mail":"d20000@ma.co","pswd":"123456","phone_number":900000010,"district":"distrito00","direction":"direccion00","latitude":-12.10,"longitude":-77.10,"first_name":"NOMBRE00","last_name":"APELLIDO09","gender":"male","dni":80000000,"ruc":80000000010}
-{"mail":"d20001@ma.co","pswd":"123456","phone_number":900000011,"district":"distrito01","direction":"direccion01","latitude":-12.11,"longitude":-77.11,"first_name":"NOMBRE01","last_name":"APELLIDO08","gender":"male","dni":80000001,"ruc":80000000011}
-{"mail":"d20002@ma.co","pswd":"123456","phone_number":900000012,"district":"distrito02","direction":"direccion02","latitude":-12.12,"longitude":-77.12,"first_name":"NOMBRE02","last_name":"APELLIDO07","gender":"none","dni":80000002,"ruc":80000000012}
-{"mail":"d20003@ma.co","pswd":"123456","phone_number":900000013,"district":"distrito03","direction":"direccion03","latitude":-12.13,"longitude":-77.13,"first_name":"NOMBRE03","last_name":"APELLIDO06","gender":"male","dni":80000003,"ruc":80000000013}
-{"mail":"d20004@ma.co","pswd":"123456","phone_number":900000014,"district":"distrito04","direction":"direccion04","latitude":-12.14,"longitude":-77.14,"first_name":"NOMBRE04","last_name":"APELLIDO05","gender":"male","dni":80000004,"ruc":80000000014}
-{"mail":"d20005@ma.co","pswd":"123456","phone_number":900000015,"district":"distrito05","direction":"direccion05","latitude":-12.15,"longitude":-77.15,"first_name":"NOMBRE05","last_name":"APELLIDO04","gender":"male","dni":80000005,"ruc":80000000015}
-{"mail":"d20006@ma.co","pswd":"123456","phone_number":900000016,"district":"distrito06","direction":"direccion06","latitude":-12.16,"longitude":-77.16,"first_name":"NOMBRE06","last_name":"APELLIDO03","gender":"male","dni":80000006,"ruc":80000000016}
-{"mail":"d20007@ma.co","pswd":"123456","phone_number":900000017,"district":"distrito07","direction":"direccion07","latitude":-12.17,"longitude":-77.17,"first_name":"NOMBRE07","last_name":"APELLIDO02","gender":"male","dni":80000007,"ruc":80000000017}
-{"mail":"d20008@ma.co","pswd":"123456","phone_number":900000018,"district":"distrito08","direction":"direccion08","latitude":-12.18,"longitude":-77.18,"first_name":"NOMBRE08","last_name":"APELLIDO01","gender":"male","dni":80000008,"ruc":80000000018}
-{"mail":"d20009@ma.co","pswd":"123456","phone_number":900000019,"district":"distrito09","direction":"direccion09","latitude":-12.19,"longitude":-77.19,"first_name":"NOMBRE09","last_name":"APELLIDO00","gender":"male","dni":80000009,"ruc":80000000019}
-
-
-{"mail":"p30000@ma.co","pswd":"123456","phone_number":900000020,"district":"distrito00","direction":"direccion00","latitude":-12.20,"longitude":-77.20,"first_name":"NOMBRE10","last_name":"APELLIDO19","gender":"female","dni":80000010}
-{"mail":"p30001@ma.co","pswd":"123456","phone_number":900000021,"district":"distrito01","direction":"direccion01","latitude":-12.21,"longitude":-77.21,"first_name":"NOMBRE11","last_name":"APELLIDO18","gender":"female","dni":80000011}
-{"mail":"p30002@ma.co","pswd":"123456","phone_number":900000022,"district":"distrito02","direction":"direccion02","latitude":-12.22,"longitude":-77.22,"first_name":"NOMBRE12","last_name":"APELLIDO17","gender":"female","dni":80000012}
-{"mail":"p30003@ma.co","pswd":"123456","phone_number":900000023,"district":"distrito03","direction":"direccion03","latitude":-12.23,"longitude":-77.23,"first_name":"NOMBRE13","last_name":"APELLIDO16","gender":"female","dni":80000013}
-{"mail":"p30004@ma.co","pswd":"123456","phone_number":900000024,"district":"distrito04","direction":"direccion04","latitude":-12.24,"longitude":-77.24,"first_name":"NOMBRE14","last_name":"APELLIDO15","gender":"female","dni":80000014}
-{"mail":"p30005@ma.co","pswd":"123456","phone_number":900000025,"district":"distrito05","direction":"direccion05","latitude":-12.25,"longitude":-77.25,"first_name":"NOMBRE15","last_name":"APELLIDO14","gender":"female","dni":80000015}
-{"mail":"p30006@ma.co","pswd":"123456","phone_number":900000026,"district":"distrito06","direction":"direccion06","latitude":-12.26,"longitude":-77.26,"first_name":"NOMBRE16","last_name":"APELLIDO13","gender":"female","dni":80000016}
-{"mail":"p30007@ma.co","pswd":"123456","phone_number":900000027,"district":"distrito07","direction":"direccion07","latitude":-12.27,"longitude":-77.27,"first_name":"NOMBRE17","last_name":"APELLIDO12","gender":"female","dni":80000017}
-{"mail":"p30008@ma.co","pswd":"123456","phone_number":900000028,"district":"distrito08","direction":"direccion08","latitude":-12.28,"longitude":-77.28,"first_name":"NOMBRE18","last_name":"APELLIDO11","gender":"female","dni":80000018}
-{"mail":"p30009@ma.co","pswd":"123456","phone_number":900000029,"district":"distrito09","direction":"direccion09","latitude":-12.29,"longitude":-77.29,"first_name":"NOMBRE19","last_name":"APELLIDO10","gender":"female","dni":80000019}
+{"mail":"p0@ma.co","pswd":"123456","phone_number":900000030,"district":"dstrto0","direction":"direcc0","latitude":-12.20,"longitude":-77.20,"first_name":"nombre 10","last_name":"apellido 19","gender":"female","dni":80000030}
+{"mail":"p1@ma.co","pswd":"123456","phone_number":900000031,"district":"dstrto1","direction":"direcc1","latitude":-12.21,"longitude":-77.21,"first_name":"nombre 11","last_name":"apellido 18","gender":"female","dni":80000031}
+{"mail":"p2@ma.co","pswd":"123456","phone_number":900000032,"district":"dstrto2","direction":"direcc2","latitude":-12.22,"longitude":-77.22,"first_name":"nombre 12","last_name":"apellido 17","gender":"female","dni":80000032}
+{"mail":"p3@ma.co","pswd":"123456","phone_number":900000033,"district":"dstrto3","direction":"direcc3","latitude":-12.23,"longitude":-77.23,"first_name":"nombre 13","last_name":"apellido 16","gender":"female","dni":80000033}
+{"mail":"p4@ma.co","pswd":"123456","phone_number":900000034,"district":"dstrto4","direction":"direcc4","latitude":-12.24,"longitude":-77.24,"first_name":"nombre 14","last_name":"apellido 15","gender":"female","dni":80000034}
+{"mail":"p5@ma.co","pswd":"123456","phone_number":900000035,"district":"dstrto5","direction":"direcc5","latitude":-12.25,"longitude":-77.25,"first_name":"nombre 15","last_name":"apellido 14","gender":"female","dni":80000035}
+{"mail":"p6@ma.co","pswd":"123456","phone_number":900000036,"district":"dstrto6","direction":"direcc6","latitude":-12.26,"longitude":-77.26,"first_name":"nombre 16","last_name":"apellido 13","gender":"female","dni":80000036}
+{"mail":"p7@ma.co","pswd":"123456","phone_number":900000037,"district":"dstrto7","direction":"direcc7","latitude":-12.27,"longitude":-77.27,"first_name":"nombre 17","last_name":"apellido 12","gender":"female","dni":80000037}
+{"mail":"p8@ma.co","pswd":"123456","phone_number":900000038,"district":"dstrto8","direction":"direcc8","latitude":-12.28,"longitude":-77.28,"first_name":"nombre 18","last_name":"apellido 11","gender":"female","dni":80000038}
+{"mail":"p9@ma.co","pswd":"123456","phone_number":900000039,"district":"dstrto9","direction":"direcc9","latitude":-12.29,"longitude":-77.29,"first_name":"nombre 19","last_name":"apellido 10","gender":"female","dni":80000039}
 
 
 {"id_clinic":"", "id_dentist":""}
