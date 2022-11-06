@@ -7,6 +7,7 @@ const getSpecialityList = async (req, res) => {
         // Get query parameters
         var offset  = req.query.offset
         var limit   = req.query.limit
+        var name    = String(req.query.name).toUpperCase()
         // Validate if query parameters are valid
         if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
             offset = null
@@ -16,6 +17,11 @@ const getSpecialityList = async (req, res) => {
         const specialities = await specialitySchema.findAndCountAll({
             attributes: ['id_speciality','name'],
             order:      [['name','ASC']],
+            where: {
+                name: {
+                    [Op.like]: '%'+name+'%'
+                }
+            },
             offset:     offset,
             limit :     limit,
             subQuery:   false
@@ -43,7 +49,7 @@ const getSpecialityList = async (req, res) => {
 const postSpeciality = async (req, res) => {
     try {
         // Get body parameters
-        const name      = req.body.name
+        const name      = String(req.body.name).toUpperCase()
         // Create a speciality
         const speciality = await specialitySchema.create({
             name:name
