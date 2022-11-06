@@ -50,7 +50,7 @@ scheduleSchema.belongsTo(specialitySchema,{
     foreignKey: {
         type:           DataTypes.UUID,
         name:           'id_speciality',
-        allowNull:      false
+        allowNull:      true
     },
     targetId: 'id_speciality'
 })
