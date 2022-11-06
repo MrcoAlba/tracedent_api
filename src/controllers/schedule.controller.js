@@ -40,63 +40,23 @@ const getAllSchedules = async (req, res) => {
         })
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//READ      -> GET ALL SCHEDULES
+//READ      -> GET ALL SCHEDULES BY DENTIST ID (ALSO STATUS AND CLINIC ID)
 const getAllSchedulesByDentistId = async (req, res) => {
     try {
         // Get query parameters
         var offset          = req.query.offset
         var limit           = req.query.limit
         var status          = req.query.status 
+        var id_clinic       = req.query.id_clinic
         // Get path parameters
         const id_dentist    = req.params.id
         // Validate if query parameters are valid
         if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
             offset = null
             limit = null
+        }
+        if (id_clinic==null){
+            id_clinic=''
         }
         if (!containsOnlyNumbers(status)){
             status = 10
@@ -111,6 +71,9 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 order:      [['date','ASC'],['time','ASC']],
                 where: {
                     id_dentist: id_dentist,
+                    id_clinic: {
+                        [Op.like]: '%'+id_clinic+'%'
+                    },
                     sttus: status
                 },
                 offset:     offset,
@@ -122,7 +85,10 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
                 order:      [['date','ASC'],['time','ASC']],
                 where: {
-                    id_dentist: id_dentist
+                    id_dentist: id_dentist,
+                    id_clinic: {
+                        [Op.like]: '%'+id_clinic+'%'
+                    },
                 },
                 offset:     offset,
                 limit :     limit,
@@ -166,80 +132,58 @@ const getAllSchedulesByDentistId = async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//READ      -> GET ALL SCHEDULES BY DENTIST ID AND CLINIC
-const getAllSchedulesByDentistIdAndClinicId = async (req, res) => {
-    try {
-        const id_dentist = req.query.id_dentist
-        const id_clinic = req.query.id_clinic
-
-        const schedules = await scheduleSchema.findAll({
-
-            where:{
-                id_dentist:id
-            }
-        })
-        res.status(200).send(schedules)
-    } catch (error) {
-        res.status(400).send(error)
-    }
-}
 // CREATE   -> CREATE AN SCHEDULE BY DENTIST ID
 const createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
     try {
+        // Get body parameters
+        var {
+            id_clinic, id_recruitment,
+        } = req.body
         const {
-            id_dentist, id_clinic, id_recruitment, date, time
+            id_dentist, date, time
         } = req.body
 
+        console.log("TESTING")
+        console.log("TESTING")
+        console.log("TESTING")
+        console.log(id_clinic)
+        console.log(id_recruitment)
+        console.log("TESTING")
+        console.log("TESTING")
+        console.log("TESTING")
+        console.log(id_dentist)
+        console.log(date)
+        console.log(time)
+        console.log("TESTING")
+        console.log("TESTING")
+        console.log("TESTING")
+
+        // Create a schedule
         const schedules = await scheduleSchema.create({
-            id_dentist:id_dentist, id_clinic:id_clinic, id_recruitment:id_recruitment, date:date, time:time
+            id_dentist:     id_dentist      , 
+            id_clinic:      id_clinic       , 
+            id_recruitment: id_recruitment  , 
+            date:           date            , 
+            time:           time
         })
 
-        res.status(200).send(schedules)
+        // Send the response
+        res.status(200).send({
+            message:"OK",
+            data:schedules,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
     } catch (error) {
-        res.status(400).send(error)
+        // If there was an error, send a message and the error object
+        res.status(400).send({
+            message:"ERROR",
+            response:error,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
     }
 }
 
 
 
 
-module.exports = { getAllSchedules, getAllSchedulesByDentistId, getAllSchedulesByDentistIdAndClinicId, createAnScheduleForDentitstByIdAndClinicId }
+module.exports = { getAllSchedules, getAllSchedulesByDentistId, createAnScheduleForDentitstByIdAndClinicId }
