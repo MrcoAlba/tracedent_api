@@ -5,7 +5,7 @@ const {
 }                   = require('../controllers/comment.controller')
 
 // READ         -> GET ALL COMMENTS
-router.get      ('/commment'            ,   getCommentList          )
+router.get      ('/comment'            ,   getCommentList          )
 
 
 
