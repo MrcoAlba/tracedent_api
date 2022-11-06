@@ -7,6 +7,13 @@ const getAllUsers = async (req, res) => {
         var offset = req.query.offset
         var limit = req.query.limit
 
+        console.log("TESTING")
+        console.log(typeof offset)
+        console.log(containsOnlyNumbers(offset))
+        console.log("TESTING")
+        console.log(typeof limit)
+        console.log(containsOnlyNumbers(limit))
+        console.log("TESTING")
         if (containsOnlyNumbers(offset) || containsOnlyNumbers(limit)){
             offset = null
             limit = null
@@ -14,10 +21,10 @@ const getAllUsers = async (req, res) => {
         
         const user = await usersSchema.findAndCountAll({
             attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
-            order:[['id_user','ASC']],
-            offset:(offset),
-            limit : limit,
-            subQuery:false
+            order:      [['id_user','ASC']],
+            offset:     offset,
+            limit :     limit,
+            subQuery:   false
         })
 
         const data = user.rows
