@@ -1,6 +1,6 @@
-const personSchema = require('../models/person')
-const usersSchema = require('../models/user')
-const { Op } = require('sequelize')
+const personSchema              = require('../models/person')
+const usersSchema               = require('../models/user')
+const { Op }                    = require('sequelize')
 const { containsOnlyNumbers }   = require('./utils')
 
 
