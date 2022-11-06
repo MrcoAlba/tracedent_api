@@ -1,16 +1,16 @@
 const { Router }    = require('express')
 const router        = Router()
 const { 
-    postPatient, getAllPatients, loginIdUser
+    getAllPatients, postPatient, loginIdUser
 }                   = require('../controllers/patient.controller')
 
-// READ     -> GET ALL PATIENTS
-router.get      ('/patient'         ,   getAllPatients      )
-
-// CREATE   -> POST A NEW PATIENT
+// READ         -> GET ALL PATIENTS
+router.get      ('/patient'             ,   getAllPatients          )
+// CREATE       -> POST A NEW PATIENT
 router.post     ('/patient'         ,   postPatient         )
-// LOGIN   -> RETURN 1 IF LOGIN TRUE
+// LOGIN        -> RETURN THE PATIENT DATA
 router.post     ('/patient/login'   ,   loginIdUser       )
+
 
 
 

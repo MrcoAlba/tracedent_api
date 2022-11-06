@@ -239,7 +239,7 @@ const postClinic = async (req, res) => {
         })
     }
 }
-// LOGIN   -> RETURN 1 AND THE CLINIC OBJECT... REMEMBER THAT THE USERS ROUTE IS GONNA MAKE THE LOGIN LOGIC
+// LOGIN   -> RETURN THE CLINIC DATA
 const loginIdUser = async (req, res) => {
     try {
         // Get body parameters
@@ -249,11 +249,11 @@ const loginIdUser = async (req, res) => {
             attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
             include: [{
                 model: usersSchema,
-                attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
-            },],
-            where: {
-                id_user: id_user
-            }
+                attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
+                where: {
+                    id_user: id_user
+                }
+            },]
         })
         // Send the response
         res.status(200).send({

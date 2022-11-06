@@ -14,7 +14,7 @@ router.get      ('/clinic/dentists/:id' ,   getAllDentitsByIdClinic )
 
 // CREATE       -> POST A NEW CLINIC
 router.post     ('/clinic'              ,   postClinic              )
-// LOGIN        -> RETURN 1 IF LOGIN TRUE
+// LOGIN        -> RETURN THE CLINIC DATA
 router.post     ('/clinic/login'        ,   loginIdUser             )
 // CREATE       -> RECRUIT A DENTIST
 router.post     ('/clinic/recruit/:id'  ,   clinitRecruitDentist    )
