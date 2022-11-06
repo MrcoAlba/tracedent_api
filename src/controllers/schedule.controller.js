@@ -88,11 +88,11 @@ const getAllSchedules = async (req, res) => {
 const getAllSchedulesByDentistId = async (req, res) => {
     try {
         // Get query parameters
-        var offset  = req.query.offset
-        var limit   = req.query.limit
-        var status  = req.query.status 
+        var offset          = req.query.offset
+        var limit           = req.query.limit
+        var status          = req.query.status 
         // Get path parameters
-        const id    = req.params.id
+        const id_dentist    = req.params.id
         // Validate if query parameters are valid
         if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
             offset = null
@@ -110,6 +110,7 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
                 order:      [['date','ASC'],['time','ASC']],
                 where: {
+                    id_dentist: id_dentist,
                     sttus: status
                 },
                 offset:     offset,
@@ -120,6 +121,9 @@ const getAllSchedulesByDentistId = async (req, res) => {
             schedules = await scheduleSchema.findAndCountAll({
                 attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
                 order:      [['date','ASC'],['time','ASC']],
+                where: {
+                    id_dentist: id_dentist
+                },
                 offset:     offset,
                 limit :     limit,
                 subQuery:   false
