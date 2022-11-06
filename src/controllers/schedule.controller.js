@@ -43,6 +43,9 @@ const getAllSchedules = async (req, res) => {
 //READ      -> GET ALL SCHEDULES BY DENTIST ID (ALSO STATUS AND CLINIC ID)
 const getAllSchedulesByDentistId = async (req, res) => {
     try {
+        console.log(1)
+        console.log(1)
+        console.log(1)
         // Get query parameters
         var offset          = req.query.offset
         var limit           = req.query.limit
@@ -51,6 +54,9 @@ const getAllSchedulesByDentistId = async (req, res) => {
         // Get path parameters
         const id_dentist    = req.params.id
         // Validate if query parameters are valid
+        console.log(2)
+        console.log(2)
+        console.log(2)
         if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
             offset = null
             limit = null
@@ -63,10 +69,19 @@ const getAllSchedulesByDentistId = async (req, res) => {
         }else if (status < 0 && status > 9){
             status = 10
         }
+        console.log(3)
+        console.log(3)
+        console.log(3)
         status = Int(status)
         // Request all the schedule information
-        var schedules
+        var schedules = null
+        console.log(4)
+        console.log(4)
+        console.log(4)
         if (status==10){
+            console.log(5)
+            console.log(5)
+            console.log(5)
             schedules = await scheduleSchema.findAndCountAll({
                 attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
                 order:      [['date','ASC'],['time','ASC']],
@@ -81,6 +96,9 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 subQuery:   false
             })
         }else{
+            console.log(6)
+            console.log(6)
+            console.log(6)
             schedules = await scheduleSchema.findAndCountAll({
                 attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
                 order:      [['date','ASC'],['time','ASC']],
@@ -96,12 +114,17 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 subQuery:   false
             })
         }
-        
+        console.log(7)
+        console.log(7)
+        console.log(7)
         // Get the data, total and count information
         const data = schedules.rows
         const total = schedules.count
         const count = data.length
         // Send the response
+        console.log(8)
+        console.log(8)
+        console.log(8)
         res.status(200).send({
             message:"OK",
             data:data,
@@ -130,9 +153,6 @@ const getAllSchedulesByDentistId = async (req, res) => {
         res.status(400).send(error)
     }
 }
-
-
-
 // CREATE   -> CREATE AN SCHEDULE BY DENTIST ID
 const createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
     try {
@@ -140,22 +160,6 @@ const createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
         var {
             id_clinic, id_recruitment, id_dentist, date, time
         } = req.body
-
-        console.log("TESTING")
-        console.log("TESTING")
-        console.log("TESTING")
-        console.log(id_clinic)
-        console.log(id_recruitment)
-        console.log("TESTING")
-        console.log("TESTING")
-        console.log("TESTING")
-        console.log(id_dentist)
-        console.log(date)
-        console.log(time)
-        console.log("TESTING")
-        console.log("TESTING")
-        console.log("TESTING")
-
         // Create a schedule
         const schedules = await scheduleSchema.create({
             id_dentist:     id_dentist      , 
@@ -164,7 +168,6 @@ const createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
             date:           date            , 
             time:           time
         })
-
         // Send the response
         res.status(200).send({
             message:"OK",
