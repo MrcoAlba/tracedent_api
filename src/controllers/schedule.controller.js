@@ -138,10 +138,7 @@ const createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
     try {
         // Get body parameters
         var {
-            id_clinic, id_recruitment,
-        } = req.body
-        const {
-            id_dentist, date, time
+            id_clinic, id_recruitment, id_dentist, date, time
         } = req.body
 
         console.log("TESTING")
