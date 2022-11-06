@@ -6,6 +6,7 @@ const {
 
 //READ      -> GET ALL SCHEDULES
 router.get      ('/schedule'        ,   getAllSchedules     )
+//TODO: FINISH THE LAST 3 FUNCTIONS
 //READ      -> GET ALL SCHEDULES BY DENTIST ID
 router.get      ('/schedule/dentist'        ,   getAllSchedulesByDentistId     )
 //READ      -> GET ALL SCHEDULES BY DENTIST ID AND CLINIC
