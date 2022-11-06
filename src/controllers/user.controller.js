@@ -1,7 +1,8 @@
 const usersSchema = require("../models/user")
 const { Op } = require('sequelize')
+const { containsOnlyNumbers } = require('./utils')
 
-// READ     -> GET ALL USERS
+// READ         -> GET ALL USERS
 const getAllUsers = async (req, res) => {
     try {
         // Get query parameters
@@ -39,51 +40,34 @@ const getAllUsers = async (req, res) => {
         })
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// UPDATE   -> MODIFY THE SUBSCRIPTION TO TRUE BY ID
-const patchUserSubById = async (req, res) => {
+// EMAIL CHECK  -> CHECK IF AN EMAIL EXISTS IN OUT DB
+const emailCheckExistance = async (req, res) => {
     try {
         // Get path parameters
-        const id = req.params.id
-        // Update the user if it's not a patient
-        const updatedUsers = await usersSchema.update({
-                subscription: true,
-            }, {
-                where: {
-                    [Op.and]: [
-                        {id_user: {[Op.eq]: id}}, 
-                        {user_type: {[Op.not]: "patient"}}
-                    ]
-                }
+        const mail = req.params.mail
+        // Search if exists the email in our database
+        const mailExistance = await usersSchema.findOne({
+            attributes:['id_user'],
+            where:{
+                mail: mail
             }
-        )
-        // Send the response
-        res.status(200).send({
-            message:"OK",
-            data:updatedUsers,
-            meta:{total: null, count:null, offset: null, limit: null}
         })
+        // Send the response
+        if (mailExistance!=null){
+            // Send this if email does exists
+            res.status(200).send({
+                message:"Does exists",
+                data:mailExistance,
+                meta:{total: null, count:null, offset: null, limit: null}
+            })
+        }else{
+            // Send this if email does not exists
+            res.status(200).send({
+                message:"Does not exists",
+                data:mailExistance,
+                meta:{total: null, count:null, offset: null, limit: null}
+            })
+        }
     } catch (error) {
         // If there was an error, send a message and the error object
         res.status(400).send({
@@ -93,32 +77,7 @@ const patchUserSubById = async (req, res) => {
         })
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// LOGIN   -> RETURN 1 IF LOGIN TRUE
+// LOGIN        -> CHECK CREDENTIALS FOR LOGIN
 const loginMailPass = async (req, res) => {
     try {
         // Get body parameters
@@ -156,60 +115,29 @@ const loginMailPass = async (req, res) => {
         })
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// EMAIL CHECK -> RETURN 1 IF MAIL DOESN'T EXISTS
-const emailCheckForExistance = async (req, res) => {
+// UPDATE       -> MODIFY THE SUBSCRIPTION TO TRUE BY ID
+const patchUserSubById = async (req, res) => {
     try {
         // Get path parameters
-        const mail = req.params.mail
-        // Search if exists the email in our database
-        const mailExistance = await usersSchema.findOne({
-            attributes:['id_user'],
-            where:{
-                mail: mail
+        const id = req.params.id
+        // Update the user if it's not a patient
+        const updatedUsers = await usersSchema.update({
+                subscription: true,
+            }, {
+                where: {
+                    [Op.and]: [
+                        {id_user: {[Op.eq]: id}}, 
+                        {user_type: {[Op.not]: "patient"}}
+                    ]
+                }
             }
-        })
+        )
         // Send the response
-        if (mailExistance!=null){
-            // Send this if email does exists
-            res.status(200).send({
-                message:"Does exists",
-                data:mailExistance,
-                meta:{total: null, count:null, offset: null, limit: null}
-            })
-        }else{
-            // Send this if email does not exists
-            res.status(200).send({
-                message:"Does not exists",
-                data:mailExistance,
-                meta:{total: null, count:null, offset: null, limit: null}
-            })
-        }
+        res.status(200).send({
+            message:"OK",
+            data:updatedUsers,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
     } catch (error) {
         // If there was an error, send a message and the error object
         res.status(400).send({
@@ -220,30 +148,6 @@ const emailCheckForExistance = async (req, res) => {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports = { getAllUsers, patchUserSubById, loginMailPass, emailCheckForExistance }
-
-/*
-RESPONSE FORMAT:
-
-*/
-function containsOnlyNumbers(str) {
-    return /^\d+$/.test(str);
-  }
-  
+module.exports = { 
+    getAllUsers, emailCheckExistance, loginMailPass, patchUserSubById 
+}
