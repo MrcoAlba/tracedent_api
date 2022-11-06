@@ -14,7 +14,7 @@ const getAllUsers = async (req, res) => {
         console.log(typeof limit)
         console.log(containsOnlyNumbers(limit))
         console.log("TESTING")
-        if (containsOnlyNumbers(offset) || containsOnlyNumbers(limit)){
+        if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
             offset = null
             limit = null
         }
