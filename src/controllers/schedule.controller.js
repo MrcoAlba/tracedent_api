@@ -138,20 +138,6 @@ const getAllSchedulesByDentistId = async (req, res) => {
             meta:{total: null, count:null, offset: null, limit: null}
         })
     }
-
-    try {
-        const id = req.query.id
-
-        const schedules = await scheduleSchema.findAll({
-
-            where:{
-                id_dentist:id
-            }
-        })
-        res.status(200).send(schedules)
-    } catch (error) {
-        res.status(400).send(error)
-    }
 }
 // CREATE   -> CREATE AN SCHEDULE BY DENTIST ID
 const createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
