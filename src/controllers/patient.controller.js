@@ -140,7 +140,7 @@ const postPatient = async (req, res) => {
         })
     }
 }
-// LOGIN   -> RETURN 1 IF LOGIN TRUE
+// LOGIN        -> RETURN THE PATIENT DATA
 const loginIdUser = async (req, res) => {
     try {
         // Get body parameters
