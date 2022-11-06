@@ -1,8 +1,8 @@
-const { Router } = require('express')
-const router = Router()
+const { Router }    = require('express')
+const router        = Router()
 const {
     getAllUsers, patchUserSubById, loginMailPass, emailCheckExistance
-} = require('../controllers/user.controller')
+}                   = require('../controllers/user.controller')
 
 // READ         -> GET ALL USERS
 router.get      ('/user'                ,   getAllUsers             )
