@@ -1,6 +1,7 @@
 const scheduleSchema            = require('../models/schedule')
 const recruitmentSchema         = require('../models/recruitment')
 const { Op }                    = require('sequelize')
+const sequelize                 = require('../database/database')
 const { containsOnlyNumbers }   = require('./utils')
 
 //READ      -> GET ALL SCHEDULES
@@ -139,12 +140,12 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 include: [{
                     model: recruitmentSchema,
                     where: {
-                        // [Op.and]:(
-                        //     Op.where(
-                        //         Op.cast('schedule.id_clinic', 'varchar'),
-                        //         { like: '%'+id_clinic+'%' }
-                        //     )
-                        // )
+                        [Op.and]:(
+                            sequelize.where(
+                                sequelize.cast(sequelize.col('id_clinic'), 'varchar'),
+                                {[Op.iLike]: `%${id_clinic}%`}
+                            )
+                        )
                     }
                 },],
                 offset:     offset,
