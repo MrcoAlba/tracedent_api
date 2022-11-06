@@ -1,31 +1,69 @@
 const specialitySchema = require('../models/speciality')
+const { containsOnlyNumbers }   = require('./utils')
 
-// READ     -> GET ALL SPECIALITIES
-const getDentList = async (req, res) => {
+// READ         -> GET ALL SPECIALITIES
+const getSpecialityList = async (req, res) => {
     try {
-        // GET BODY`
-        const speciality = await specialitySchema.findAll({
-            attributes: ['name']
+        // Get query parameters
+        var offset  = req.query.offset
+        var limit   = req.query.limit
+        // Validate if query parameters are valid
+        if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
+            offset = null
+            limit = null
+        }
+        // Request all the specialities names
+        const specialities = await specialitySchema.findAndCountAll({
+            attributes: ['id_speciality','name'],
+            order:      [['name','ASC']],
+            offset:     offset,
+            limit :     limit,
+            subQuery:   false
         })
-        res.status(200).send({"message":speciality})
+        // Get the data, total and count information
+        const data = specialities.rows
+        const total = specialities.count
+        const count = data.length
+        // Send the response
+        res.status(200).send({
+            message:"OK",
+            data:data,
+            meta:{total: total, count:count, offset: offset, limit: limit}
+        })
     } catch (error) {
-        res.status(500).send({"message":error.errors[0].message})
+        // If there was an error, send a message and the error object
+        res.status(400).send({
+            message:"ERROR",
+            response:error,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
     }
 }
-// CREATE   -> POST A NEW DENTIST/
+// CREATE       -> POST A NEW SPECIALITY
 const postSpeciality = async (req, res) => {
     try {
-        // GET BODY`
-        const {
-            name
-        } = req.body
+        // Get body parameters
+        const name      = req.body.name
+        // Create a speciality
         const speciality = await specialitySchema.create({
             name:name
         })
-        res.status(200).send({"message":speciality})
+        // Send the response
+        res.status(200).send({
+            message:"OK",
+            data:speciality,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
     } catch (error) {
-        res.status(500).send({"message":error.errors[0].message})
+        // If there was an error, send a message and the error object
+        res.status(400).send({
+            message:"ERROR",
+            response:error,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
     }
 }
 
-module.exports = { getDentList, postSpeciality }
+module.exports = { 
+    getSpecialityList, postSpeciality
+}
