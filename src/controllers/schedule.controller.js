@@ -4,8 +4,6 @@ const { containsOnlyNumbers }   = require('./utils')
 
 //READ      -> GET ALL SCHEDULES
 const getAllSchedules = async (req, res) => {
-
-
     try {
         // Get query parameters
         var offset  = req.query.offset
@@ -40,24 +38,6 @@ const getAllSchedules = async (req, res) => {
             response:error,
             meta:{total: null, count:null, offset: null, limit: null}
         })
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-    try {
-        const schedules = await scheduleSchema.findAll({})
-        res.status(200).send(schedules)
-    } catch (error) {
-        res.status(400).send(error)
     }
 }
 //READ      -> GET ALL SCHEDULES
