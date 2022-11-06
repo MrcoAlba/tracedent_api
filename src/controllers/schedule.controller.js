@@ -72,7 +72,7 @@ const getAllSchedulesByDentistId = async (req, res) => {
         console.log(3)
         console.log(3)
         console.log(3)
-        status = Int(status)
+        status = parseInt(status)
         // Request all the schedule information
         var schedules = null
         console.log(4)
