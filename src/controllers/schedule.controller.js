@@ -42,62 +42,6 @@ const getAllSchedules = async (req, res) => {
         })
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //READ      -> GET ALL SCHEDULES BY DENTIST ID (ALSO STATUS AND CLINIC ID)
 const getAllSchedulesByDentistId = async (req, res) => {
     try {
@@ -124,13 +68,7 @@ const getAllSchedulesByDentistId = async (req, res) => {
         status = parseInt(status)
         // Request all the schedule information
         var schedules = null
-        console.log("ANTESSSSS")
-        console.log("ANTESSSSS")
-        console.log("ANTESSSSS")
         if (status==10){
-            console.log("1")
-            console.log("1")
-            console.log("1")
             schedules = await scheduleSchema.findAndCountAll({
                 attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
                 order:      [['date','ASC'],['time','ASC']],
@@ -143,7 +81,7 @@ const getAllSchedulesByDentistId = async (req, res) => {
                         [Op.and]:(
                             sequelize.where(
                                 sequelize.cast(sequelize.col('id_clinic'), 'varchar'),
-                                {[Op.iLike]: `%${id_clinic}%`}
+                                {[Op.like]: `%${id_clinic}%`}
                             )
                         )
                     }
@@ -153,9 +91,6 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 subQuery:   false
             })
         }else{
-            console.log("2")
-            console.log("2")
-            console.log("2")
             schedules = await scheduleSchema.findAndCountAll({
                 attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
                 order:      [['date','ASC'],['time','ASC']],
@@ -166,10 +101,13 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 include: [{
                     model: recruitmentSchema,
                     where: {
-                        id_clinic: {
-                            [Op.like]: '%'+id_clinic+'%'
-                        }
-                    },
+                        [Op.and]:(
+                            sequelize.where(
+                                sequelize.cast(sequelize.col('id_clinic'), 'varchar'),
+                                {[Op.like]: `%${id_clinic}%`}
+                            )
+                        )
+                    }
                 },],
                 offset:     offset,
                 limit :     limit,
