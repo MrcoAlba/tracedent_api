@@ -1,11 +1,11 @@
 const { Router }    = require('express')
 const router        = Router()
 const {
-
+    getCommentList
 }                   = require('../controllers/comment.controller')
 
-// POST     -> CREATE A COMMENT
-// router.post     ('/comment'             ,   postComment             )
+// READ         -> GET ALL COMMENTS
+router.get      ('/commment'            ,   getCommentList          )
 
 
 
