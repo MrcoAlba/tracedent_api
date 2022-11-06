@@ -150,14 +150,16 @@ const getAllDentitsByIdClinic = async (req, res) => {
                         model: usersSchema,
                         attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
                     }],
+                    where: {
+                        first_name: {
+                            [Op.like]: '%'+name+'%'
+                        }
+                    },
                 }],
             }],
             where: {
                 id_clinic: id,
                 sttus: 2,
-                first_name: {
-                    [Op.like]: '%'+name+'%'
-                }
             },
             offset:     offset,
             limit :     limit,
