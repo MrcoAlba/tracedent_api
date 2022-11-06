@@ -7,7 +7,7 @@ const getAllUsers = async (req, res) => {
         var offset = req.query.offset
         var limit = req.query.limit
 
-        if (containsOnlyNumbers(offset) || containsOnlyNumbers("number")){
+        if (containsOnlyNumbers(offset) || containsOnlyNumbers(limit)){
             offset = null
             limit = null
         }
