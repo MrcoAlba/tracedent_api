@@ -75,7 +75,6 @@ const getAllSchedulesByDentistId = async (req, res) => {
                     id_clinic: {
                         [Op.like]: '%'+id_clinic+'%'
                     },
-                    sttus: status
                 },
                 offset:     offset,
                 limit :     limit,
@@ -90,6 +89,7 @@ const getAllSchedulesByDentistId = async (req, res) => {
                     id_clinic: {
                         [Op.like]: '%'+id_clinic+'%'
                     },
+                    sttus: status
                 },
                 offset:     offset,
                 limit :     limit,
