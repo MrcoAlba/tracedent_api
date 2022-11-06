@@ -5,6 +5,6 @@ const {
 } = require('../controllers/comment.controller')
 
 // POST     -> CREATE A COMMENT
-router.post     ('/comment'             ,   postComment             )
+// router.post     ('/comment'             ,   postComment             )
 
 module.exports = router
