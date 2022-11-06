@@ -82,14 +82,14 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 },
                 include: [{
                     model: recruitmentSchema,
-                    where: {
-                        [Op.and]:(
-                            Op.where(
-                                Op.cast('schedule.id_clinic', 'text'),
-                                { like: '%'+id_clinic+'%' }
-                            )
-                        )
-                    }
+                    // where: {
+                    //     [Op.and]:(
+                    //         Op.where(
+                    //             Op.cast('schedule.id_clinic', 'text'),
+                    //             { like: '%'+id_clinic+'%' }
+                    //         )
+                    //     )
+                    // }
                 },],
                 offset:     offset,
                 limit :     limit,
