@@ -53,7 +53,7 @@ const emailCheckExistance = async (req, res) => {
         // Search if exists the email in our database
         const mailExistance = await usersSchema.findOne({
             attributes:['id_user'],
-            where:{
+            where: {
                 mail: mail
             }
         })
