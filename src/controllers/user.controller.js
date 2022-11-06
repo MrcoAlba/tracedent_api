@@ -139,7 +139,7 @@ const loginMailPass = async (req, res) => {
                 meta:{total: null, count:null, offset: null, limit: null}
             })
         }else{
-            res.status(200).send({
+            res.status(401).send({
                 message:"BAD CREDENTIALS",
                 data:userInformation,
                 meta:{total: null, count:null, offset: null, limit: null}
