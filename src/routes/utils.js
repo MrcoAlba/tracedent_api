@@ -1,3 +1,7 @@
-function containsOnlyNumbers(str) {
+const containsOnlyNumbers = (str) => {
     return /^\d+$/.test(str);
+}
+
+module.exports = { 
+    containsOnlyNumbers
 }
