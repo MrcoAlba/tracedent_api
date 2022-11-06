@@ -1,13 +1,13 @@
 const { Router }    = require('express')
 const router        = Router()
 const {
-    getAllMessages
+    getAllMessages, createMessage
 }                   = require('../controllers/message.controller')
 
 // READ         -> GET ALL MESSAGES
-router.patch    ('/message'              ,   getAllMessages           )
+router.patch    ('/message'              ,   getAllMessages             )
 // POST         -> CREATE A MESSAGE
-router.put      ('/message'              ,   getAllMessages           )
+router.post     ('/message'              ,   createMessage              )
 
 
 
