@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize')
-const sequelize = require('../database/database')
+const sequelize     = require('../database/database')
 
 const commentSchema = sequelize.define('commentary',{
     id_comment:{

@@ -3,6 +3,7 @@ const app = express()
 
 // database connection
 
+
 // middlewares
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
@@ -24,7 +25,6 @@ app.use(require('./routes/dentistSpecialities.routes'))
 
 app.use(require('./routes/recruitment.routes'))
 app.use(require('./routes/schedule.routes'))
-
 
 
 module.exports = app

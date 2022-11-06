@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize')
-const sequelize = require('../database/database')
+const sequelize     = require('../database/database')
 
 const messageSchema = sequelize.define('text_message',{
     id_message:{

@@ -13,4 +13,18 @@ router.post     ('/user/login'          ,   loginMailPass           )
 // UPDATE       -> MODIFY THE SUBSCRIPTION TO TRUE BY ID
 router.patch    ('/user/:id'            ,   patchUserSubById        )
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = router

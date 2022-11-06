@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize')
-const sequelize = require('../database/database')
+const sequelize     = require('../database/database')
 
 const dentistSpecialitiesSchema = sequelize.define('dentist_specialities',{
     id_dentist_speciality:{
