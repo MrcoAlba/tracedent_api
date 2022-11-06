@@ -2,6 +2,11 @@ const usersSchema               = require("../models/user")
 const { Op }                    = require('sequelize')
 const { containsOnlyNumbers }   = require('./utils')
 
+
+
+
+
+
 // READ         -> GET ALL USERS
 const getAllUsers = async (req, res) => {
     try {

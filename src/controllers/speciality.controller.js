@@ -2,6 +2,11 @@ const specialitySchema          = require('../models/speciality')
 const { Op }                    = require('sequelize')
 const { containsOnlyNumbers }   = require('./utils')
 
+
+
+
+
+
 // READ         -> GET ALL SPECIALITIES
 const getSpecialityList = async (req, res) => {
     try {
