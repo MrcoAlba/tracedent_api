@@ -7,7 +7,7 @@ const {
 // READ         -> GET ALL CLINICS
 router.get      ('/clinic'          ,   getAllClinics       )
 // READ         -> GET ALL RECRUITS BY CLINIC_ID
-router.get      ('/clinic/recruit/:id',     getAllRecruitsByIdClinic )
+router.get      ('/clinic/recruits/:id',     getAllRecruitsByIdClinic )
 // READ         -> GET ALL DENTISTS BY CLINIC_ID
 router.get      ('/clinic/dentists/:id',    getAllDentitsByIdClinic)
 
