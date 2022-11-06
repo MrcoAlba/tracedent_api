@@ -65,27 +65,22 @@ const getAllPersons = async (req, res) => {
     }
 }
 // UPDATE       -> UPDATE A PERSON BY ID
-const patchPersonById = async (req, res) => {
+const updatePersonById = async (req, res) => {
     try {
         // Get body parameters
         const first_name    = String(req.body.first_name).toUpperCase()
         const last_name     = String(req.body.last_name).toUpperCase()
         const {
-            gender, dni, phone_number, district, direction, latitude, longitude
-        } = req.body
+            gender, dni
+        }                   = req.body
         // Get path parameters
         const id_person     = req.params.id
-        // Update user
+        // Update person
         const person = await personSchema.update({
                 first_name:     first_name  ,
                 last_name:      last_name   ,
                 gender:         gender      ,
                 dni:            dni         ,
-                phone_number:   phone_number,
-                district:       district    ,
-                direction:      direction   ,
-                latitude:       latitude    ,
-                longitude:      longitude
             }, {
             where: {
                 [Op.and]: [{
@@ -111,4 +106,4 @@ const patchPersonById = async (req, res) => {
     }
 }
 
-module.exports = { getAllPersons, patchPersonById }
+module.exports = { getAllPersons, updatePersonById }

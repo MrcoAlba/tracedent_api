@@ -1,13 +1,13 @@
 const { Router }    = require('express')
 const router        = Router()
 const { 
-    getAllPersons, patchPersonById
+    getAllPersons, updatePersonById
 }                   = require('../controllers/person.controller')
 
 // READ         -> GET ALL PERSONS
-router.get      ('/person'          ,   getAllPersons       )
+router.get      ('/person'              ,   getAllPersons           )
 // UPDATE       -> UPDATE A PERSON BY ID
-router.patch    ('/person/:id'      ,   patchPersonById     )
+router.patch    ('/person/update/:id'   ,   updatePersonById         )
 
 
 

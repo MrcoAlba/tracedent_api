@@ -152,7 +152,47 @@ const patchUserSubById = async (req, res) => {
         })
     }
 }
+// UPDATE       -> MODIFY THE SUBSCRIPTION TO TRUE BY ID
+const updateUserById = async (req, res) => {
+    try {
+        // Get body parameters
+        const {
+            phone_number, district, direction, latitude, longitude
+        }                   = req.body
+        // Get path parameters
+        const id_user       = req.params.id
+        // Update user
+        const user = await usersSchema.update({
+                phone_number:   phone_number,
+                district:       district    ,
+                direction:      direction   ,
+                latitude:       latitude    ,
+                longitude:      longitude
+            }, {
+            where: {
+                [Op.and]: [{
+                    id_user: {
+                        [Op.eq]: id_user
+                    }
+                }]
+            }
+        })
+        // Send the response
+        res.status(200).send({
+            message:"USER UPDATED",
+            data:user,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
+    } catch (error) {
+        // If there was an error, send a message and the error object
+        res.status(400).send({
+            message:"ERROR",
+            response:error,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
+    }
+}
 
 module.exports = { 
-    getAllUsers, emailCheckExistance, loginMailPass, patchUserSubById 
+    getAllUsers, emailCheckExistance, loginMailPass, patchUserSubById, updateUserById
 }
