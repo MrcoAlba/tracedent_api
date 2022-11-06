@@ -1,4 +1,5 @@
-const scheduleSchema = require('../models/schedule')
+const scheduleSchema            = require('../models/schedule')
+const recruitmentSchema         = require('../models/recruitment')
 const { Op }                    = require('sequelize')
 const { containsOnlyNumbers }   = require('./utils')
 
@@ -43,9 +44,6 @@ const getAllSchedules = async (req, res) => {
 //READ      -> GET ALL SCHEDULES BY DENTIST ID (ALSO STATUS AND CLINIC ID)
 const getAllSchedulesByDentistId = async (req, res) => {
     try {
-        console.log(1)
-        console.log(1)
-        console.log(1)
         // Get query parameters
         var offset          = req.query.offset
         var limit           = req.query.limit
@@ -54,9 +52,6 @@ const getAllSchedulesByDentistId = async (req, res) => {
         // Get path parameters
         const id_dentist    = req.params.id
         // Validate if query parameters are valid
-        console.log(2)
-        console.log(2)
-        console.log(2)
         if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
             offset = null
             limit = null
@@ -69,15 +64,9 @@ const getAllSchedulesByDentistId = async (req, res) => {
         }else if (status < 0 && status > 9){
             status = 10
         }
-        console.log(3)
-        console.log(3)
-        console.log(3)
         status = parseInt(status)
         // Request all the schedule information
         var schedules = null
-        console.log(4)
-        console.log(4)
-        console.log(4)
         if (status==10){
             console.log(5)
             console.log(5)
@@ -86,14 +75,16 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
                 //order:      [['date','ASC'],['time','ASC']],
                 where: {
-                    [Op.and]:[{
-                        id_dentist: id_dentist,
-                    },{
+                    id_dentist: id_dentist,
+                },
+                include: [{
+                    model: recruitmentSchema,
+                    where: {
                         id_clinic: {
                             [Op.like]: '%'+id_clinic+'%'
-                        },
-                    }]
-                },
+                        }
+                    },
+                },],
                 offset:     offset,
                 limit :     limit,
                 subQuery:   false
@@ -107,11 +98,16 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 order:      [['date','ASC'],['time','ASC']],
                 where: {
                     id_dentist: id_dentist,
-                    id_clinic: {
-                        [Op.like]: '%'+id_clinic+'%'
-                    },
                     sttus: status
                 },
+                include: [{
+                    model: recruitmentSchema,
+                    where: {
+                        id_clinic: {
+                            [Op.like]: '%'+id_clinic+'%'
+                        }
+                    },
+                },],
                 offset:     offset,
                 limit :     limit,
                 subQuery:   false
