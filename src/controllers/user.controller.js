@@ -4,21 +4,15 @@ const { Op } = require('sequelize')
 // READ     -> GET ALL USERS
 const getAllUsers = async (req, res) => {
     try {
+        // Get query parameters
         var offset = req.query.offset
         var limit = req.query.limit
-
-        console.log("TESTING")
-        console.log(typeof offset)
-        console.log(containsOnlyNumbers(offset))
-        console.log("TESTING")
-        console.log(typeof limit)
-        console.log(containsOnlyNumbers(limit))
-        console.log("TESTING")
+        // Validate if query parameters are valid
         if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
             offset = null
             limit = null
         }
-        
+        // Request all the user information
         const user = await usersSchema.findAndCountAll({
             attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
             order:      [['id_user','ASC']],
@@ -26,19 +20,20 @@ const getAllUsers = async (req, res) => {
             limit :     limit,
             subQuery:   false
         })
-
+        // Get the data, total and count information
         const data = user.rows
         const total = user.count
         const count = data.length
-
+        // Send the response
         res.status(200).send({
             message:"OK",
             data:data,
             meta:{total: total, count:count, offset: offset, limit: limit}
         })
     } catch (error) {
+        // If there was an error, send a message and the error object
         res.status(400).send({
-            message:"There was an error",
+            message:"ERROR",
             response:error
         })
     }
@@ -46,29 +41,32 @@ const getAllUsers = async (req, res) => {
 // UPDATE   -> MODIFY THE SUBSCRIPTION TO TRUE BY ID
 const patchUserSubById = async (req, res) => {
     try {
+        // Get path parameters
         const id = req.params.id
-        const user = await usersSchema.update({
+        // Update the user if it's not a patient
+        const updatedUsers = await usersSchema.update(
+            {
                 subscription: true,
             }, {
-            where: {
-                [Op.and]: [{
-                    id_user: {
-                        [Op.eq]: id
-                    }
-                }, {
-                    user_type: {
-                        [Op.not]: "patient"
-                    }
+                where: {
+                    [Op.and]: [
+                        {id_user: {[Op.eq]: id}}, 
+                        {user_type: {[Op.not]: "patient"}}
+                    ]
                 }
-                ]
             }
-        }
         )
-        res.status(200).send({cod:1,response:user})
+        // Send the response
+        res.status(200).send({
+            message:"OK",
+            data:updatedUsers
+        })
     } catch (error) {
-        // Due to a simple change in a value, if the return is 0, 
-        //it means that the value wasn't modified
-        res.status(500).send({cod:0,response:error})
+        // Send the response
+        res.status(200).send({
+            message:"ERROR!",
+            data:error
+        })
     }
 }
 // LOGIN   -> RETURN 1 IF LOGIN TRUE
