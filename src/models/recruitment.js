@@ -31,19 +31,10 @@ const recruitmentSchema = sequelize.define('recruitment',{
     timestamps: false
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
 const scheduleSchema = require('./schedule')
+
+
+
 scheduleSchema.belongsTo(recruitmentSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
@@ -52,8 +43,6 @@ scheduleSchema.belongsTo(recruitmentSchema,{
     },
     targetId: 'id_recruitment'
 })
-
-
 
 
 

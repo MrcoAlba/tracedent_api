@@ -1,6 +1,6 @@
-const recruitmentSchema = require('../models/recruitment')
 const { Op }                    = require('sequelize')
 const { containsOnlyNumbers }   = require('./utils')
+const recruitmentSchema         = require('../models/recruitment')
 
 
 
@@ -46,4 +46,22 @@ const getAllRecruitments = async (req, res) => {
     }
 }
 
-module.exports = { getAllRecruitments }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+module.exports = { 
+    getAllRecruitments 
+}

@@ -17,14 +17,4 @@ router.get      ('/comment'            ,   getCommentList          )
 
 
 
-
-
-
-
-
-
-
-
-
-
 module.exports = router

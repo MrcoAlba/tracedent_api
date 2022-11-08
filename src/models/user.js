@@ -72,6 +72,9 @@ const usersSchema = sequelize.define('users',{
 })
 
 const personSchema = require('./person')
+const clinicSchema = require('./clinic')
+const messageSchema = require('./message')
+
 personSchema.belongsTo(usersSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
@@ -80,7 +83,6 @@ personSchema.belongsTo(usersSchema,{
     },
     targetId: 'id_user'
 })
-const clinicSchema = require('./clinic')
 clinicSchema.belongsTo(usersSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
@@ -89,7 +91,6 @@ clinicSchema.belongsTo(usersSchema,{
     },
     targetId: 'id_user'
 })
-const messageSchema = require('./message')
 messageSchema.belongsTo(usersSchema,{
     foreignKey: {
         type:           DataTypes.UUID,

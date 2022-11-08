@@ -25,21 +25,4 @@ const dentistSpecialitiesSchema = sequelize.define('dentist_specialities',{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = dentistSpecialitiesSchema

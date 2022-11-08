@@ -17,14 +17,4 @@ router.get      ('/recruitment'     ,   getAllRecruitments      )
 
 
 
-
-
-
-
-
-
-
-
-
-
 module.exports = router

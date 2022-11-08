@@ -47,15 +47,4 @@ const scheduleSchema = sequelize.define('schedule',{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 module.exports = scheduleSchema

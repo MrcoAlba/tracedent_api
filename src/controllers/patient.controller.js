@@ -1,8 +1,8 @@
-const patientSchema = require('../models/patient')
-const personSchema = require('../models/person')
-const usersSchema = require('../models/user')
 const { Op }                    = require('sequelize')
 const { containsOnlyNumbers }   = require('./utils')
+const patientSchema             = require('../models/patient')
+const personSchema              = require('../models/person')
+const usersSchema               = require('../models/user')
 
 
 
@@ -140,7 +140,7 @@ const postPatient = async (req, res) => {
         })
     }
 }
-// LOGIN        -> RETURN THE PATIENT DATA
+// LOGIN    -> RETURN THE PATIENT DATA
 const loginIdUser = async (req, res) => {
     try {
         // Get body parameters
@@ -176,4 +176,16 @@ const loginIdUser = async (req, res) => {
     }
 }
 
-module.exports = { postPatient, getAllPatients, loginIdUser }
+
+
+
+
+
+
+
+
+
+
+module.exports = { 
+    postPatient, getAllPatients, loginIdUser 
+}

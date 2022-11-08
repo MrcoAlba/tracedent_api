@@ -1,10 +1,10 @@
+const { Op }                    = require('sequelize')
+const { containsOnlyNumbers }   = require('./utils')
 const dentistSchema             = require('../models/dentist')
 const dentistSpecialitiesSchema = require('../models/dentistSpecialities')
 const personSchema              = require('../models/person')
 const usersSchema               = require('../models/user')
 const specialitySchema          = require('../models/speciality')
-const { Op }                    = require('sequelize')
-const { containsOnlyNumbers }   = require('./utils')
 
 
 // READ     -> GET ALL DENTISTS
@@ -153,7 +153,6 @@ const searchDentistById = async (req, res) => {
         })
     }
 }
-
 // CREATE   -> POST A NEW DENTIST
 const postDentist = async (req, res) => {
     try {
@@ -233,7 +232,7 @@ const postDentist = async (req, res) => {
         })
     }
 }
-// LOGIN        -> RETURN THE DENTIST DATA
+// LOGIN    -> RETURN THE DENTIST DATA
 const loginIdUser = async (req, res) => {
     try {
         // Get body parameters
@@ -296,4 +295,7 @@ const addSpecialityToDentistById = async (req, res) => {
     }
 }
 
-module.exports = { postDentist, getAllDentists, loginIdUser, addSpecialityToDentistById, getDestistByIdAllSpecialities, searchDentistById }
+
+module.exports = { 
+    postDentist, getAllDentists, loginIdUser, addSpecialityToDentistById, getDestistByIdAllSpecialities, searchDentistById
+}

@@ -17,14 +17,4 @@ router.get      ('/dentistspeciality'      ,   getAllDentistSpecialitiesList    
 
 
 
-
-
-
-
-
-
-
-
-
-
 module.exports = router

@@ -17,14 +17,4 @@ router.post     ('/speciality'          ,   postSpeciality          )
 
 
 
-
-
-
-
-
-
-
-
-
-
 module.exports = router

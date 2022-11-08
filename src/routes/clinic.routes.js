@@ -10,21 +10,11 @@ router.get      ('/clinic'              ,   getAllClinics           )
 router.get      ('/clinic/recruits/:id' ,   getAllRecruitsByIdClinic)
 // READ         -> GET ALL DENTISTS BY CLINIC_ID
 router.get      ('/clinic/dentists/:id' ,   getAllDentitsByIdClinic )
-
-
 // CREATE       -> POST A NEW CLINIC
 router.post     ('/clinic'              ,   postClinic              )
 // LOGIN        -> RETURN THE CLINIC DATA
 router.post     ('/clinic/login'        ,   loginIdUser             )
 // CREATE       -> RECRUIT A DENTIST
 router.post     ('/clinic/recruit/:id'  ,   clinitRecruitDentist    )
-
-
-
-
-
-
-
-
 
 module.exports = router

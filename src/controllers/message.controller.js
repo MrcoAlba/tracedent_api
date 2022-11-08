@@ -1,6 +1,6 @@
-const messageSchema             = require("../models/message")
 const { Op }                    = require('sequelize')
 const { containsOnlyNumbers }   = require('./utils')
+const messageSchema             = require("../models/message")
 
 
 
@@ -95,6 +95,19 @@ const createMessage = async (req, res) => {
         })
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = {
     getAllMessages, createMessage

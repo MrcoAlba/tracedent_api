@@ -12,25 +12,10 @@ const patientSchema = sequelize.define('patient',{
     timestamps: false
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const scheduleSchema = require('./schedule')
+
+
+
 scheduleSchema.belongsTo(patientSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
@@ -39,8 +24,6 @@ scheduleSchema.belongsTo(patientSchema,{
     },
     targetId: 'id_patient'
 })
-
-
 
 
 

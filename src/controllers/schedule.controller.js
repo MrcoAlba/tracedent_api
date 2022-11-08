@@ -1,8 +1,11 @@
+const { Op }                    = require('sequelize')
+const { containsOnlyNumbers }   = require('./utils')
 const scheduleSchema            = require('../models/schedule')
 const recruitmentSchema         = require('../models/recruitment')
-const { Op }                    = require('sequelize')
 const sequelize                 = require('../database/database')
-const { containsOnlyNumbers }   = require('./utils')
+
+
+
 
 //READ      -> GET ALL SCHEDULES
 const getAllSchedules = async (req, res) => {
@@ -133,58 +136,6 @@ const getAllSchedulesByDentistId = async (req, res) => {
         })
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // CREATE   -> CREATE AN SCHEDULE BY DENTIST ID
 const createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
     try {
@@ -219,4 +170,13 @@ const createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
 
 
 
-module.exports = { getAllSchedules, getAllSchedulesByDentistId, createAnScheduleForDentitstByIdAndClinicId }
+
+
+
+
+
+
+
+module.exports = { 
+    getAllSchedules, getAllSchedulesByDentistId, createAnScheduleForDentitstByIdAndClinicId 
+}

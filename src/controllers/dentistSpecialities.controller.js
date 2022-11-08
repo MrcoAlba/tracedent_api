@@ -1,6 +1,6 @@
-const dentistSpecialitiesSchema = require('../models/dentistSpecialities')
 const { Op }                    = require('sequelize')
 const { containsOnlyNumbers }   = require('./utils')
+const dentistSpecialitiesSchema = require('../models/dentistSpecialities')
 
 
 
@@ -46,4 +46,22 @@ const getAllDentistSpecialitiesList = async (req, res) => {
     }
 }
 
-module.exports = { getAllDentistSpecialitiesList }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+module.exports = { 
+    getAllDentistSpecialitiesList 
+}

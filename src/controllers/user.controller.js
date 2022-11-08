@@ -1,6 +1,6 @@
-const usersSchema               = require("../models/user")
 const { Op }                    = require('sequelize')
 const { containsOnlyNumbers }   = require('./utils')
+const usersSchema               = require("../models/user")
 
 
 
@@ -192,6 +192,10 @@ const updateUserById = async (req, res) => {
         })
     }
 }
+
+
+
+
 
 module.exports = { 
     getAllUsers, emailCheckExistance, loginMailPass, patchUserSubById, updateUserById

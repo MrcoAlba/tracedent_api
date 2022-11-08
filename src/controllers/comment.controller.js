@@ -1,6 +1,11 @@
-const commentSchema             = require("../models/comment")
 const { Op }                    = require('sequelize')
 const { containsOnlyNumbers }   = require('./utils')
+const commentSchema             = require("../models/comment")
+
+
+
+
+
 
 // READ         -> GET ALL COMMENTS
 const getCommentList = async (req, res) => {
@@ -40,6 +45,22 @@ const getCommentList = async (req, res) => {
         })
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = {
     getCommentList

@@ -36,17 +36,4 @@ const messageSchema = sequelize.define('text_message',{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = messageSchema

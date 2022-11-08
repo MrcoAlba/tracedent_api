@@ -17,14 +17,4 @@ router.post     ('/message'              ,   createMessage              )
 
 
 
-
-
-
-
-
-
-
-
-
-
 module.exports = router

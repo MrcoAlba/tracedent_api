@@ -20,23 +20,10 @@ const specialitySchema = sequelize.define('speciality',{
     timestamps: false
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const dentistSpecialitiesSchema = require('./dentistSpecialities')
+const scheduleSchema = require('./schedule')
+
+
 dentistSpecialitiesSchema.belongsTo(specialitySchema,{
     foreignKey: {
         type:           DataTypes.UUID,
@@ -45,7 +32,6 @@ dentistSpecialitiesSchema.belongsTo(specialitySchema,{
     },
     targetId: 'id_speciality'
 })
-const scheduleSchema = require('./schedule')
 scheduleSchema.belongsTo(specialitySchema,{
     foreignKey: {
         type:           DataTypes.UUID,
@@ -54,7 +40,6 @@ scheduleSchema.belongsTo(specialitySchema,{
     },
     targetId: 'id_speciality'
 })
-
 
 
 

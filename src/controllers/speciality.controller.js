@@ -1,6 +1,6 @@
-const specialitySchema          = require('../models/speciality')
 const { Op }                    = require('sequelize')
 const { containsOnlyNumbers }   = require('./utils')
+const specialitySchema          = require('../models/speciality')
 
 
 
@@ -78,6 +78,19 @@ const postSpeciality = async (req, res) => {
         })
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = { 
     getSpecialityList, postSpeciality

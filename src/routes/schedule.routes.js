@@ -8,19 +8,9 @@ const {
 router.get      ('/schedule'                    ,   getAllSchedules                             )
 //READ      -> GET ALL SCHEDULES BY DENTIST ID
 router.get      ('/schedule/dentist/:id'        ,   getAllSchedulesByDentistId                  )
-
 //TODO: FINISH THE LAST 3 FUNCTIONS
 //CREATE   -> CREATE AN SCHEDULE BY DENTIST ID
 router.post     ('/schedule/dentist'            ,   createAnScheduleForDentitstByIdAndClinicId  )
-
-
-
-
-
-
-
-
-
 
 
 

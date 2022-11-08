@@ -27,21 +27,10 @@ const commentSchema = sequelize.define('commentary',{
     timestamps: false
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const scheduleSchema = require('./schedule')
+
+
+
 scheduleSchema.belongsTo(commentSchema,{
     foreignKey:{
         type:           DataTypes.UUID,
@@ -50,8 +39,6 @@ scheduleSchema.belongsTo(commentSchema,{
     },
     targetId: 'id_comment'
 })
-
-
 
 
 

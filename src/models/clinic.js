@@ -37,19 +37,10 @@ const clinicSchema = sequelize.define('clinic',{
     timestamps: false
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
 const recruitmentSchema = require('./recruitment')
+
+
+
 recruitmentSchema.belongsTo(clinicSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
@@ -58,8 +49,6 @@ recruitmentSchema.belongsTo(clinicSchema,{
     },
     targetId: 'id_clinic'
 })
-
-
 
 
 

@@ -1,7 +1,7 @@
-const personSchema              = require('../models/person')
-const usersSchema               = require('../models/user')
 const { Op }                    = require('sequelize')
 const { containsOnlyNumbers }   = require('./utils')
+const personSchema              = require('../models/person')
+const usersSchema               = require('../models/user')
 
 
 
@@ -106,4 +106,19 @@ const updatePersonById = async (req, res) => {
     }
 }
 
-module.exports = { getAllPersons, updatePersonById }
+
+
+
+
+
+
+
+
+
+
+
+
+
+module.exports = { 
+    getAllPersons, updatePersonById 
+}

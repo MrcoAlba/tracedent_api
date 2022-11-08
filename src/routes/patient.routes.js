@@ -17,14 +17,4 @@ router.post     ('/patient/login'       ,   loginIdUser             )
 
 
 
-
-
-
-
-
-
-
-
-
-
 module.exports = router

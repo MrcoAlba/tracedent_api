@@ -17,16 +17,4 @@ router.patch    ('/user/update/:id'     ,   updateUserById          )
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = router

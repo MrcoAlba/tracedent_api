@@ -1,10 +1,10 @@
+const { Op }                    = require('sequelize')
+const { containsOnlyNumbers }   = require('./utils')
 const usersSchema               = require('../models/user')
 const clinicSchema              = require('../models/clinic')
 const recruitmentSchema         = require('../models/recruitment')
 const dentistSchema             = require('../models/dentist')
 const personSchema              = require('../models/person')
-const { Op }                    = require('sequelize')
-const { containsOnlyNumbers }   = require('./utils')
 
 
 // READ         -> GET ALL CLINICS
@@ -185,7 +185,7 @@ const getAllDentitsByIdClinic = async (req, res) => {
         })
     }
 }
-// CREATE   -> POST A NEW CLINIC
+// CREATE       -> POST A NEW CLINIC
 const postClinic = async (req, res) => {
     try {
         // Get body parameters
@@ -239,7 +239,7 @@ const postClinic = async (req, res) => {
         })
     }
 }
-// LOGIN   -> RETURN THE CLINIC DATA
+// LOGIN        -> RETURN THE CLINIC DATA
 const loginIdUser = async (req, res) => {
     try {
         // Get body parameters
@@ -270,7 +270,7 @@ const loginIdUser = async (req, res) => {
         })
     }
 }
-// ADD      -> RECRUIT A DENTIST
+// ADD          -> RECRUIT A DENTIST
 const clinitRecruitDentist = async (req, res) => {
     try {
         // Get body parameters
@@ -298,4 +298,6 @@ const clinitRecruitDentist = async (req, res) => {
 }
 
 
-module.exports = { getAllClinics, getAllRecruitsByIdClinic, getAllDentitsByIdClinic, postClinic, loginIdUser, clinitRecruitDentist }
+module.exports = { 
+    getAllClinics, getAllRecruitsByIdClinic, getAllDentitsByIdClinic, postClinic, loginIdUser, clinitRecruitDentist
+}

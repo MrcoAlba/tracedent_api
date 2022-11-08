@@ -32,21 +32,10 @@ const dentistSchema = sequelize.define('dentist',{
     timestamps: false
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const recruitmentSchema = require('./recruitment')
+const dentistSpecialitiesSchema = require('./dentistSpecialities')
+const scheduleSchema = require('./schedule')
+
 recruitmentSchema.belongsTo(dentistSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
@@ -55,7 +44,6 @@ recruitmentSchema.belongsTo(dentistSchema,{
     },
     targetId: 'id_dentist'
 })
-const dentistSpecialitiesSchema = require('./dentistSpecialities')
 dentistSpecialitiesSchema.belongsTo(dentistSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
@@ -64,7 +52,6 @@ dentistSpecialitiesSchema.belongsTo(dentistSchema,{
     },
     targetId: 'id_dentist'
 })
-const scheduleSchema = require('./schedule')
 scheduleSchema.belongsTo(dentistSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
