@@ -88,6 +88,8 @@ const loginMailPass = async (req, res) => {
         // Get body parameters
         const mail      = String(req.body.mail).toUpperCase
         const password  = req.body.password
+        console.log("mail->",mail)
+        console.log("password->",password)
         // Find the required user and check credentials
         console.log("GAAAAA")
         console.log("GAAAAA")
