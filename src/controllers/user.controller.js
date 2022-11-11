@@ -92,7 +92,7 @@ const loginMailPass = async (req, res) => {
         console.log("GAAAAA")
         console.log("GAAAAA")
         console.log("GAAAAA")
-        const userInformation = await usersSchema.findOne({
+        const userInformation = await usersSchema.findAndCountAll({
                 attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
                 where: {
                     mail: mail,
