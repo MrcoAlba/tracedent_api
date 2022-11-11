@@ -88,21 +88,13 @@ const loginMailPass = async (req, res) => {
         // Get body parameters
         const mail      = String(req.body.mail).toUpperCase()
         const password  = req.body.password
-        console.log("mail->",mail)
-        console.log("password->",password)
         // Find the required user and check credentials
-        console.log("GAAAAA")
-        console.log("GAAAAA")
-        console.log("GAAAAA")
         const userInformation = await usersSchema.findAndCountAll({
                 attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
                 where: {
                     mail: mail,
                     pswd: password
         }})
-        console.log("TEMPORAL")
-        console.log("TEMPORAL")
-        console.log("TEMPORAL")
         // Send the response
         if (userInformation!=null){
             // Send this if credentials are correct
