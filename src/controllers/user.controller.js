@@ -49,7 +49,7 @@ const getAllUsers = async (req, res) => {
 const emailCheckExistance = async (req, res) => {
     try {
         // Get path parameters
-        const mail = String(req.params.mail).toUpperCase
+        const mail = String(req.params.mail).toUpperCase()
         // Search if exists the email in our database
         const mailExistance = await usersSchema.findOne({
             attributes:['id_user'],
@@ -86,7 +86,7 @@ const emailCheckExistance = async (req, res) => {
 const loginMailPass = async (req, res) => {
     try {
         // Get body parameters
-        const mail      = String(req.body.mail).toUpperCase
+        const mail      = String(req.body.mail).toUpperCase()
         const password  = req.body.password
         console.log("mail->",mail)
         console.log("password->",password)
