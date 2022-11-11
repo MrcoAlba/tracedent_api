@@ -89,12 +89,18 @@ const loginMailPass = async (req, res) => {
         const mail      = String(req.body.mail).toUpperCase
         const password  = req.body.password
         // Find the required user and check credentials
+        console.log("GAAAAA")
+        console.log("GAAAAA")
+        console.log("GAAAAA")
         const userInformation = await usersSchema.findOne({
                 attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
                 where: {
                     mail: mail,
                     pswd: password
         }})
+        console.log("TEMPORAL")
+        console.log("TEMPORAL")
+        console.log("TEMPORAL")
         // Send the response
         if (userInformation!=null){
             // Send this if credentials are correct
