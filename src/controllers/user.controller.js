@@ -89,7 +89,7 @@ const loginMailPass = async (req, res) => {
         const mail      = String(req.body.mail).toUpperCase()
         const password  = req.body.password
         // Find the required user and check credentials
-        const userInformation = await usersSchema.findAndCountAll({
+        const userInformation = await usersSchema.findOne({
                 attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
                 where: {
                     mail: mail,
