@@ -154,10 +154,10 @@ const loginIdUser = async (req, res) => {
                 include: [{
                     model: usersSchema,
                     attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
-                    where: {
-                        id_user: id_user
-                    }
                 }],
+                where: {
+                    id_user: id_user
+                }
             },],
         })
         // Send the response

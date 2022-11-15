@@ -246,19 +246,13 @@ const loginIdUser = async (req, res) => {
                 include: [{
                     model: usersSchema,
                     attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude'],
-                    where: {
-                        id_user: id_user
-                    }
                 }],
+                where: {
+                    id_user: id_user
+                }
             },],
         })
-        console.log("FRANCOOOOO")
-        console.log("FRANCOOOOO")
-        console.log("FRANCOOOOO")
         console.log(dentist)
-        console.log("FRANCOOOOO")
-        console.log("FRANCOOOOO")
-        console.log("FRANCOOOOO")
         // Send the response
         res.status(200).send({
             message:"OK",
