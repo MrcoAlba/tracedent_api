@@ -252,6 +252,13 @@ const loginIdUser = async (req, res) => {
                 }],
             },],
         })
+        console.log("FRANCOOOOO")
+        console.log("FRANCOOOOO")
+        console.log("FRANCOOOOO")
+        console.log(dentist)
+        console.log("FRANCOOOOO")
+        console.log("FRANCOOOOO")
+        console.log("FRANCOOOOO")
         // Send the response
         res.status(200).send({
             message:"OK",
