@@ -49,7 +49,7 @@ const getAllClinics = async (req, res) => {
             console.log("1")
             console.log("1")
             const respuesta1 = await sequelize.query(
-                "SELECT * FROM `clinics`", { 
+                "SELECT * FROM `clinic`", { 
                     type: QueryTypes.SELECT 
                 }
             )
