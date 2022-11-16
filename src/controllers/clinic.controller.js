@@ -5,6 +5,7 @@ const clinicSchema              = require('../models/clinic')
 const recruitmentSchema         = require('../models/recruitment')
 const dentistSchema             = require('../models/dentist')
 const personSchema              = require('../models/person')
+const sequelize = require('../database/database')
 
 
 // READ         -> GET ALL CLINICS
@@ -20,6 +21,9 @@ const getAllClinics = async (req, res) => {
         // Request all the clinics
         var clinics = null
         if (latitude==null || longitude==null){
+            console.log("PRIMER TIPO DE PETICION")
+            console.log("PRIMER TIPO DE PETICION")
+            console.log("PRIMER TIPO DE PETICION")
             clinics = await clinicSchema.findAndCountAll({
                 attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
                 order: [['company_name', 'ASC']],
@@ -37,25 +41,28 @@ const getAllClinics = async (req, res) => {
                 subQuery:   false
             })
         }else{
+            console.log("SEGUNDO TIPO DE PETICION")
+            console.log("SEGUNDO TIPO DE PETICION")
+            console.log("SEGUNDO TIPO DE PETICION")
+            const [resultCounter, metadataCounter] = await sequelize.query(
+                "SELECT count('clinic'.'id_clinic') AS 'count' FROM  'clinic' AS 'clinic' LEFT OUTER JOIN 'users' AS 'user' ON 'clinic'.'id_user' = 'user'.'id_user' LIMIT :limit;",
+                {
+                    replacements: { 
+                        limit: limit 
+                    },type: QueryTypes.SELECT
+                }
+            )
 
-            const [results, metadata] = await sequelize.query("UPDATE users SET y = 42 WHERE x = 12")
-
-            clinics = await clinicSchema.findAndCountAll({
-                attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
-                order: [['company_name', 'ASC']],
-                include: [{
-                    model: usersSchema,
-                    attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
-                },],
-                where: {
-                    company_name: {
-                        [Op.like]: '%'+name+'%'
-                    }
-                },
-                offset:     offset,
-                limit :     limit,
-                subQuery:   false
-            })
+            const [resultData, metadataData] = await sequelize.query(
+                "SELECT clinic.id_clinic, 'clinic'.'company_name', 'clinic'.'ruc', 'clinic'.'rating', 'user'.'id_user' AS 'user.id_user', 'user'.'user_type' AS 'user.user_type', 'user'.'phone_number' AS 'user.phone_number', 'user'.'subscription' AS 'user.subscription', 'user'.'district' AS 'user.district', 'user'.'direction' AS 'user.direction', 'user'.'latitude' AS 'user.latitude', 'user'.'longitude' AS 'user.longitude', POW(69.1 * ('user'.'latitude' - :latitude), 2) + POW(69.1 * (:longitude - 'user'.'longitude') * COS('user'.'latitude' / 57.3), 2) AS distance FROM  'clinic' AS 'clinic' LEFT OUTER JOIN 'users' AS 'user' ON 'clinic'.'id_user' = 'user'.'id_user' ORDER BY distance, LIMIT :limit;",
+                {
+                    replacements: { 
+                        latitude: latitude,
+                        longitude: longitude,
+                        limit: limit
+                    },type: QueryTypes.SELECT
+                }
+            )
         }
         
         
