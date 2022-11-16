@@ -1,5 +1,5 @@
 const { Op }                    = require('sequelize')
-const { containsOnlyNumbers }   = require('./utils')
+
 const usersSchema               = require('../models/user')
 const clinicSchema              = require('../models/clinic')
 const recruitmentSchema         = require('../models/recruitment')
@@ -11,34 +11,54 @@ const personSchema              = require('../models/person')
 const getAllClinics = async (req, res) => {
     try {
         // Get query parameters
-        var offset  = req.query.offset
-        var limit   = req.query.limit
-        var name    = String(req.query.name).toUpperCase()
-        // Validate if query parameters are valid
-        if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
-            offset = null
-            limit = null
-        }
-        if (name=='UNDEFINED'){
-            name = ""
-        }
+        const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
+        const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
+        const name      = String(req.query.name).toUpperCase() == 'UNDEFINED' ? ""   : String(req.query.name).toUpperCase()
+        const latitude  = isNaN(parseFloat(req.query.latitude))               ? null : parseFloat(req.query.latitude)
+        const longitude = isNaN(parseFloat(req.query.longitude))              ? null : parseFloat(req.query.longitude)
+
         // Request all the clinics
-        const clinics = await clinicSchema.findAndCountAll({
-            attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
-            order: [['company_name', 'ASC']],
-            include: [{
-                model: usersSchema,
-                attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
-            },],
-            where: {
-                company_name: {
-                    [Op.like]: '%'+name+'%'
-                }
-            },
-            offset:     offset,
-            limit :     limit,
-            subQuery:   false
-        })
+        var clinics = null
+        if (latitude==null || longitude==null){
+            clinics = await clinicSchema.findAndCountAll({
+                attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
+                order: [['company_name', 'ASC']],
+                include: [{
+                    model: usersSchema,
+                    attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+                },],
+                where: {
+                    company_name: {
+                        [Op.like]: '%'+name+'%'
+                    }
+                },
+                offset:     offset,
+                limit :     limit,
+                subQuery:   false
+            })
+        }else{
+
+            const [results, metadata] = await sequelize.query("UPDATE users SET y = 42 WHERE x = 12")
+
+            clinics = await clinicSchema.findAndCountAll({
+                attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
+                order: [['company_name', 'ASC']],
+                include: [{
+                    model: usersSchema,
+                    attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+                },],
+                where: {
+                    company_name: {
+                        [Op.like]: '%'+name+'%'
+                    }
+                },
+                offset:     offset,
+                limit :     limit,
+                subQuery:   false
+            })
+        }
+        
+        
         // Get the data, total and count information
         const data = clinics.rows
         const total = clinics.count
@@ -62,8 +82,8 @@ const getAllClinics = async (req, res) => {
 const getAllRecruitsByIdClinic = async (req, res) => {
     try {
         // Get query parameters
-        var offset  = req.query.offset
-        var limit   = req.query.limit
+        var offset  = parseInt(req.query.offset)
+        var limit   = parseInt(req.query.limit)
         var name    = String(req.query.name).toUpperCase()
         // Get path parameters
         const id    = req.params.id
@@ -125,8 +145,8 @@ const getAllRecruitsByIdClinic = async (req, res) => {
 const getAllDentitsByIdClinic = async (req, res) => {
     try {
         // Get query parameters
-        var offset  = req.query.offset
-        var limit   = req.query.limit
+        var offset  = parseInt(req.query.offset)
+        var limit   = parseInt(req.query.limit)
         var name    = String(req.query.name).toUpperCase()
         // Get path parameters
         const id    = req.params.id

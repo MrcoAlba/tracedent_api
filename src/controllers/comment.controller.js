@@ -1,5 +1,5 @@
 const { Op }                    = require('sequelize')
-const { containsOnlyNumbers }   = require('./utils')
+
 const commentSchema             = require("../models/comment")
 
 
@@ -11,8 +11,8 @@ const commentSchema             = require("../models/comment")
 const getCommentList = async (req, res) => {
     try {
         // Get query parameters
-        var offset  = req.query.offset
-        var limit   = req.query.limit
+        var offset  = parseInt(req.query.offset)
+        var limit   = parseInt(req.query.limit)
         // Validate if query parameters are valid
         if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
             offset = null

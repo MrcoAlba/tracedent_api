@@ -1,5 +1,5 @@
 const { Op }                    = require('sequelize')
-const { containsOnlyNumbers }   = require('./utils')
+
 const dentistSchema             = require('../models/dentist')
 const dentistSpecialitiesSchema = require('../models/dentistSpecialities')
 const personSchema              = require('../models/person')
@@ -11,9 +11,11 @@ const specialitySchema          = require('../models/speciality')
 const getAllDentists = async (req, res) => {
     try {
         // Get query parameters
-        var offset  = req.query.offset
-        var limit   = req.query.limit
+        var offset  = parseInt(req.query.offset)
+        var limit   = parseInt(req.query.limit)
         var name    = String(req.query.name).toUpperCase()
+        var latitude   = req.query.latitude
+        var longitude   = req.query.longitude
         // Validate if query parameters are valid
         if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
             offset = null

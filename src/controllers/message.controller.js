@@ -1,5 +1,5 @@
 const { Op }                    = require('sequelize')
-const { containsOnlyNumbers }   = require('./utils')
+
 const messageSchema             = require("../models/message")
 
 
@@ -11,8 +11,8 @@ const messageSchema             = require("../models/message")
 const getAllMessages = async (req, res) => {
     try {
         // Get query parameters
-        var offset  = req.query.offset
-        var limit   = req.query.limit
+        var offset  = parseInt(req.query.offset)
+        var limit   = parseInt(req.query.limit)
         // Get body parameters
         const from          = req.body.from
         const destination   = req.body.destination
