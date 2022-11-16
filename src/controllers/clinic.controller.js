@@ -48,7 +48,7 @@ const getAllClinics = async (req, res) => {
             console.log("1")
             console.log("1")
             console.log("1")
-            const [resultCounter, metadataCounter] = await sequelize.query(
+            const respuesta1 = await sequelize.query(
                 "SELECT count('clinic'.'id_clinic') AS 'count' FROM  'clinic' AS 'clinic' LEFT OUTER JOIN 'users' AS 'user' ON 'clinic'.'id_user' = 'user'.'id_user' LIMIT :limit;",
                 {
                     replacements: { 
@@ -60,7 +60,7 @@ const getAllClinics = async (req, res) => {
             console.log("2")
             console.log("2")
             console.log("2")
-            const [resultData, metadataData] = await sequelize.query(
+            const respuesta2 = await sequelize.query(
                 "SELECT clinic.id_clinic, 'clinic'.'company_name', 'clinic'.'ruc', 'clinic'.'rating', 'user'.'id_user' AS 'user.id_user', 'user'.'user_type' AS 'user.user_type', 'user'.'phone_number' AS 'user.phone_number', 'user'.'subscription' AS 'user.subscription', 'user'.'district' AS 'user.district', 'user'.'direction' AS 'user.direction', 'user'.'latitude' AS 'user.latitude', 'user'.'longitude' AS 'user.longitude', POW(69.1 * ('user'.'latitude' - :latitude), 2) + POW(69.1 * (:longitude - 'user'.'longitude') * COS('user'.'latitude' / 57.3), 2) AS distance FROM  'clinic' AS 'clinic' LEFT OUTER JOIN 'users' AS 'user' ON 'clinic'.'id_user' = 'user'.'id_user' ORDER BY distance, LIMIT :limit;",
                 {
                     replacements: { 
@@ -73,10 +73,8 @@ const getAllClinics = async (req, res) => {
             console.log("3")
             console.log("3")
             console.log("3")
-            console.log(resultCounter)
-            console.log(resultData)
-            console.log(metadataCounter)
-            console.log(metadataData)
+            console.log(respuesta1)
+            console.log(respuesta2)
         }
         
         
