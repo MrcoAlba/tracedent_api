@@ -49,9 +49,7 @@ const getAllClinics = async (req, res) => {
             console.log("1")
             console.log("1")
             const respuesta1 = await sequelize.query(
-                "SELECT * FROM clinic", { 
-                    type: QueryTypes.SELECT 
-                }
+                "SELECT * FROM clinic"
             )
             /*const respuesta1 = await sequelize.query(
                 "SELECT count('clinic'.'id_clinic') AS 'count' FROM  'clinic' AS 'clinic' LEFT OUTER JOIN 'users' AS 'user' ON 'clinic'.'id_user' = 'user'.'id_user' LIMIT :limit;",
