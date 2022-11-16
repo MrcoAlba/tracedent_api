@@ -78,24 +78,27 @@ const getAllClinics = async (req, res) => {
             console.log("3")
             console.log(respuesta1)
             /*console.log(respuesta2)*/
+            res.status(200).send({
+                message:"OK",
+                data:respuesta1,
+            })
         }
         
         
         // Get the data, total and count information
-        /*const data = clinics.rows
+        const data = respuesta1
         const total = clinics.count
-        const count = data.length*/
+        const count = data.length
         // Send the response
         /*res.status(200).send({
             message:"OK",
             data:data,
             meta:{total: total, count:count, offset: offset, limit: limit}
-        })*/
+        })
         res.status(200).send({
             message:"OK",
             data:respuesta1,
-            meta:{total: total, count:count, offset: offset, limit: limit}
-        })
+        })*/
     } catch (error) {
         // If there was an error, send a message and the error object
         res.status(400).send({
