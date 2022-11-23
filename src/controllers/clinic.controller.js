@@ -77,9 +77,9 @@ const getAllClinics = async (req, res) => {
         
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
         // Get the data, total and count information
-        const data = respuesta1
-        const total = clinics.count
-        const count = data.length
+        //const data = respuesta1
+        //const total = clinics.count
+        //const count = data.length
         // Send the response
         /*res.status(200).send({
             message:"OK",
