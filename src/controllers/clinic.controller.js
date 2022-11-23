@@ -41,6 +41,13 @@ const getAllClinics = async (req, res) => {
                 limit :     limit,
                 subQuery:   false
             })
+            console.log("clinics")
+            console.log("clinics")
+            console.log("clinics")
+            console.log(clinics)
+            console.log("clinics")
+            console.log("clinics")
+            console.log("clinics")
 
             data = clinics.rows
             total = clinics.count
