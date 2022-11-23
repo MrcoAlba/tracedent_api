@@ -20,6 +20,10 @@ const getAllClinics = async (req, res) => {
 
         // Request all the clinics
         var clinics = null
+        var data    = null
+        var total   = null
+        var count   = null
+
         if (latitude==null || longitude==null){
             clinics = await clinicSchema.findAndCountAll({
                 attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
@@ -37,6 +41,11 @@ const getAllClinics = async (req, res) => {
                 limit :     limit,
                 subQuery:   false
             })
+
+            data = clinics.rows
+            total = clinics.count
+            count = data.length
+
         }else{
             const respuesta1 = await sequelize.query(
                 "SELECT * FROM clinic"
@@ -66,7 +75,7 @@ const getAllClinics = async (req, res) => {
             })
         }
         
-        
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
         // Get the data, total and count information
         const data = respuesta1
         const total = clinics.count
