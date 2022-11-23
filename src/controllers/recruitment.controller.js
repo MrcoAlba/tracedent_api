@@ -11,13 +11,8 @@ const recruitmentSchema         = require('../models/recruitment')
 const getAllRecruitments = async (req, res) => {
     try {
         // Get query parameters
-        var offset  = parseInt(req.query.offset)
-        var limit   = parseInt(req.query.limit)
-        // Validate if query parameters are valid
-        if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
-            offset = null
-            limit = null
-        }
+        const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
+        const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
         // Request all the recruitment information
         const recruitment = await recruitmentSchema.findAndCountAll({
             attributes: ['id_recruitment', 'beg_date', 'end_date','sttus', 'id_clinic', 'id_dentist'],

@@ -112,19 +112,11 @@ const getAllClinics = async (req, res) => {
 const getAllRecruitsByIdClinic = async (req, res) => {
     try {
         // Get query parameters
-        var offset  = parseInt(req.query.offset)
-        var limit   = parseInt(req.query.limit)
-        var name    = String(req.query.name).toUpperCase()
+        const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
+        const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
+        const name      = String(req.query.name).toUpperCase() == 'UNDEFINED' ? ""   : String(req.query.name).toUpperCase()
         // Get path parameters
         const id    = req.params.id
-        // Validate if query parameters are valid
-        if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
-            offset = null
-            limit = null
-        }
-        if (name=='UNDEFINED'){
-            name = ""
-        }
         // Request all the recruits
         const recruits = await recruitmentSchema.findAndCountAll({
             attributes: ['id_recruitment','sttus','beg_date','end_date','id_dentist','id_clinic'],
@@ -175,19 +167,11 @@ const getAllRecruitsByIdClinic = async (req, res) => {
 const getAllDentitsByIdClinic = async (req, res) => {
     try {
         // Get query parameters
-        var offset  = parseInt(req.query.offset)
-        var limit   = parseInt(req.query.limit)
-        var name    = String(req.query.name).toUpperCase()
+        const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
+        const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
+        const name      = String(req.query.name).toUpperCase() == 'UNDEFINED' ? ""   : String(req.query.name).toUpperCase()
         // Get path parameters
         const id    = req.params.id
-        // Validate if query parameters are valid
-        if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
-            offset = null
-            limit = null
-        }
-        if (name=='UNDEFINED'){
-            name = ""
-        }
         // Request all the dentist
         const dentist = await recruitmentSchema.findAndCountAll({
             attributes: ['id_recruitment','sttus','beg_date','end_date','id_dentist','id_clinic'],

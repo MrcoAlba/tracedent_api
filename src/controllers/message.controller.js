@@ -11,16 +11,11 @@ const messageSchema             = require("../models/message")
 const getAllMessages = async (req, res) => {
     try {
         // Get query parameters
-        var offset  = parseInt(req.query.offset)
-        var limit   = parseInt(req.query.limit)
+        const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
+        const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
         // Get body parameters
         const from          = req.body.from
         const destination   = req.body.destination
-        // Validate if query parameters are valid
-        if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
-            offset = null
-            limit = null
-        }
         // Request all the persons
         const messages = await messageSchema.findAndCountAll({
             attributes: ['id_message','message_text','sent_datetime','id_from','id_destination'],

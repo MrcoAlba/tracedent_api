@@ -11,19 +11,12 @@ const specialitySchema          = require('../models/speciality')
 const getAllDentists = async (req, res) => {
     try {
         // Get query parameters
-        var offset  = parseInt(req.query.offset)
-        var limit   = parseInt(req.query.limit)
-        var name    = String(req.query.name).toUpperCase()
-        var latitude   = req.query.latitude
-        var longitude   = req.query.longitude
-        // Validate if query parameters are valid
-        if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
-            offset = null
-            limit = null
-        }
-        if (name=='UNDEFINED'){
-            name = ""
-        }
+        const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
+        const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
+        const name      = String(req.query.name).toUpperCase() == 'UNDEFINED' ? ""   : String(req.query.name).toUpperCase()
+        const latitude  = isNaN(parseFloat(req.query.latitude))               ? null : parseFloat(req.query.latitude)
+        const longitude = isNaN(parseFloat(req.query.longitude))              ? null : parseFloat(req.query.longitude)
+        
         // Request all the dentists
         const dentists = await dentistSchema.findAndCountAll({
             attributes: ['id_dentist', 'ruc', 'rating'],
@@ -73,14 +66,6 @@ const getDestistByIdAllSpecialities = async (req, res) => {
         var name            = String(req.query.name).toUpperCase()
         // Get path parameters
         const id_dentist    = req.params.id
-        // Validate if query parameters are valid
-        if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
-            offset = null
-            limit = null
-        }
-        if (name=='UNDEFINED'){
-            name = ""
-        }
         // Request all the specialities
         const specialities = await dentistSpecialitiesSchema.findAndCountAll({
             attributes: ['id_dentist_speciality','id_speciality','id_dentist'],
@@ -254,7 +239,6 @@ const loginIdUser = async (req, res) => {
                 }
             },],
         })
-        console.log(dentist)
         // Send the response
         res.status(200).send({
             message:"OK",

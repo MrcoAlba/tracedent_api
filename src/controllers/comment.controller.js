@@ -11,13 +11,8 @@ const commentSchema             = require("../models/comment")
 const getCommentList = async (req, res) => {
     try {
         // Get query parameters
-        var offset  = parseInt(req.query.offset)
-        var limit   = parseInt(req.query.limit)
-        // Validate if query parameters are valid
-        if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
-            offset = null
-            limit = null
-        }
+        const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
+        const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
         // Request all the comments
         const comments = await commentSchema.findAndCountAll({
             attributes: ['id_comment','rating','comment'],

@@ -11,13 +11,8 @@ const sequelize                 = require('../database/database')
 const getAllSchedules = async (req, res) => {
     try {
         // Get query parameters
-        var offset  = parseInt(req.query.offset)
-        var limit   = parseInt(req.query.limit)
-        // Validate if query parameters are valid
-        if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
-            offset = null
-            limit = null
-        }
+        const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
+        const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
         // Request all the schedule information
         const schedules = await scheduleSchema.findAndCountAll({
             attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
@@ -49,26 +44,27 @@ const getAllSchedules = async (req, res) => {
 const getAllSchedulesByDentistId = async (req, res) => {
     try {
         // Get query parameters
-        var offset          = req.query.offset
-        var limit           = req.query.limit
+        const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
+        const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
+        const status        = isNaN(parseInt(req.query.status))                    ? 10 : (parseInt(req.query.status)<0 || parseInt(req.query.status)>9 ? 10 : parseInt(req.query.status))
         var status          = req.query.status 
         var id_clinic       = req.query.id_clinic
+        const id_clinic     = isNaN(req.query.id_clinic)                   ? null : req.query.id_clinic
+
         // Get path parameters
         const id_dentist    = req.params.id
-        // Validate if query parameters are valid
-        if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
-            offset = null
-            limit = null
-        }
-        if (id_clinic==null){
-            id_clinic=''
-        }
+        
+
+
         if (!containsOnlyNumbers(status)){
             status = 10
         }else if (status < 0 && status > 9){
             status = 10
         }
         status = parseInt(status)
+        
+        
+        
         // Request all the schedule information
         var schedules = null
         if (status==10){

@@ -11,17 +11,9 @@ const usersSchema               = require('../models/user')
 const getAllPatients = async (req, res) => {
     try {
         // Get query parameters
-        var offset  = parseInt(req.query.offset)
-        var limit   = parseInt(req.query.limit)
-        var name    = String(req.query.name).toUpperCase()
-        // Validate if query parameters are valid
-        if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
-            offset = null
-            limit = null
-        }
-        if (name=='UNDEFINED'){
-            name = ""
-        }
+        const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
+        const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
+        const name      = String(req.query.name).toUpperCase() == 'UNDEFINED' ? ""   : String(req.query.name).toUpperCase()
         // Request all the patients
         const patients = await patientSchema.findAndCountAll({
             attributes: ['id_patient'],

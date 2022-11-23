@@ -11,13 +11,8 @@ const dentistSpecialitiesSchema = require('../models/dentistSpecialities')
 const getAllDentistSpecialitiesList = async (req, res) => {
     try {
         // Get query parameters
-        var offset  = parseInt(req.query.offset)
-        var limit   = parseInt(req.query.limit)
-        // Validate if query parameters are valid
-        if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
-            offset = null
-            limit = null
-        }
+        const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
+        const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
         // Request all the user information
         const dentistSpecialities = await dentistSpecialitiesSchema.findAndCountAll({
             attributes: ['id_dentist_speciality','id_speciality', 'id_dentist'],

@@ -10,26 +10,10 @@ const specialitySchema          = require('../models/speciality')
 // READ         -> GET ALL SPECIALITIES
 const getSpecialityList = async (req, res) => {
     try {
-        console.log("1")
-        console.log("1")
         // Get query parameters
-        var offset  = parseInt(req.query.offset)
-        var limit   = parseInt(req.query.limit)
-        var name    = String(req.query.name).toUpperCase()
-        console.log("2")
-        console.log("2")
-        // Validate if query parameters are valid
-        if (!containsOnlyNumbers(offset) || !containsOnlyNumbers(limit)){
-            offset = null
-            limit = null
-        }
-        console.log("3")
-        console.log("3")
-        if (name=='UNDEFINED'){
-            name = ""
-        }
-        console.log("4")
-        console.log("4")
+        const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
+        const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
+        const name      = String(req.query.name).toUpperCase() == 'UNDEFINED' ? ""   : String(req.query.name).toUpperCase()
         // Request all the specialities
         const specialities = await specialitySchema.findAndCountAll({
             attributes: ['id_speciality','name'],
@@ -43,8 +27,6 @@ const getSpecialityList = async (req, res) => {
             limit :     limit,
             subQuery:   false
         })
-        console.log("5")
-        console.log("5")
         // Get the data, total and count information
         const data = specialities.rows
         const total = specialities.count
