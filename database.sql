@@ -207,3 +207,143 @@ VALUES
 {"id_clinic":"", "id_dentist":""}
 {"id_clinic":"", "id_dentist":""}
 {"id_clinic":"", "id_dentist":""}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2022-11-23T01:10:13.990524+00:00 app[web.1]: Executing (default): 
+SELECT 
+    count("clinic"."id_clinic") AS "count" 
+FROM 
+    "clinic" AS "clinic" 
+LEFT OUTER JOIN 
+    "users" AS "user" 
+ON 
+    "clinic"."id_user" = "user"."id_user" 
+WHERE 
+    "clinic"."company_name" 
+LIKE 
+    '%%';
+
+2022-11-23T01:10:13.991993+00:00 app[web.1]: Executing (default): 
+SELECT 
+    "clinic"."id_clinic", "clinic"."company_name", 
+    "clinic"."ruc", 
+    "clinic"."rating", 
+    "user"."id_user" AS "user.id_user", 
+    "user"."user_type" AS "user.user_type", 
+    "user"."phone_number" AS "user.phone_number", 
+    "user"."subscription" AS "user.subscription", 
+    "user"."district" AS "user.district", 
+    "user"."direction" AS "user.direction", 
+    "user"."latitude" AS "user.latitude", 
+    "user"."longitude" AS "user.longitude" 
+FROM 
+    "clinic" AS "clinic" 
+LEFT OUTER JOIN 
+    "users" AS "user" 
+ON 
+    "clinic"."id_user" = "user"."id_user" 
+WHERE 
+    "clinic"."company_name" 
+LIKE 
+    '%%' 
+ORDER BY 
+    "clinic"."company_name" ASC 
+LIMIT 
+    30 
+OFFSET 
+    0;
+
+2022-11-23T01:10:13.994225+00:00 app[web.1]: Executing (default): 
+SELECT 
+    count("dentist"."id_dentist") AS "count" 
+FROM 
+    "dentist" AS "dentist" 
+INNER JOIN 
+    "person" AS "person" 
+ON 
+    "dentist"."id_person" = "person"."id_person" 
+    AND 
+    "person"."first_name" LIKE '%%' 
+LEFT OUTER JOIN 
+    "users" AS "person->user" 
+ON 
+    "person"."id_user" = "person->user"."id_user";
+
+2022-11-23T01:10:13.997963+00:00 app[web.1]: Executing (default): 
+SELECT 
+    "dentist"."id_dentist", 
+    "dentist"."ruc", 
+    "dentist"."rating", 
+    "person"."id_person" AS "person.id_person", 
+    "person"."first_name" AS "person.first_name", 
+    "person"."last_name" AS "person.last_name", 
+    "person"."gender" AS "person.gender", 
+    "person"."dni" AS "person.dni", 
+    "person->user"."id_user" AS "person.user.id_user", 
+    "person->user"."user_type" AS "person.user.user_type", 
+    "person->user"."phone_number" AS "person.user.phone_number", 
+    "person->user"."subscription" AS "person.user.subscription", 
+    "person->user"."district" AS "person.user.district", 
+    "person->user"."direction" AS "person.user.direction", 
+    "person->user"."latitude" AS "person.user.latitude", 
+    "person->user"."longitude" AS "person.user.longitude" 
+FROM 
+    "dentist" AS "dentist" 
+INNER JOIN 
+    "person" AS "person" 
+ON 
+    "dentist"."id_person" = "person"."id_person" 
+    AND 
+    "person"."first_name" LIKE '%%' 
+LEFT OUTER JOIN 
+    "users" AS "person->user" 
+ON 
+    "person"."id_user" = "person->user"."id_user" 
+ORDER BY 
+    "dentist"."ruc" ASC 
+LIMIT 
+    30 
+OFFSET 
+    0;

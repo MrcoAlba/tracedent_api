@@ -14,6 +14,11 @@ const getAllPatients = async (req, res) => {
         const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
         const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
         const name      = String(req.query.name).toUpperCase() == 'UNDEFINED' ? ""   : String(req.query.name).toUpperCase()
+        console.log("1")
+        console.log("1")
+        console.log("1")
+        console.log(name)
+        console.log(name)
         // Request all the patients
         const patients = await patientSchema.findAndCountAll({
             attributes: ['id_patient'],
@@ -35,6 +40,10 @@ const getAllPatients = async (req, res) => {
             limit :     limit,
             subQuery:   false
         })
+        console.log(patients)
+        console.log("2")
+        console.log("2")
+        console.log("2")
         // Get the data, total and count information
         const data = patients.rows
         const total = patients.count
