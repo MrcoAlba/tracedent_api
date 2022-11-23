@@ -47,8 +47,7 @@ const getAllSchedulesByDentistId = async (req, res) => {
         const offset        = isNaN(parseInt(req.query.offset))         ? null : parseInt(req.query.offset)
         const limit         = isNaN(parseInt(req.query.limit))          ? null : parseInt(req.query.limit)
         const status        = isNaN(parseInt(req.query.status))         ? 10 : (parseInt(req.query.status)<0 || parseInt(req.query.status)>9 ? 10 : parseInt(req.query.status))
-        var id_clinic       = req.query.id_clinic
-        const id_clinic     = isNaN(req.query.id_clinic)                ? null : req.query.id_clinic
+        const id_clinic     = isNaN(req.query.id_clinic)                ? "" : req.query.id_clinic
 
         // Get path parameters
         const id_dentist    = req.params.id
