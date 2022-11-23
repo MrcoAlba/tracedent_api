@@ -92,14 +92,6 @@ CREATE TABLE schedule(
     CONSTRAINT VALID_HOUR   CHECK (hour <= 47 and hour >= 0)
 );
 
-CREATE TABLE textMessage(
-    id_message      SMALLSERIAL     PRIMARY KEY                                                 ,
-    message_text    VARCHAR(256)    NOT NULL                                                    ,
-    sent_datetime   TIMESTAMP WITHOUT TIME ZONE         DEFAULT now()                           ,
-    id_from         SMALLINT        NOT NULL    REFERENCES users(id_user)                       ,
-    id_destination  SMALLINT        NOT NULL    REFERENCES users(id_user)
-);
-
 INSERT INTO 
     users (user_type,mail,pswd,phone_number,subscription,district,direction,latitude,longitude)
 VALUES 

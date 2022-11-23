@@ -21,9 +21,6 @@ const getAllClinics = async (req, res) => {
         // Request all the clinics
         var clinics = null
         if (latitude==null || longitude==null){
-            console.log("PRIMER TIPO DE PETICION")
-            console.log("PRIMER TIPO DE PETICION")
-            console.log("PRIMER TIPO DE PETICION")
             clinics = await clinicSchema.findAndCountAll({
                 attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
                 order: [['company_name', 'ASC']],
@@ -41,13 +38,6 @@ const getAllClinics = async (req, res) => {
                 subQuery:   false
             })
         }else{
-            console.log("SEGUNDO TIPO DE PETICION")
-            console.log("SEGUNDO TIPO DE PETICION")
-            console.log("SEGUNDO TIPO DE PETICION")
-
-            console.log("1")
-            console.log("1")
-            console.log("1")
             const respuesta1 = await sequelize.query(
                 "SELECT * FROM clinic"
             )
@@ -60,9 +50,6 @@ const getAllClinics = async (req, res) => {
                 }
             )*/
 
-            console.log("2")
-            console.log("2")
-            console.log("2")
             /*const respuesta2 = await sequelize.query(
                 "SELECT clinic.id_clinic, 'clinic'.'company_name', 'clinic'.'ruc', 'clinic'.'rating', 'user'.'id_user' AS 'user.id_user', 'user'.'user_type' AS 'user.user_type', 'user'.'phone_number' AS 'user.phone_number', 'user'.'subscription' AS 'user.subscription', 'user'.'district' AS 'user.district', 'user'.'direction' AS 'user.direction', 'user'.'latitude' AS 'user.latitude', 'user'.'longitude' AS 'user.longitude', POW(69.1 * ('user'.'latitude' - :latitude), 2) + POW(69.1 * (:longitude - 'user'.'longitude') * COS('user'.'latitude' / 57.3), 2) AS distance FROM  'clinic' AS 'clinic' LEFT OUTER JOIN 'users' AS 'user' ON 'clinic'.'id_user' = 'user'.'id_user' ORDER BY distance, LIMIT :limit;",
                 {
@@ -73,11 +60,6 @@ const getAllClinics = async (req, res) => {
                     },type: QueryTypes.SELECT
                 }
             )*/
-            console.log("3")
-            console.log("3")
-            console.log("3")
-            console.log(respuesta1)
-            /*console.log(respuesta2)*/
             res.status(200).send({
                 message:"OK",
                 data:respuesta1,

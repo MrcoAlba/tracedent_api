@@ -73,7 +73,6 @@ const usersSchema = sequelize.define('users',{
 
 const personSchema = require('./person')
 const clinicSchema = require('./clinic')
-const messageSchema = require('./message')
 
 personSchema.belongsTo(usersSchema,{
     foreignKey: {
@@ -87,22 +86,6 @@ clinicSchema.belongsTo(usersSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
         name:           'id_user',
-        allowNull:      false
-    },
-    targetId: 'id_user'
-})
-messageSchema.belongsTo(usersSchema,{
-    foreignKey: {
-        type:           DataTypes.UUID,
-        name:           'id_from',
-        allowNull:      false
-    },
-    targetId: 'id_user'
-})
-messageSchema.belongsTo(usersSchema,{
-    foreignKey: {
-        type:           DataTypes.UUID,
-        name:           'id_destination',
         allowNull:      false
     },
     targetId: 'id_user'
