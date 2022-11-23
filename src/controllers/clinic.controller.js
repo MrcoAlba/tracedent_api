@@ -88,12 +88,13 @@ const getAllClinics = async (req, res) => {
         //const total = clinics.count
         //const count = data.length
         // Send the response
-        /*res.status(200).send({
+        res.status(200).send({
             message:"OK",
             data:data,
             meta:{total: total, count:count, offset: offset, limit: limit}
         })
-        res.status(200).send({
+        
+        /*res.status(200).send({
             message:"OK",
             data:respuesta1,
         })*/
