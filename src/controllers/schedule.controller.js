@@ -43,6 +43,7 @@ const getAllSchedules = async (req, res) => {
 //READ      -> GET ALL SCHEDULES BY DENTIST ID (ALSO STATUS AND CLINIC ID)
 const getAllSchedulesByDentistId = async (req, res) => {
     try {
+        /*
         // Get query parameters
         const offset        = isNaN(parseInt(req.query.offset))         ? null : parseInt(req.query.offset)
         const limit         = isNaN(parseInt(req.query.limit))          ? null : parseInt(req.query.limit)
