@@ -39,7 +39,7 @@ scheduleSchema.belongsTo(recruitmentSchema,{
     foreignKey: {
         type:           DataTypes.UUID,
         name:           'id_recruitment',
-        allowNull:      false
+        allowNull:      true
     },
     targetId: 'id_recruitment'
 })

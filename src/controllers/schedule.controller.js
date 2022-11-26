@@ -195,11 +195,11 @@ const getAllSchedulesByPatientId = async (req, res) => {
     }
 }
 // CREATE   -> CREATE AN SCHEDULE BY DENTIST ID
-const createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
+const s0createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
     try {
         // Get body parameters
         var {
-            id_clinic, id_recruitment, id_dentist, date, time
+            id_recruitment, id_dentist, date, time
         } = req.body
         // Create a schedule
         const schedules = await scheduleSchema.create({
@@ -236,5 +236,5 @@ const createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
 
 
 module.exports = { 
-    getAllSchedules, getAllSchedulesByDentistId, getAllSchedulesByPatientId, createAnScheduleForDentitstByIdAndClinicId 
+    getAllSchedules, getAllSchedulesByDentistId, getAllSchedulesByPatientId, s0createAnScheduleForDentitstByIdAndClinicId 
 }
