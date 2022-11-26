@@ -225,6 +225,38 @@ const s0createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
         })
     }
 }
+// Status 1 -> DENTISTS CANCEL SCHEDULE
+const s1dentistCancelSchedule = async (req, res) => {
+    try {
+        // Get body parameters
+        const {
+            id_schedule
+        } = req.body
+        // Create a schedule
+        const schedules = await scheduleSchema.update({
+            sttus:          1
+        },{
+            where: {
+                id_schedule : id_schedule
+            }
+        })
+
+        //Send the response
+        res.status(200).send({
+            message:"OK",
+            data:[schedules],
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
+    } catch (error) {
+        // If there was an error, send a message and the error object
+        res.status(400).send({
+            message:"ERROR",
+            response:error,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
+    }
+}
+
 
 
 
@@ -237,5 +269,5 @@ const s0createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
 
 
 module.exports = { 
-    getAllSchedules, getAllSchedulesByDentistId, getAllSchedulesByPatientId, s0createAnScheduleForDentitstByIdAndClinicId 
+    getAllSchedules, getAllSchedulesByDentistId, getAllSchedulesByPatientId, s0createAnScheduleForDentitstByIdAndClinicId, s1dentistCancelSchedule
 }
