@@ -57,14 +57,14 @@ const emailCheckExistance = async (req, res) => {
             // Send this if email does exists
             res.status(200).send({
                 message:"Does exists",
-                data:mailExistance,
+                data:[0],
                 meta:{total: null, count:null, offset: null, limit: null}
             })
         }else{
             // Send this if email does not exists
             res.status(200).send({
                 message:"Does not exists",
-                data:mailExistance,
+                data:[1],
                 meta:{total: null, count:null, offset: null, limit: null}
             })
         }
