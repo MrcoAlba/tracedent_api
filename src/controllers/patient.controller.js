@@ -101,7 +101,7 @@ const postPatient = async (req, res) => {
                 // Send the response
                 res.status(200).send({
                     message:"PATIENT CREATED",
-                    data:patient,
+                    data:[patient],
                     meta:{total: null, count:null, offset: null, limit: null}
                 })
             } catch (error) {

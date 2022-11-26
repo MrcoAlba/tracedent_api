@@ -179,7 +179,7 @@ const postDentist = async (req, res) => {
                 // Send the response
                 res.status(200).send({
                     message:"DENTIST CREATED",
-                    data:dentist,
+                    data:[dentist],
                     meta:{total: null, count:null, offset: null, limit: null}
                 })
             } catch (error) {

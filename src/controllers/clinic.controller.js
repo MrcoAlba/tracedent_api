@@ -107,6 +107,50 @@ const getAllClinics = async (req, res) => {
         })
     }
 }
+// READ         -> GET CLINIC INFORMATION
+const getClinicById = async (req, res) => {
+    try {
+        // Get path parameters
+        const id    = req.params.id
+        //Get the clinic by id
+        clinics = await clinicSchema.findAndCountAll({
+            attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
+            include: [{
+                model: usersSchema,
+                attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+            },],
+            where: {
+                id_clinic: id_clinic
+            }
+        })
+        // Get the data, total and count information
+        const data = clinics.rows
+        const total = clinics.count
+        const count = data.length
+        // Response
+        if (count == 1){
+            res.status(200).send({
+                message:"OK",
+                data:[data],
+                meta:{total: total, count:count, offset: null, limit: null}
+            })
+        }else{
+            res.status(500).send({
+                message:"No clinic found",
+                data:null,
+                meta:{total: null, count:null, offset: null, limit: null}
+            })
+        }
+
+    } catch (error) {
+        // If there was an error, send a message and the error object
+        res.status(400).send({
+            message:"ERROR",
+            response:error,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
+    }
+}
 // READ         -> GET ALL RECRUITS BY CLINIC_ID
 const getAllRecruitsByIdClinic = async (req, res) => {
     try {
@@ -248,7 +292,7 @@ const postClinic = async (req, res) => {
             // Send the response
             res.status(200).send({
                 message:"CLINIC CREATED",
-                data:clinic,
+                data:[clinic],
                 meta:{total: null, count:null, offset: null, limit: null}
             })
         } catch (error) {
@@ -332,5 +376,5 @@ const clinitRecruitDentist = async (req, res) => {
 
 
 module.exports = { 
-    getAllClinics, getAllRecruitsByIdClinic, getAllDentitsByIdClinic, postClinic, loginIdUser, clinitRecruitDentist
+    getAllClinics, getClinicById, getAllRecruitsByIdClinic, getAllDentitsByIdClinic, postClinic, loginIdUser, clinitRecruitDentist
 }
