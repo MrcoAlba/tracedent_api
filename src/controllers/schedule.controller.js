@@ -256,8 +256,8 @@ const s1dentistCancelSchedule = async (req, res) => {
         })
     }
 }
-// Status 2 -> PATIENT CHOOSES SCHEDULE
-const s2patientChoosesSchedule = async (req, res) => {
+// Status 2 -> PATIENT INTENTS SCHEDULE
+const s2patientIntentsSchedule = async (req, res) => {
     try {
         // Get body parameters
         const {
@@ -270,6 +270,38 @@ const s2patientChoosesSchedule = async (req, res) => {
         },{
             where: {
                 id_schedule : id_schedule
+            }
+        })
+
+        //Send the response
+        res.status(200).send({
+            message:"OK",
+            data:[schedules],
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
+    } catch (error) {
+        // If there was an error, send a message and the error object
+        res.status(400).send({
+            message:"ERROR",
+            response:error,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
+    }
+}
+// Status 3 -> PATIENT CHOOSES SCHEDULE
+const s3patientChoosesSchedule = async (req, res) => {
+    try {
+        // Get body parameters
+        const {
+            id_schedule, id_patient
+        } = req.body
+        // Create a schedule
+        const schedules = await scheduleSchema.update({
+            sttus:          3
+        },{
+            where: {
+                id_schedule : id_schedule,
+                id_patient : id_patient
             }
         })
 
@@ -301,5 +333,6 @@ const s2patientChoosesSchedule = async (req, res) => {
 
 module.exports = { 
     getAllSchedules, getAllSchedulesByDentistId, getAllSchedulesByPatientId, 
-    s0createAnScheduleForDentitstByIdAndClinicId, s1dentistCancelSchedule, s2patientChoosesSchedule
+    s0createAnScheduleForDentitstByIdAndClinicId, s1dentistCancelSchedule, s2patientIntentsSchedule,
+    s3patientChoosesSchedule
 }
