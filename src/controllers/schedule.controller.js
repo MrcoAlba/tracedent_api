@@ -213,7 +213,7 @@ const s0createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
         //Send the response
         res.status(200).send({
             message:"OK",
-            data:schedules,
+            data:[schedules],
             meta:{total: null, count:null, offset: null, limit: null}
         })
     } catch (error) {
