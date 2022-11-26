@@ -42,6 +42,7 @@ const getAllSchedules = async (req, res) => {
 }
 //READ      -> GET ALL SCHEDULES BY DENTIST ID (ALSO STATUS AND CLINIC ID)
 const getAllSchedulesByDentistId = async (req, res) => {
+    /*
     try {
         // Get query parameters
         const offset        = isNaN(parseInt(req.query.offset))         ? null : parseInt(req.query.offset)
@@ -139,6 +140,7 @@ const getAllSchedulesByDentistId = async (req, res) => {
             meta:{total: null, count:null, offset: null, limit: null}
         })
     }
+    */
 }
 //READ      -> GET ALL SCHEDULES BY PATIENT ID (ALSO STATUS AND CLINIC ID)
 const getAllSchedulesByPatientId = async (req, res) => {
