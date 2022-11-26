@@ -202,6 +202,7 @@ const s0createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
             id_recruitment, id_dentist, date, time
         } = req.body
         // Create a schedule
+        console.log("gaaa")
         const schedules = await scheduleSchema.create({
             id_dentist:     id_dentist      , 
             id_clinic:      id_clinic       , 
@@ -209,6 +210,7 @@ const s0createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
             date:           date            , 
             time:           time
         })
+        console.log("gooooooo")
         //Send the response
         res.status(200).send({
             message:"OK",
