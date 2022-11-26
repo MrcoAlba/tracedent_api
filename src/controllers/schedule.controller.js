@@ -43,27 +43,13 @@ const getAllSchedules = async (req, res) => {
 //READ      -> GET ALL SCHEDULES BY DENTIST ID (ALSO STATUS AND CLINIC ID)
 const getAllSchedulesByDentistId = async (req, res) => {
     try {
-        
         // Get query parameters
         const offset        = isNaN(parseInt(req.query.offset))         ? null : parseInt(req.query.offset)
         const limit         = isNaN(parseInt(req.query.limit))          ? null : parseInt(req.query.limit)
         const status        = isNaN(parseInt(req.query.status))         ? 10 : (parseInt(req.query.status)<0 || parseInt(req.query.status)>9 ? 10 : parseInt(req.query.status))
         const id_clinic     = isNaN(req.query.id_clinic)                ? "" : req.query.id_clinic
-
         // Get path parameters
         const id_dentist    = req.params.id
-        
-        
-        console.log("1")
-        console.log("1")
-        console.log("1")
-        console.log(offset)
-        console.log(limit)
-        console.log(status)
-        console.log(id_clinic)
-        console.log("1")
-        console.log("1")
-        console.log("1")
         // Request all the schedule information
         var schedules = null
         if (status==10){
@@ -139,21 +125,8 @@ const getAllSchedulesByPatientId = async (req, res) => {
         const limit         = isNaN(parseInt(req.query.limit))          ? null : parseInt(req.query.limit)
         const status        = isNaN(parseInt(req.query.status))         ? 10 : (parseInt(req.query.status)<0 || parseInt(req.query.status)>9 ? 10 : parseInt(req.query.status))
         const id_clinic     = isNaN(req.query.id_clinic)                ? "" : req.query.id_clinic
-
         // Get path parameters
-        const id_dentist    = req.params.id
-        
-
-
-        if (!containsOnlyNumbers(status)){
-            status = 10
-        }else if (status < 0 && status > 9){
-            status = 10
-        }
-        status = parseInt(status)
-        
-        
-        
+        const id_patient    = req.params.id
         // Request all the schedule information
         var schedules = null
         if (status==10){
@@ -161,7 +134,7 @@ const getAllSchedulesByPatientId = async (req, res) => {
                 attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
                 order:      [['date','ASC'],['time','ASC']],
                 where: {
-                    id_dentist: id_dentist,
+                    id_patient: id_patient,
                 },
                 include: [{
                     model: recruitmentSchema,
@@ -183,7 +156,7 @@ const getAllSchedulesByPatientId = async (req, res) => {
                 attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
                 order:      [['date','ASC'],['time','ASC']],
                 where: {
-                    id_dentist: id_dentist,
+                    id_patient: id_patient,
                     sttus: status
                 },
                 include: [{
