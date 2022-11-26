@@ -52,15 +52,6 @@ const getAllSchedulesByDentistId = async (req, res) => {
 
         // Get path parameters
         const id_dentist    = req.params.id
-        /*
-
-
-        if (!containsOnlyNumbers(status)){
-            status = 10
-        }else if (status < 0 && status > 9){
-            status = 10
-        }
-        status = parseInt(status)
         
         
         console.log("1")
@@ -73,7 +64,6 @@ const getAllSchedulesByDentistId = async (req, res) => {
         console.log("1")
         console.log("1")
         console.log("1")
-        /*
         // Request all the schedule information
         var schedules = null
         if (status==10){
@@ -131,10 +121,6 @@ const getAllSchedulesByDentistId = async (req, res) => {
             message:"OK",
             data:data,
             meta:{total: total, count:count, offset: offset, limit: limit}
-        })
-        */
-        res.status(200).send({
-            message:"OK"
         })
     } catch (error) {
         // If there was an error, send a message and the error object
