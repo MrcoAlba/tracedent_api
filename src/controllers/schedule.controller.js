@@ -205,7 +205,6 @@ const s0createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
         console.log("gaaa")
         const schedules = await scheduleSchema.create({
             id_dentist:     id_dentist      , 
-            id_clinic:      id_clinic       , 
             id_recruitment: id_recruitment  , 
             date:           date            , 
             time:           time
