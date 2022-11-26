@@ -164,7 +164,7 @@ const loginIdUser = async (req, res) => {
         // Send the response
         res.status(200).send({
             message:"OK",
-            data:patient,
+            data:[patient],
             meta:{total: null, count:null, offset: null, limit: null}
         })
     } catch (error) {
