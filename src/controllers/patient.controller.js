@@ -63,6 +63,53 @@ const getAllPatients = async (req, res) => {
         })
     }
 }
+// SEARCH       -> PATIENT PER ID
+const getPatientById = async (req, res) => {
+    try {
+        // Get path parameters
+        const id_patient = req.params.id
+
+        const patient = await patientSchema.findOne({
+            attributes: ['id_patient'],
+            include: [{
+                model: personSchema,
+                attributes: ['id_person', 'first_name', 'last_name', 'gender', 'dni'],
+                include: [{
+                    model: usersSchema,
+                    attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+                }],
+            },],
+            where: {
+                id_patient: id_patient
+            },
+        })
+        // Get the data, total and count information
+        const data = patient.rows
+        const total = patient.count
+        const count = data.length
+        // Response
+        if (count == 1){
+            res.status(200).send({
+                message:"OK",
+                data:[data],
+                meta:{total: total, count:count, offset: null, limit: null}
+            })
+        }else{
+            res.status(500).send({
+                message:"No patient found",
+                data:null,
+                meta:{total: null, count:null, offset: null, limit: null}
+            })
+        }
+    } catch (error) {
+        // If there was an error, send a message and the error object
+        res.status(400).send({
+            message:"ERROR",
+            response:error,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
+    }
+}
 // CREATE   -> POST A NEW PATIENT
 const postPatient = async (req, res) => {
     try {
@@ -188,5 +235,5 @@ const loginIdUser = async (req, res) => {
 
 
 module.exports = { 
-    postPatient, getAllPatients, loginIdUser 
+    postPatient, getPatientById, getAllPatients, loginIdUser 
 }

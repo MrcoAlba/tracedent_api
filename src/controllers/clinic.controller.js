@@ -111,7 +111,7 @@ const getAllClinics = async (req, res) => {
 const getClinicById = async (req, res) => {
     try {
         // Get path parameters
-        const id    = req.params.id
+        const id_clinic = req.params.id
         //Get the clinic by id
         clinics = await clinicSchema.findAndCountAll({
             attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
@@ -141,7 +141,6 @@ const getClinicById = async (req, res) => {
                 meta:{total: null, count:null, offset: null, limit: null}
             })
         }
-
     } catch (error) {
         // If there was an error, send a message and the error object
         res.status(400).send({

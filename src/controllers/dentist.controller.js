@@ -57,6 +57,53 @@ const getAllDentists = async (req, res) => {
         })
     }
 }
+// SEARCH   -> DENTIST PER ID
+const getDentistById = async (req, res) => {
+    try {
+        // Get path parameters
+        const id_dentist    = req.params.id
+        // Request the dentist
+        const dentist = await dentistSchema.findOne({
+            attributes: ['id_dentist', 'ruc', 'rating'],
+            include: [{
+                model: personSchema,
+                attributes: ['id_person', 'first_name', 'last_name', 'gender', 'dni'],
+                include: [{
+                    model: usersSchema,
+                    attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+                }],
+            },],
+            where: {
+                id_dentist: id_dentist
+            },
+        })
+        // Get the data, total and count information
+        const data = clinics.rows
+        const total = clinics.count
+        const count = data.length
+        // Response
+        if (count == 1){
+            res.status(200).send({
+                message:"OK",
+                data:[data],
+                meta:{total: total, count:count, offset: null, limit: null}
+            })
+        }else{
+            res.status(200).send({
+                message:"No dentist found",
+                data:null,
+                meta:{total: null, count:null, offset: null, limit: null}
+            })
+        }
+    } catch (error) {
+        // If there was an error, send a message and the error object
+        res.status(400).send({
+            message:"ERROR",
+            response:error,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
+    }
+}
 // READ     -> GET ALL DENTIST SPECIALITIES
 const getDestistByIdAllSpecialities = async (req, res) => {
     try {
@@ -95,41 +142,6 @@ const getDestistByIdAllSpecialities = async (req, res) => {
             message:"OK",
             data:data,
             meta:{total: total, count:count, offset: offset, limit: limit}
-        })
-    } catch (error) {
-        // If there was an error, send a message and the error object
-        res.status(400).send({
-            message:"ERROR",
-            response:error,
-            meta:{total: null, count:null, offset: null, limit: null}
-        })
-    }
-}
-// SEARCH   -> DENTIST PER ID
-const searchDentistById = async (req, res) => {
-    try {
-        // Get path parameters
-        const id_dentist    = req.params.id
-        // Request the dentist
-        const dentist = await dentistSchema.findOne({
-            attributes: ['id_dentist', 'ruc', 'rating'],
-            include: [{
-                model: personSchema,
-                attributes: ['id_person', 'first_name', 'last_name', 'gender', 'dni'],
-                include: [{
-                    model: usersSchema,
-                    attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
-                }],
-            },],
-            where: {
-                id_dentist: id_dentist
-            },
-        })
-        // Send the response
-        res.status(200).send({
-            message:"OK",
-            data:dentist,
-            meta:{total: null, count:null, offset: null, limit: null}
         })
     } catch (error) {
         // If there was an error, send a message and the error object
@@ -284,5 +296,5 @@ const addSpecialityToDentistById = async (req, res) => {
 
 
 module.exports = { 
-    postDentist, getAllDentists, loginIdUser, addSpecialityToDentistById, getDestistByIdAllSpecialities, searchDentistById
+    postDentist, getAllDentists, loginIdUser, addSpecialityToDentistById, getDestistByIdAllSpecialities, getDentistById
 }
