@@ -42,7 +42,6 @@ const getAllSchedules = async (req, res) => {
 }
 //READ      -> GET ALL SCHEDULES BY DENTIST ID (ALSO STATUS AND CLINIC ID)
 const getAllSchedulesByDentistId = async (req, res) => {
-    /*
     try {
         // Get query parameters
         const offset        = isNaN(parseInt(req.query.offset))         ? null : parseInt(req.query.offset)
@@ -73,7 +72,7 @@ const getAllSchedulesByDentistId = async (req, res) => {
         console.log("1")
         console.log("1")
         console.log("1")
-        
+        /*
         // Request all the schedule information
         var schedules = null
         if (status==10){
@@ -132,6 +131,10 @@ const getAllSchedulesByDentistId = async (req, res) => {
             data:data,
             meta:{total: total, count:count, offset: offset, limit: limit}
         })
+        */
+        res.status(200).send({
+            message:"OK"
+        })
     } catch (error) {
         // If there was an error, send a message and the error object
         res.status(400).send({
@@ -140,7 +143,6 @@ const getAllSchedulesByDentistId = async (req, res) => {
             meta:{total: null, count:null, offset: null, limit: null}
         })
     }
-    */
 }
 //READ      -> GET ALL SCHEDULES BY PATIENT ID (ALSO STATUS AND CLINIC ID)
 const getAllSchedulesByPatientId = async (req, res) => {
