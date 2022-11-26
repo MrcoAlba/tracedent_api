@@ -13,9 +13,9 @@ router.get      ('/schedule/dentist/:id'        ,   getAllSchedulesByDentistId  
 //READ      -> GET ALL SCHEDULES BY PATIENT ID
 router.get      ('/schedule/patient/:id'        ,   getAllSchedulesByPatientId                  )
 //TODO: FINISH THE LAST 3 FUNCTIONS
-//CREATE    -> CREATE AN SCHEDULE BY DENTIST ID
-router.post     ('/schedule/dentist'            ,   s0createAnScheduleForDentitstByIdAndClinicId)
 
+//CREATE    -> CREATE AN SCHEDULE BY DENTIST ID
+router.post     ('/schedule/dentist/0'            ,   s0createAnScheduleForDentitstByIdAndClinicId)
 // Status 1 -> DENTISTS CANCEL SCHEDULE
 router.post     ('/schedule/dentist/1'          ,   s1dentistCancelSchedule                     )
 // Status 2 -> PATIENT INTENTS SCHEDULE

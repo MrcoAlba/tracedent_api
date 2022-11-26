@@ -95,14 +95,14 @@ const loginMailPass = async (req, res) => {
             // Send this if credentials are correct
             res.status(200).send({
                 message:"OK",
-                data:userInformation,
+                data:[userInformation],
                 meta:{total: null, count:null, offset: null, limit: null}
             })
         }else{
             // Send this if credentials are incorrect
             res.status(401).send({
                 message:"BAD CREDENTIALS",
-                data:userInformation,
+                data:[userInformation],
                 meta:{total: null, count:null, offset: null, limit: null}
             })
         }
@@ -110,7 +110,7 @@ const loginMailPass = async (req, res) => {
         // If there was an error, send a message and the error object
         res.status(400).send({
             message:"ERROR!",
-            data:error,
+            data:[error],
             meta:{total: null, count:null, offset: null, limit: null}
         })
     }
