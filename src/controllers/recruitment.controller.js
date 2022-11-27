@@ -13,14 +13,41 @@ const getAllRecruitments = async (req, res) => {
         // Get query parameters
         const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
         const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
+        const id_clinic = req.query.id_clinic
+        const id_dentist= req.query.id_dentist
         // Request all the recruitment information
-        const recruitment = await recruitmentSchema.findAndCountAll({
-            attributes: ['id_recruitment', 'beg_date', 'end_date','sttus', 'id_clinic', 'id_dentist'],
-            order: [['sttus', 'ASC']],
-            offset:     offset,
-            limit :     limit,
-            subQuery:   false
-        })
+        var recruitment
+        if (id_clinic.length == 32){
+            recruitment = await recruitmentSchema.findAndCountAll({
+                attributes: ['id_recruitment', 'beg_date', 'end_date','sttus', 'id_clinic', 'id_dentist'],
+                order: [['sttus', 'ASC']],
+                where:{
+                    id_clinic:id_clinic
+                },
+                offset:     offset,
+                limit :     limit,
+                subQuery:   false
+            })
+        }else if(id_dentist.length == 32){
+            recruitment = await recruitmentSchema.findAndCountAll({
+                attributes: ['id_recruitment', 'beg_date', 'end_date','sttus', 'id_clinic', 'id_dentist'],
+                order: [['sttus', 'ASC']],
+                where:{
+                    id_dentist:id_dentist
+                },
+                offset:     offset,
+                limit :     limit,
+                subQuery:   false
+            })
+        }else{
+            recruitment = await recruitmentSchema.findAndCountAll({
+                attributes: ['id_recruitment', 'beg_date', 'end_date','sttus', 'id_clinic', 'id_dentist'],
+                order: [['sttus', 'ASC']],
+                offset:     offset,
+                limit :     limit,
+                subQuery:   false
+            })
+        }
         // Get the data, total and count information
         const data = recruitment.rows
         const total = recruitment.count
