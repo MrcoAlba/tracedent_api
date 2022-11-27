@@ -78,8 +78,8 @@ const getDentistById = async (req, res) => {
             },
         })
         // Get the data, total and count information
-        const data = clinics.rows
-        const total = clinics.count
+        const data = dentist.rows
+        const total = dentist.count
         const count = data.length
         // Response
         if (count == 1){
