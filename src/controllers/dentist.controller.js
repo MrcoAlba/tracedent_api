@@ -63,7 +63,7 @@ const getDentistById = async (req, res) => {
         // Get path parameters
         const id_dentist    = req.params.id
         // Request the dentist
-        const dentist = await dentistSchema.findOne({
+        const dentist = await dentistSchema.findAndCountAll({
             attributes: ['id_dentist', 'ruc', 'rating'],
             include: [{
                 model: personSchema,
