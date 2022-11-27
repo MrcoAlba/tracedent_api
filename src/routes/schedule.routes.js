@@ -10,7 +10,7 @@ const {
 router.get      ('/schedule'                    ,   getAllSchedules                             )
 //READ      -> GET ALL SCHEDULES BY CLINIC DENTIST AND TIME
 router.get      ('/schedule/clinic/dentist/time',   getAllSchedulesByClinicDentistAndTime       )
-//READ      -> GET ALL SCHEDULES BY DENTIST ID
+//READ      -> GET ALL SCHEDULES BY DENTIST NULLCLINIC AND TIME
 router.get      ('/schedule/dentist/time'       ,   getAllSchedulesByDentistAndTime             )
 //READ      -> GET ALL SCHEDULES BY DENTIST ID
 router.get      ('/schedule/dentist/:id'        ,   getAllSchedulesByDentistId                  )

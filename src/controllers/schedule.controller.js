@@ -103,7 +103,6 @@ const getAllSchedulesByDentistAndTime = async (req, res) => {
             order:      [['time','ASC']],
             where: {
                 id_dentist: id_dentist,
-                id_recruitment: {[Op.eq]: null},
                 date: date,
                 sttus: 0
             },

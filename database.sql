@@ -202,12 +202,45 @@ VALUES
 {"mail":"p8@ma.co","pswd":"123456","phone_number":900000038,"district":"dstrto8","direction":"direcc8","latitude":-12.28,"longitude":-77.28,"first_name":"nombre 18","last_name":"apellido 11","gender":"female","dni":80000038}
 {"mail":"p9@ma.co","pswd":"123456","phone_number":900000039,"district":"dstrto9","direction":"direcc9","latitude":-12.29,"longitude":-77.29,"first_name":"nombre 19","last_name":"apellido 10","gender":"female","dni":80000039}
 
+{"name":"special00"}
+{"name":"special01"}
+{"name":"special02"}
+{"name":"special03"}
+{"name":"special04"}
+{"name":"special05"}
+{"name":"special06"}
+{"name":"special07"}
+{"name":"special08"}
+{"name":"special09"}
+
+// SPECIALIDAD PARA TODOS
 
 {"id_clinic":"", "id_dentist":""}
 {"id_clinic":"", "id_dentist":""}
 {"id_clinic":"", "id_dentist":""}
 {"id_clinic":"", "id_dentist":""}
 
+{"id_speciality": "926833a0-6e8d-11ed-bc3e-a9582572f1ef","id_dentist": "2ba151b0-6e8d-11ed-bc3e-a9582572f1ef"}
+{"id_speciality": "9470add0-6e8d-11ed-bc3e-a9582572f1ef","id_dentist": "2e66da50-6e8d-11ed-bc3e-a9582572f1ef"}
+{"id_speciality": "9621b930-6e8d-11ed-bc3e-a9582572f1ef","id_dentist": "30ec4cb0-6e8d-11ed-bc3e-a9582572f1ef"}
+{"id_speciality": "982af6b0-6e8d-11ed-bc3e-a9582572f1ef","id_dentist": "3338d4c0-6e8d-11ed-bc3e-a9582572f1ef"}
+{"id_speciality": "9a256720-6e8d-11ed-bc3e-a9582572f1ef","id_dentist": "35a05ee0-6e8d-11ed-bc3e-a9582572f1ef"}
+{"id_speciality": "9ba74c30-6e8d-11ed-bc3e-a9582572f1ef","id_dentist": "382953b0-6e8d-11ed-bc3e-a9582572f1ef"}
+{"id_speciality": "9e7eaf20-6e8d-11ed-bc3e-a9582572f1ef","id_dentist": "3aaa0b20-6e8d-11ed-bc3e-a9582572f1ef"}
+{"id_speciality": "a0a1dd40-6e8d-11ed-bc3e-a9582572f1ef","id_dentist": "3d19f9b0-6e8d-11ed-bc3e-a9582572f1ef"}
+{"id_speciality": "a2298eb0-6e8d-11ed-bc3e-a9582572f1ef","id_dentist": "4037b470-6e8d-11ed-bc3e-a9582572f1ef"}
+{"id_speciality": "a435b260-6e8d-11ed-bc3e-a9582572f1ef","id_dentist": "45d0cf70-6e8d-11ed-bc3e-a9582572f1ef"}
+
+{"id_dentist": "2ba151b0-6e8d-11ed-bc3e-a9582572f1ef"} fefa3280-6e8c-11ed-bc3e-a9582572f1ef
+{"id_dentist": "2e66da50-6e8d-11ed-bc3e-a9582572f1ef"} 059fb470-6e8d-11ed-bc3e-a9582572f1ef
+{"id_dentist": "30ec4cb0-6e8d-11ed-bc3e-a9582572f1ef"} 081e7010-6e8d-11ed-bc3e-a9582572f1ef
+{"id_dentist": "3338d4c0-6e8d-11ed-bc3e-a9582572f1ef"} 0abb8920-6e8d-11ed-bc3e-a9582572f1ef
+{"id_dentist": "35a05ee0-6e8d-11ed-bc3e-a9582572f1ef"} 0d2499e0-6e8d-11ed-bc3e-a9582572f1ef
+{"id_dentist": "382953b0-6e8d-11ed-bc3e-a9582572f1ef"} 0fa79b40-6e8d-11ed-bc3e-a9582572f1ef
+{"id_dentist": "3aaa0b20-6e8d-11ed-bc3e-a9582572f1ef"} 128e6780-6e8d-11ed-bc3e-a9582572f1ef
+{"id_dentist": "3d19f9b0-6e8d-11ed-bc3e-a9582572f1ef"} 15376770-6e8d-11ed-bc3e-a9582572f1ef
+{"id_dentist": "4037b470-6e8d-11ed-bc3e-a9582572f1ef"} 179d6af0-6e8d-11ed-bc3e-a9582572f1ef
+{"id_dentist": "45d0cf70-6e8d-11ed-bc3e-a9582572f1ef"} 19ed2750-6e8d-11ed-bc3e-a9582572f1ef
 
 
 
