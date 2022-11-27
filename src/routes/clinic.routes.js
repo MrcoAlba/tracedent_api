@@ -6,6 +6,8 @@ const {
 
 // READ         -> GET ALL CLINICS
 router.get      ('/clinic'              ,   getAllClinics           )
+// READ         -> GET ALL CLINICS
+router.get      ('/clinicss'              ,   getAllClinics           )
 // READ         -> GET CLINIC INFORMATION
 router.get      ('/clinic/:id'          ,   getClinicById           )
 // READ         -> GET ALL RECRUITS BY CLINIC_ID

@@ -18,6 +18,52 @@ const getAllClinics = async (req, res) => {
         const latitude  = isNaN(parseFloat(req.query.latitude))               ? null : parseFloat(req.query.latitude)
         const longitude = isNaN(parseFloat(req.query.longitude))              ? null : parseFloat(req.query.longitude)
 
+        const clinics = await clinicSchema.findAndCountAll({
+            attributes: ['id_clinic', 'company_name', 'ruc', 'rating'],
+            order: [['company_name', 'ASC']],
+            include: [{
+                model: usersSchema,
+                attributes: ['id_user', 'user_type', 'phone_number', 'subscription', 'district', 'direction', 'latitude', 'longitude']
+            },],
+            where: {
+                company_name: {
+                    [Op.like]: '%'+name+'%'
+                }
+            },
+            offset:     offset,
+            limit :     limit,
+            subQuery:   false
+        })
+        
+        // Get the data, total and count information
+        const data = clinics
+        const total = clinics.count
+        const count = data.length
+        // Send the response
+        res.status(200).send({
+            message:"OK",
+            data:data,
+            meta:{total: total, count:count, offset: offset, limit: limit}
+        })
+    } catch (error) {
+        // If there was an error, send a message and the error object
+        res.status(400).send({
+            message:"ERROR",
+            response:error,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
+    }
+}
+// READ         -> GET ALL CLINICS
+const getAllClinicszz = async (req, res) => {
+    try {
+        // Get query parameters
+        const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
+        const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
+        const name      = String(req.query.name).toUpperCase() == 'UNDEFINED' ? ""   : String(req.query.name).toUpperCase()
+        const latitude  = isNaN(parseFloat(req.query.latitude))               ? null : parseFloat(req.query.latitude)
+        const longitude = isNaN(parseFloat(req.query.longitude))              ? null : parseFloat(req.query.longitude)
+
         // Request all the clinics
         var clinics = null
         var data    = null
@@ -375,5 +421,5 @@ const clinitRecruitDentist = async (req, res) => {
 
 
 module.exports = { 
-    getAllClinics, getClinicById, getAllRecruitsByIdClinic, getAllDentitsByIdClinic, postClinic, loginIdUser, clinitRecruitDentist
+    getAllClinics, getAllClinicszz, getClinicById, getAllRecruitsByIdClinic, getAllDentitsByIdClinic, postClinic, loginIdUser, clinitRecruitDentist
 }
