@@ -69,7 +69,7 @@ const getPatientById = async (req, res) => {
         // Get path parameters
         const id_patient = req.params.id
 
-        const patient = await patientSchema.findOne({
+        const patient = await patientSchema.findAndCountAll({
             attributes: ['id_patient'],
             include: [{
                 model: personSchema,
@@ -91,7 +91,7 @@ const getPatientById = async (req, res) => {
         if (count == 1){
             res.status(200).send({
                 message:"OK",
-                data:[data],
+                data:data,
                 meta:{total: total, count:count, offset: null, limit: null}
             })
         }else{

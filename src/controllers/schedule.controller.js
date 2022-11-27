@@ -48,7 +48,8 @@ const getAllSchedulesByClinicDentistAndTime = async (req, res) => {
         const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
         const id_clinic = String(req.query.id_clinic)   == "undefined" ? ""   : String(req.query.id_clinic)
         const id_dentist= String(req.query.id_dentist)  == "undefined" ? ""   : String(req.query.id_dentist)
-        const date      = String(req.query.date)        == "undefined" ? ""   : String(req.query.date)
+        const date      = String(req.query.date)        == "undefined" ? ""   : String(req.query.date).replace(/%3A/g,':')
+
         // Request all the schedule information
         const schedules = await scheduleSchema.findAndCountAll({
             attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
