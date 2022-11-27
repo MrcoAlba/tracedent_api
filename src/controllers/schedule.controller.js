@@ -40,6 +40,53 @@ const getAllSchedules = async (req, res) => {
         })
     }
 }
+//READ      -> GET ALL SCHEDULES BY CLINIC DENTIST AND TIME
+const getAllSchedulesByClinicDentistAndTime = async (req, res) => {
+    try {
+        // Get query parameters
+        const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
+        const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
+        const id_clinic = isNaN(req.query.id_clinic)                          ? "" : req.query.id_clinic
+        const id_patient= isNaN(req.query.id_patient)                         ? "" : req.query.id_patient
+        const date      = isNaN(req.query.date)                               ? "" : req.query.date
+        // Request all the schedule information
+        const schedules = await scheduleSchema.findAndCountAll({
+            attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
+            order:      [['date','ASC']],
+            include: [{
+                model: recruitmentSchema,
+                where: {
+                    id_clinic: id_clinic
+                }
+            },],
+            where: {
+                id_patient: id_patient,
+                date: date,
+                sttus: 1
+            },
+            offset:     offset,
+            limit :     limit,
+            subQuery:   false
+        })
+        // Get the data, total and count information
+        const data = schedules.rows
+        const total = schedules.count
+        const count = data.length
+        // Send the response
+        res.status(200).send({
+            message:"OK",
+            data:data,
+            meta:{total: total, count:count, offset: offset, limit: limit}
+        })
+    } catch (error) {
+        // If there was an error, send a message and the error object
+        res.status(400).send({
+            message:"ERROR",
+            response:error,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
+    }
+}
 //READ      -> GET ALL SCHEDULES BY DENTIST ID (ALSO STATUS AND CLINIC ID)
 const getAllSchedulesByDentistId = async (req, res) => {
     try {
@@ -332,7 +379,7 @@ const s3patientChoosesSchedule = async (req, res) => {
 
 
 module.exports = { 
-    getAllSchedules, getAllSchedulesByDentistId, getAllSchedulesByPatientId, 
-    s0createAnScheduleForDentitstByIdAndClinicId, s1dentistCancelSchedule, s2patientIntentsSchedule,
-    s3patientChoosesSchedule
+    getAllSchedules, getAllSchedulesByClinicDentistAndTime, getAllSchedulesByDentistId, 
+    getAllSchedulesByPatientId, s0createAnScheduleForDentitstByIdAndClinicId, s1dentistCancelSchedule,  
+    s2patientIntentsSchedule, s3patientChoosesSchedule
 }

@@ -118,7 +118,7 @@ const getDestistByIdAllSpecialities = async (req, res) => {
             attributes: ['id_dentist_speciality','id_speciality','id_dentist'],
             include: [{
                 model: specialitySchema,
-                attributes: ['name'],
+                attributes: ['id_speciality', 'name'],
                 order: [['name', 'ASC']],
                 where: {
                     name: {
