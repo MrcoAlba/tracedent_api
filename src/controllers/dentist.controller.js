@@ -85,7 +85,7 @@ const getDentistById = async (req, res) => {
         if (count == 1){
             res.status(200).send({
                 message:"OK",
-                data:[data],
+                data:data,
                 meta:{total: total, count:count, offset: null, limit: null}
             })
         }else{
