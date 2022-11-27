@@ -495,14 +495,6 @@ const s3patientChoosesSchedule = async (req, res) => {
                 id_patient  : id_patient
             }
         })
-
-        console.log("[schedules]")
-        console.log("[schedules]")
-        console.log("[schedules]")
-        console.log(schedules)
-        console.log("[schedules]")
-        console.log("[schedules]")
-        console.log("[schedules]")
         //Send the response
         res.status(200).send({
             message:"OK",
