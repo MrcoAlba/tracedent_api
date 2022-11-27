@@ -1,7 +1,7 @@
 const { Router }    = require('express')
 const router        = Router()
 const {
-    getAllSchedules, getAllSchedulesByClinicDentistAndTime, getAllSchedulesByDentistId, 
+    getAllSchedules, getAllSchedulesByClinicDentistAndTime, getAllSchedulesByDentistId, getAllSchedulesByOnlyDentistId,
     getAllSchedulesByClinicId, getAllSchedulesByPatientId, s0createAnScheduleForDentitstByIdAndClinicId, 
     s1dentistCancelSchedule, s2patientIntentsSchedule, s3patientChoosesSchedule
 }                   = require('../controllers/schedule.controller')
@@ -12,6 +12,8 @@ router.get      ('/schedule'                    ,   getAllSchedules             
 router.get      ('/schedule/clinic/dentist/time',   getAllSchedulesByClinicDentistAndTime       )
 //READ      -> GET ALL SCHEDULES BY DENTIST ID
 router.get      ('/schedule/dentist/:id'        ,   getAllSchedulesByDentistId                  )
+//READ      -> GET ALL SCHEDULES BY DENTIST ID
+router.get      ('/schedule/dentist/only/:id'        ,   getAllSchedulesByOnlyDentistId                  )
 //READ      -> GET ALL SCHEDULES BY CLINIC ID
 router.get      ('/schedule/clinic/:id'        ,   getAllSchedulesByClinicId                  )
 //READ      -> GET ALL SCHEDULES BY PATIENT ID
