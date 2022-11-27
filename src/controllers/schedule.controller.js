@@ -49,12 +49,6 @@ const getAllSchedulesByClinicDentistAndTime = async (req, res) => {
         const id_clinic = String(req.query.id_clinic)   == "undefined" ? ""   : String(req.query.id_clinic)
         const id_dentist= String(req.query.id_dentist)  == "undefined" ? ""   : String(req.query.id_dentist)
         const date      = String(req.query.date)        == "undefined" ? ""   : String(req.query.date).replace(/%3A/g,':')
-
-        console.log("GAAAA")
-        console.log(date)
-        console.log(id_clinic)
-        console.log(id_dentist)
-        console.log("GAAAA")
         
         // Request all the schedule information
         const schedules = await scheduleSchema.findAndCountAll({
@@ -68,6 +62,48 @@ const getAllSchedulesByClinicDentistAndTime = async (req, res) => {
             },],
             where: {
                 id_dentist: id_dentist,
+                date: date,
+                sttus: 0
+            },
+            offset:     offset,
+            limit :     limit,
+            subQuery:   false
+        })
+        // Get the data, total and count information
+        const data = schedules.rows
+        const total = schedules.count
+        const count = data.length
+        // Send the response
+        res.status(200).send({
+            message:"OK",
+            data:data,
+            meta:{total: total, count:count, offset: offset, limit: limit}
+        })
+    } catch (error) {
+        // If there was an error, send a message and the error object
+        res.status(400).send({
+            message:"ERROR",
+            response:error,
+            meta:{total: null, count:null, offset: null, limit: null}
+        })
+    }
+}
+//READ      -> GET ALL SCHEDULES BY DENTIST NULLCLINIC AND TIME
+const getAllSchedulesByDentistAndTime = async (req, res) => {
+    try {
+        // Get query parameters
+        const offset        = isNaN(parseInt(req.query.offset))         ? null : parseInt(req.query.offset)
+        const limit         = isNaN(parseInt(req.query.limit))          ? null : parseInt(req.query.limit)
+        const id_dentist= String(req.query.id_dentist)  == "undefined" ? ""   : String(req.query.id_dentist)
+        const date      = String(req.query.date)        == "undefined" ? ""   : String(req.query.date).replace(/%3A/g,':')
+
+        // Request all the schedule information
+        const schedules = await scheduleSchema.findAndCountAll({
+            attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
+            order:      [['time','ASC']],
+            where: {
+                id_dentist: id_dentist,
+                id_recruitment: null,
                 date: date,
                 sttus: 0
             },
@@ -161,62 +197,6 @@ const getAllSchedulesByDentistId = async (req, res) => {
         console.log("getAllSchedulesByDentistId")
         console.log("getAllSchedulesByDentistId")
         console.log("getAllSchedulesByDentistId")
-        // Get the data, total and count information
-        const data = schedules.rows
-        const total = schedules.count
-        const count = data.length
-        // Send the response
-        res.status(200).send({
-            message:"OK",
-            data:data,
-            meta:{total: total, count:count, offset: offset, limit: limit}
-        })
-    } catch (error) {
-        // If there was an error, send a message and the error object
-        res.status(400).send({
-            message:"ERROR",
-            response:error,
-            meta:{total: null, count:null, offset: null, limit: null}
-        })
-    }
-}
-//READ      -> GET ALL SCHEDULES BY DENTIST ID (ALSO STATUS AND CLINIC ID)
-const getAllSchedulesByOnlyDentistId = async (req, res) => {
-    try {
-        // Get query parameters
-        const offset        = isNaN(parseInt(req.query.offset))         ? null : parseInt(req.query.offset)
-        const limit         = isNaN(parseInt(req.query.limit))          ? null : parseInt(req.query.limit)
-        const status        = isNaN(parseInt(req.query.status))         ? 10 : (parseInt(req.query.status)<0 || parseInt(req.query.status)>9 ? 10 : parseInt(req.query.status))
-        // Get path parameters
-        const id_dentist    = req.params.id
-        // Request all the schedule information
-        var schedules = null
-        if (status==10){
-            schedules = await scheduleSchema.findAndCountAll({
-                attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
-                order:      [['date','ASC'],['time','ASC']],
-                where: {
-                    id_dentist: id_dentist,
-                    id_clinic: null
-                },
-                offset:     offset,
-                limit :     limit,
-                subQuery:   false
-            })
-        }else{
-            schedules = await scheduleSchema.findAndCountAll({
-                attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
-                order:      [['date','ASC'],['time','ASC']],
-                where: {
-                    id_dentist: id_dentist,
-                    id_clinic: null,
-                    sttus: status
-                },
-                offset:     offset,
-                limit :     limit,
-                subQuery:   false
-            })
-        }
         // Get the data, total and count information
         const data = schedules.rows
         const total = schedules.count
@@ -414,7 +394,7 @@ const s1dentistCancelSchedule = async (req, res) => {
         } = req.body
         // Create a schedule
         const schedules = await scheduleSchema.update({
-            sttus:          1
+            sttus:1
         },{
             where: {
                 id_schedule : id_schedule
@@ -512,7 +492,7 @@ const s3patientChoosesSchedule = async (req, res) => {
 
 
 module.exports = { 
-    getAllSchedules, getAllSchedulesByClinicDentistAndTime, getAllSchedulesByDentistId, getAllSchedulesByOnlyDentistId,
+    getAllSchedules, getAllSchedulesByClinicDentistAndTime, getAllSchedulesByDentistId, getAllSchedulesByDentistAndTime,
     getAllSchedulesByClinicId, getAllSchedulesByPatientId, s0createAnScheduleForDentitstByIdAndClinicId, 
     s1dentistCancelSchedule, s2patientIntentsSchedule, s3patientChoosesSchedule
 }
