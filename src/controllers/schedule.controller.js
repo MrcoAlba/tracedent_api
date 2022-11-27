@@ -81,7 +81,7 @@ const getAllSchedulesByClinicDentistAndTime = async (req, res) => {
         console.log("TEMPORAL")
         console.log("TEMPORAL")
         console.log("TEMPORAL")
-        
+
         // Send the response
         res.status(200).send({
             message:"OK",
@@ -379,6 +379,9 @@ const s0createAnScheduleForDentitstByIdAndClinicId = async (req, res) => {
         var {
             id_recruitment, id_dentist, date, time
         } = req.body
+        if (id_recruitment == ""){
+            id_recruitment = null
+        }
         // Create a schedule
         console.log("gaaa")
         const schedules = await scheduleSchema.create({
