@@ -490,9 +490,12 @@ const s3patientChoosesSchedule = async (req, res) => {
         const schedules = await scheduleSchema.update({
             sttus:          3
         },{
+
             where: {
-                id_schedule : id_schedule,
-                id_patient  : id_patient
+                [Op.and]: [
+                    {id_schedule: {[Op.eq]: id_schedule}}, 
+                    {id_patient: {[Op.eq]: id_patient}}
+                ]
             }
         })
         //Send the response
