@@ -16,7 +16,7 @@ const getAllRecruitments = async (req, res) => {
         const id_clinic = req.query.id_clinic
         const id_dentist= req.query.id_dentist
         // Request all the recruitment information
-        var recruitment
+        var recruitment = null
         if (id_clinic.length == 32){
             recruitment = await recruitmentSchema.findAndCountAll({
                 attributes: ['id_recruitment', 'beg_date', 'end_date','sttus', 'id_clinic', 'id_dentist'],

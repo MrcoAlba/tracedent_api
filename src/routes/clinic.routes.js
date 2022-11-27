@@ -1,13 +1,13 @@
 const { Router }    = require('express')
 const router        = Router()
 const { 
-    getAllClinics, getClinicById, getAllRecruitsByIdClinic, getAllDentitsByIdClinic, postClinic, loginIdUser, clinitRecruitDentist
+    getAllClinics, getAllClinicszz, getClinicById, getAllRecruitsByIdClinic, getAllDentitsByIdClinic, postClinic, loginIdUser, clinitRecruitDentist
 }                   = require('../controllers/clinic.controller')
 
 // READ         -> GET ALL CLINICS
 router.get      ('/clinic'              ,   getAllClinics           )
 // READ         -> GET ALL CLINICS
-router.get      ('/clinicss'              ,   getAllClinics           )
+router.get      ('/cliniczz'              ,   getAllClinicszz           )
 // READ         -> GET CLINIC INFORMATION
 router.get      ('/clinic/:id'          ,   getClinicById           )
 // READ         -> GET ALL RECRUITS BY CLINIC_ID
