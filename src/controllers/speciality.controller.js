@@ -17,29 +17,6 @@ const getSpecialityList = async (req, res) => {
         const id_speciality      = String(req.query.id)        == "undefined" ? ""   : String(req.query.id)
         // Request all the specialities
 
-        console.log("1")
-        console.log("1")
-        console.log("1")
-        console.log("1")
-        console.log("1")
-        console.log("1")
-        console.log("1")
-        console.log("1")
-        console.log("1")
-
-        console.log(id_speciality)
-        console.log(name)
-
-        console.log("1")
-        console.log("1")
-        console.log("1")
-        console.log("1")
-        console.log("1")
-        console.log("1")
-        console.log("1")
-        console.log("1")
-        console.log("1")
-
         var specialities = null
         if (id_speciality != ""){
             console.log("PRIMERA OPCION")
