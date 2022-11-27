@@ -25,7 +25,7 @@ const getAllRecruitments = async (req, res) => {
         console.log("2")
         console.log("2")
         console.log("2")
-        if (id_clinic.length == 32){
+        if (id_clinic.length == 36){
             recruitment = await recruitmentSchema.findAndCountAll({
                 attributes: ['id_recruitment', 'beg_date', 'end_date','sttus', 'id_clinic', 'id_dentist'],
                 order: [['sttus', 'ASC']],
@@ -36,7 +36,7 @@ const getAllRecruitments = async (req, res) => {
                 limit :     limit,
                 subQuery:   false
             })
-        }else if(id_dentist.length == 32){
+        }else if(id_dentist.length == 36){
             recruitment = await recruitmentSchema.findAndCountAll({
                 attributes: ['id_recruitment', 'beg_date', 'end_date','sttus', 'id_clinic', 'id_dentist'],
                 order: [['sttus', 'ASC']],
