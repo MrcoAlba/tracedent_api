@@ -13,18 +13,11 @@ const getAllRecruitments = async (req, res) => {
         // Get query parameters
         const offset = isNaN(parseInt(req.query.offset)) ? null : parseInt(req.query.offset)
         const limit = isNaN(parseInt(req.query.limit)) ? null : parseInt(req.query.limit)
-        const id_clinic = req.query.id_clinic == "undefined" ? "" : req.query.id_clinic
-        const id_dentist = req.query.id_dentist == "undefined" ? "" : req.query.id_dentist
+        const id_clinic = String(req.query.id_clinic)   == "undefined" ? ""   : String(req.query.id_clinic)
+        const id_dentist= String(req.query.id_dentist)  == "undefined" ? ""   : String(req.query.id_dentist)
+
         // Request all the recruitment information
         var recruitment = null
-        console.log("1")
-        console.log("1")
-        console.log("1")
-        console.log(id_clinic)
-        console.log(id_dentist)
-        console.log("2")
-        console.log("2")
-        console.log("2")
         if (id_clinic.length == 36) {
             recruitment = await recruitmentSchema.findAndCountAll({
                 attributes: ['id_recruitment', 'beg_date', 'end_date', 'sttus', 'id_clinic', 'id_dentist'],
