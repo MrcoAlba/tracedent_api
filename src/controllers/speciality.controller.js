@@ -17,6 +17,29 @@ const getSpecialityList = async (req, res) => {
         const id_speciality = req.query.id == 'undefined' ? ""   : req.query.id
         // Request all the specialities
 
+        console.log("1")
+        console.log("1")
+        console.log("1")
+        console.log("1")
+        console.log("1")
+        console.log("1")
+        console.log("1")
+        console.log("1")
+        console.log("1")
+
+        console.log(id_speciality)
+        console.log(name)
+
+        console.log("1")
+        console.log("1")
+        console.log("1")
+        console.log("1")
+        console.log("1")
+        console.log("1")
+        console.log("1")
+        console.log("1")
+        console.log("1")
+
         var specialities = null
         if (id_speciality.length==36){
             specialities = await specialitySchema.findAndCountAll({
