@@ -49,6 +49,15 @@ const getAllSchedulesByClinicDentistAndTime = async (req, res) => {
         const id_clinic = isNaN(req.query.id_clinic)                          ? "" : req.query.id_clinic
         const id_dentist= isNaN(req.query.id_dentist)                         ? "" : req.query.id_dentist
         const date      = isNaN(req.query.date)                               ? "" : req.query.date
+        console.log("temporal")
+        console.log("temporal")
+        console.log("temporal")
+        console.log(id_clinic)
+        console.log(id_dentist)
+        console.log(date)
+        console.log("despues")
+        console.log("despues")
+        console.log("despues")
         // Request all the schedule information
         const schedules = await scheduleSchema.findAndCountAll({
             attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
