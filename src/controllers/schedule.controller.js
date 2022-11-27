@@ -40,14 +40,6 @@ const getAllSchedules = async (req, res) => {
         })
     }
 }
-
-
-
-
-
-
-
-
 //READ      -> GET ALL SCHEDULES BY CLINIC DENTIST AND TIME
 const getAllSchedulesByClinicDentistAndTime = async (req, res) => {
     try {
@@ -138,27 +130,6 @@ const getAllSchedulesByDentistAndTime = async (req, res) => {
         })
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //READ      -> GET ALL SCHEDULES BY DENTIST ID (ALSO STATUS AND CLINIC ID)
 const getAllSchedulesByDentistId = async (req, res) => {
     try {
