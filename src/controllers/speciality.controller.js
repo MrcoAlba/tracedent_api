@@ -13,8 +13,8 @@ const getSpecialityList = async (req, res) => {
         // Get query parameters
         const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
         const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
-        const name      = String(req.query.name).toUpperCase() == 'UNDEFINED' ? ""   : String(req.query.name).toUpperCase()
-        const id_speciality = req.query.id == 'undefined' ? ""   : req.query.id
+        const name      = String(req.query.name).toUpperCase()                == 'UNDEFINED' ? ""   : String(req.query.name).toUpperCase()
+        const id_speciality      = String(req.query.id)        == "undefined" ? ""   : String(req.query.id)
         // Request all the specialities
 
         console.log("1")
