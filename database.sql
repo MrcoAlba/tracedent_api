@@ -253,16 +253,25 @@ VALUES
 {"id_dentist":"4037b470-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"7b07c980-6e8f-11ed-bc3e-a9582572f1ef","date":"2022-12-08T00:00:05.007Z","time":38}
 {"id_dentist":"45d0cf70-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"81b75d90-6e8f-11ed-bc3e-a9582572f1ef","date":"2022-12-09T00:00:05.007Z","time":39}
 
+{"id_dentist":"2e66da50-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"ee336370-6e8e-11ed-bc3e-a9582572f1ef","date":"2022-12-01T00:00:05.007Z","time":25}
+{"id_dentist":"2ba151b0-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"006c0010-6e8f-11ed-bc3e-a9582572f1ef","date":"2022-12-01T00:00:05.007Z","time":25}
+{"id_dentist":"2e66da50-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"07fa8270-6e8f-11ed-bc3e-a9582572f1ef","date":"2022-12-01T00:00:05.007Z","time":25}
+{"id_dentist":"30ec4cb0-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"0f4cbf20-6e8f-11ed-bc3e-a9582572f1ef","date":"2022-12-01T00:00:05.007Z","time":25}
+{"id_dentist":"3338d4c0-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"167be370-6e8f-11ed-bc3e-a9582572f1ef","date":"2022-12-01T00:00:05.007Z","time":25}
+{"id_dentist":"3aaa0b20-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"685b5c70-6e8f-11ed-bc3e-a9582572f1ef","date":"2022-12-01T00:00:05.007Z","time":25}
+{"id_dentist":"3d19f9b0-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"6faada00-6e8f-11ed-bc3e-a9582572f1ef","date":"2022-12-01T00:00:05.007Z","time":25}
+{"id_dentist":"4037b470-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"7b07c980-6e8f-11ed-bc3e-a9582572f1ef","date":"2022-12-01T00:00:05.007Z","time":25}
+{"id_dentist":"45d0cf70-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"81b75d90-6e8f-11ed-bc3e-a9582572f1ef","date":"2022-12-01T00:00:05.007Z","time":25}
 
-			"id_recruitment": "81b75d90-6e8f-11ed-bc3e-a9582572f1ef",
-			"beg_date": "2022-11-27T20:10:15.401Z",
-			"end_date": null,
-			"sttus": 2,
-			"id_clinic": "19ed2750-6e8d-11ed-bc3e-a9582572f1ef",
-			"id_dentist": "45d0cf70-6e8d-11ed-bc3e-a9582572f1ef"
-		}
-	],
-
+{"id_dentist":"2e66da50-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"","date":"2022-12-01T00:00:05.007Z","time":20}
+{"id_dentist":"2ba151b0-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"","date":"2022-12-01T00:00:05.007Z","time":20}
+{"id_dentist":"2e66da50-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"","date":"2022-12-01T00:00:05.007Z","time":20}
+{"id_dentist":"30ec4cb0-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"","date":"2022-12-01T00:00:05.007Z","time":20}
+{"id_dentist":"3338d4c0-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"","date":"2022-12-01T00:00:05.007Z","time":20}
+{"id_dentist":"3aaa0b20-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"","date":"2022-12-01T00:00:05.007Z","time":20}
+{"id_dentist":"3d19f9b0-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"","date":"2022-12-01T00:00:05.007Z","time":20}
+{"id_dentist":"4037b470-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"","date":"2022-12-01T00:00:05.007Z","time":20}
+{"id_dentist":"45d0cf70-6e8d-11ed-bc3e-a9582572f1ef","id_recruitment":"","date":"2022-12-01T00:00:05.007Z","time":20}
 
 
 

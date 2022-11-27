@@ -477,6 +477,16 @@ const s3patientChoosesSchedule = async (req, res) => {
             id_schedule, id_patient
         } = req.body
         // Create a schedule
+
+        console.log("id_schedule, id_patient")
+        console.log("id_schedule, id_patient")
+        console.log("id_schedule, id_patient")
+        console.log(id_schedule)
+        console.log(id_patient)
+        console.log("id_schedule, id_patient")
+        console.log("id_schedule, id_patient")
+        console.log("id_schedule, id_patient")
+
         const schedules = await scheduleSchema.update({
             sttus:          3
         },{
