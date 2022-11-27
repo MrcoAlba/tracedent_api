@@ -52,7 +52,7 @@ const getAllSchedulesByClinicDentistAndTime = async (req, res) => {
         // Request all the schedule information
         const schedules = await scheduleSchema.findAndCountAll({
             attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
-            order:      [['date','ASC']],
+            order:      [['time','ASC']],
             include: [{
                 model: recruitmentSchema,
                 where: {
@@ -62,7 +62,7 @@ const getAllSchedulesByClinicDentistAndTime = async (req, res) => {
             where: {
                 id_patient: id_patient,
                 date: date,
-                sttus: 1
+                sttus: 0
             },
             offset:     offset,
             limit :     limit,
