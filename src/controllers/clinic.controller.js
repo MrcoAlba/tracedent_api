@@ -55,7 +55,7 @@ const getAllClinics = async (req, res) => {
     }
 }
 // READ         -> GET ALL CLINICS
-const getAllClinicszz = async (req, res) => {
+const getAllClinicszz = async (req, res) => {/*
     try {
         // Get query parameters
         const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
@@ -114,7 +114,7 @@ const getAllClinicszz = async (req, res) => {
                         limit: limit
                     },type: QueryTypes.SELECT
                 }
-            )*/
+            )
             res.status(200).send({
                 message:"OK",
                 data:respuesta1,
@@ -139,7 +139,7 @@ const getAllClinicszz = async (req, res) => {
             response:error,
             meta:{total: null, count:null, offset: null, limit: null}
         })
-    }
+    }*/
 }
 // READ         -> GET CLINIC INFORMATION
 const getClinicById = async (req, res) => {
