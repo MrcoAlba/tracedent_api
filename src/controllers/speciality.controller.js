@@ -14,13 +14,17 @@ const getSpecialityList = async (req, res) => {
         const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
         const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
         const name      = String(req.query.name).toUpperCase() == 'UNDEFINED' ? ""   : String(req.query.name).toUpperCase()
+        const id_speciality= req.query.id == 'undefined' ? ""   : req.query.id
         // Request all the specialities
         const specialities = await specialitySchema.findAndCountAll({
             attributes: ['id_speciality','name'],
             order:      [['name','ASC']],
             where: {
                 name: {
-                    [Op.like]: '%'+name+'%'
+                    [Op.like]: '%'+name+'%',
+                },
+                id_speciality: {
+                    [Op.like]: '%'+id_speciality+'%',
                 }
             },
             offset:     offset,
