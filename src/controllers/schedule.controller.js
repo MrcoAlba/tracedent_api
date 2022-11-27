@@ -46,7 +46,7 @@ const getAllSchedulesByClinicDentistAndTime = async (req, res) => {
         // Get query parameters
         const offset    = isNaN(parseInt(req.query.offset))                   ? null : parseInt(req.query.offset)
         const limit     = isNaN(parseInt(req.query.limit))                    ? null : parseInt(req.query.limit)
-        const id_clinic = String(req.query.id_clinic)   == undefined ? ""   : String(req.query.id_clinic)
+        const id_clinic = String(req.query.id_clinic)   == "undefined" ? ""   : String(req.query.id_clinic)
         const id_dentist= String(req.query.id_dentist)  == undefined ? ""   : String(req.query.id_dentist)
         const date      = String(req.query.date)        == undefined ? ""   : String(req.query.date)
         console.log("temporal")
