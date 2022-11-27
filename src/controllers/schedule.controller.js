@@ -50,12 +50,12 @@ const getAllSchedulesByClinicDentistAndTime = async (req, res) => {
         const id_dentist= String(req.query.id_dentist)  == "undefined" ? ""   : String(req.query.id_dentist)
         const date      = String(req.query.date)        == "undefined" ? ""   : String(req.query.date).replace(/%3A/g,':')
 
+        console.log("GAAAA")
         console.log(date)
-        console.log(date)
-        console.log(date)
-        console.log(date)
-        console.log(date)
-
+        console.log(id_clinic)
+        console.log(id_dentist)
+        console.log("GAAAA")
+        
         // Request all the schedule information
         const schedules = await scheduleSchema.findAndCountAll({
             attributes: ['id_schedule','date','time','sttus','id_patient','id_recruitment','id_dentist','id_speciality','id_comment'],
