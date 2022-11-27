@@ -73,6 +73,15 @@ const getAllSchedulesByClinicDentistAndTime = async (req, res) => {
         const data = schedules.rows
         const total = schedules.count
         const count = data.length
+
+        console.log("TEMPORAL")
+        console.log("TEMPORAL")
+        console.log("TEMPORAL")
+        console.log(schedules)
+        console.log("TEMPORAL")
+        console.log("TEMPORAL")
+        console.log("TEMPORAL")
+        
         // Send the response
         res.status(200).send({
             message:"OK",
@@ -103,6 +112,7 @@ const getAllSchedulesByDentistAndTime = async (req, res) => {
             order:      [['time','ASC']],
             where: {
                 id_dentist: id_dentist,
+                id_recruitment: {[Op.eq]: null},
                 date: date,
                 sttus: 0
             },
@@ -114,6 +124,15 @@ const getAllSchedulesByDentistAndTime = async (req, res) => {
         const data = schedules.rows
         const total = schedules.count
         const count = data.length
+
+        console.log("TEMPORAL")
+        console.log("TEMPORAL")
+        console.log("TEMPORAL")
+        console.log(schedules)
+        console.log("TEMPORAL")
+        console.log("TEMPORAL")
+        console.log("TEMPORAL")
+
         // Send the response
         res.status(200).send({
             message:"OK",
