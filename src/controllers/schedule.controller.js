@@ -492,14 +492,14 @@ const s3patientChoosesSchedule = async (req, res) => {
         },{
             where: {
                 id_schedule : id_schedule,
-                id_patient : id_patient
+                id_patient  : id_patient
             }
         })
 
         console.log("[schedules]")
         console.log("[schedules]")
         console.log("[schedules]")
-        console.log([schedules])
+        console.log(schedules)
         console.log("[schedules]")
         console.log("[schedules]")
         console.log("[schedules]")
