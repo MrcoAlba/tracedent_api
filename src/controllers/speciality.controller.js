@@ -42,6 +42,9 @@ const getSpecialityList = async (req, res) => {
 
         var specialities = null
         if (id_speciality.length==36){
+            console.log("PRIMERA OPCION")
+            console.log("PRIMERA OPCION")
+            console.log("PRIMERA OPCION")
             specialities = await specialitySchema.findAndCountAll({
                 attributes: ['id_speciality','name'],
                 order:      [['name','ASC']],
@@ -53,6 +56,9 @@ const getSpecialityList = async (req, res) => {
                 subQuery:   false
             })
         }else{
+            console.log("SEGUNDA OPCION")
+            console.log("SEGUNDA OPCION")
+            console.log("SEGUNDA OPCION")
             specialities = await specialitySchema.findAndCountAll({
                 attributes: ['id_speciality','name'],
                 order:      [['name','ASC']],
