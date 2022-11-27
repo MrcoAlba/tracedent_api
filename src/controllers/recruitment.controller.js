@@ -103,14 +103,14 @@ const changeRecruitmentStatusById = async (req, res) => {
             console.log("SCHEDULE UPDATED")
             res.status(200).send({
                 message: "SCHEDULE UPDATED",
-                data: [true],
+                data: [schedule],
                 meta: { total: null, count: null, offset: null, limit: null }
             })
         } else {
             // Send the response
             res.status(500).send({
                 message: "SCHEDULE NOT UPDATED",
-                data: [false],
+                data: [0],
                 meta: { total: null, count: null, offset: null, limit: null }
             })
         }
