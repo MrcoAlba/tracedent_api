@@ -41,7 +41,7 @@ const getSpecialityList = async (req, res) => {
         console.log("1")
 
         var specialities = null
-        if (id_speciality.length==36){
+        if (id_speciality != ""){
             console.log("PRIMERA OPCION")
             console.log("PRIMERA OPCION")
             console.log("PRIMERA OPCION")
