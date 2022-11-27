@@ -152,6 +152,15 @@ const getAllSchedulesByDentistId = async (req, res) => {
                 subQuery:   false
             })
         }
+        console.log("getAllSchedulesByDentistId")
+        console.log("getAllSchedulesByDentistId")
+        console.log("getAllSchedulesByDentistId")
+        console.log(schedules)
+        console.log(id_clinic)
+        console.log(id_dentist)
+        console.log("getAllSchedulesByDentistId")
+        console.log("getAllSchedulesByDentistId")
+        console.log("getAllSchedulesByDentistId")
         // Get the data, total and count information
         const data = schedules.rows
         const total = schedules.count
