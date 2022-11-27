@@ -36,7 +36,7 @@ const getAllClinics = async (req, res) => {
         })
         
         // Get the data, total and count information
-        const data = clinics
+        const data = clinics.rows
         const total = clinics.count
         const count = data.length
         // Send the response
@@ -87,13 +87,6 @@ const getAllClinicszz = async (req, res) => {
                 limit :     limit,
                 subQuery:   false
             })
-            console.log("clinics")
-            console.log("clinics")
-            console.log("clinics")
-            console.log(clinics)
-            console.log("clinics")
-            console.log("clinics")
-            console.log("clinics")
 
             data = clinics.rows
             total = clinics.count
@@ -103,14 +96,14 @@ const getAllClinicszz = async (req, res) => {
             const respuesta1 = await sequelize.query(
                 "SELECT * FROM clinic"
             )
-            /*const respuesta1 = await sequelize.query(
+            const respuesta1 = await sequelize.query(
                 "SELECT count('clinic'.'id_clinic') AS 'count' FROM  'clinic' AS 'clinic' LEFT OUTER JOIN 'users' AS 'user' ON 'clinic'.'id_user' = 'user'.'id_user' LIMIT :limit;",
                 {
                     replacements: { 
                         limit: limit 
                     },type: QueryTypes.SELECT
                 }
-            )*/
+            )
 
             /*const respuesta2 = await sequelize.query(
                 "SELECT clinic.id_clinic, 'clinic'.'company_name', 'clinic'.'ruc', 'clinic'.'rating', 'user'.'id_user' AS 'user.id_user', 'user'.'user_type' AS 'user.user_type', 'user'.'phone_number' AS 'user.phone_number', 'user'.'subscription' AS 'user.subscription', 'user'.'district' AS 'user.district', 'user'.'direction' AS 'user.direction', 'user'.'latitude' AS 'user.latitude', 'user'.'longitude' AS 'user.longitude', POW(69.1 * ('user'.'latitude' - :latitude), 2) + POW(69.1 * (:longitude - 'user'.'longitude') * COS('user'.'latitude' / 57.3), 2) AS distance FROM  'clinic' AS 'clinic' LEFT OUTER JOIN 'users' AS 'user' ON 'clinic'.'id_user' = 'user'.'id_user' ORDER BY distance, LIMIT :limit;",
@@ -139,11 +132,6 @@ const getAllClinicszz = async (req, res) => {
             data:data,
             meta:{total: total, count:count, offset: offset, limit: limit}
         })
-        
-        /*res.status(200).send({
-            message:"OK",
-            data:respuesta1,
-        })*/
     } catch (error) {
         // If there was an error, send a message and the error object
         res.status(400).send({
